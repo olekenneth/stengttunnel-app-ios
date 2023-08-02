@@ -1,0 +1,600 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B0C85D072A7A4FF1004EC4B8 /* Stengt_TunnelApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C85D062A7A4FF1004EC4B8 /* Stengt_TunnelApp.swift */; };
+		B0C85D092A7A4FF1004EC4B8 /* TrafficLightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C85D082A7A4FF1004EC4B8 /* TrafficLightView.swift */; };
+		B0C85D0B2A7A4FF2004EC4B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0C85D0A2A7A4FF2004EC4B8 /* Assets.xcassets */; };
+		B0C85D0E2A7A4FF2004EC4B8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0C85D0D2A7A4FF2004EC4B8 /* Preview Assets.xcassets */; };
+		B0C85D182A7A4FF3004EC4B8 /* Stengt_TunnelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C85D172A7A4FF3004EC4B8 /* Stengt_TunnelTests.swift */; };
+		B0C85D222A7A4FF3004EC4B8 /* Stengt_TunnelUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C85D212A7A4FF3004EC4B8 /* Stengt_TunnelUITests.swift */; };
+		B0C85D242A7A4FF3004EC4B8 /* Stengt_TunnelUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C85D232A7A4FF3004EC4B8 /* Stengt_TunnelUITestsLaunchTests.swift */; };
+		B0C85D312A7A65CD004EC4B8 /* MessageTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C85D302A7A65CD004EC4B8 /* MessageTableView.swift */; };
+		B0C85D332A7A6D07004EC4B8 /* StatusMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C85D322A7A6D07004EC4B8 /* StatusMessageView.swift */; };
+		B0C85D352A7A6F6F004EC4B8 /* RoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C85D342A7A6F6F004EC4B8 /* RoadView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B0C85D142A7A4FF3004EC4B8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B0C85CFB2A7A4FF1004EC4B8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B0C85D022A7A4FF1004EC4B8;
+			remoteInfo = "Stengt Tunnel";
+		};
+		B0C85D1E2A7A4FF3004EC4B8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B0C85CFB2A7A4FF1004EC4B8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B0C85D022A7A4FF1004EC4B8;
+			remoteInfo = "Stengt Tunnel";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B0C85D032A7A4FF1004EC4B8 /* Stengt Tunnel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stengt Tunnel.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0C85D062A7A4FF1004EC4B8 /* Stengt_TunnelApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stengt_TunnelApp.swift; sourceTree = "<group>"; };
+		B0C85D082A7A4FF1004EC4B8 /* TrafficLightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficLightView.swift; sourceTree = "<group>"; };
+		B0C85D0A2A7A4FF2004EC4B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B0C85D0D2A7A4FF2004EC4B8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B0C85D132A7A4FF3004EC4B8 /* Stengt TunnelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Stengt TunnelTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0C85D172A7A4FF3004EC4B8 /* Stengt_TunnelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stengt_TunnelTests.swift; sourceTree = "<group>"; };
+		B0C85D1D2A7A4FF3004EC4B8 /* Stengt TunnelUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Stengt TunnelUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0C85D212A7A4FF3004EC4B8 /* Stengt_TunnelUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stengt_TunnelUITests.swift; sourceTree = "<group>"; };
+		B0C85D232A7A4FF3004EC4B8 /* Stengt_TunnelUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stengt_TunnelUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B0C85D302A7A65CD004EC4B8 /* MessageTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableView.swift; sourceTree = "<group>"; };
+		B0C85D322A7A6D07004EC4B8 /* StatusMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMessageView.swift; sourceTree = "<group>"; };
+		B0C85D342A7A6F6F004EC4B8 /* RoadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B0C85D002A7A4FF1004EC4B8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B0C85D102A7A4FF3004EC4B8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B0C85D1A2A7A4FF3004EC4B8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B0C85CFA2A7A4FF1004EC4B8 = {
+			isa = PBXGroup;
+			children = (
+				B0C85D052A7A4FF1004EC4B8 /* Stengt Tunnel */,
+				B0C85D162A7A4FF3004EC4B8 /* Stengt TunnelTests */,
+				B0C85D202A7A4FF3004EC4B8 /* Stengt TunnelUITests */,
+				B0C85D042A7A4FF1004EC4B8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B0C85D042A7A4FF1004EC4B8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B0C85D032A7A4FF1004EC4B8 /* Stengt Tunnel.app */,
+				B0C85D132A7A4FF3004EC4B8 /* Stengt TunnelTests.xctest */,
+				B0C85D1D2A7A4FF3004EC4B8 /* Stengt TunnelUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B0C85D052A7A4FF1004EC4B8 /* Stengt Tunnel */ = {
+			isa = PBXGroup;
+			children = (
+				B0C85D062A7A4FF1004EC4B8 /* Stengt_TunnelApp.swift */,
+				B0C85D082A7A4FF1004EC4B8 /* TrafficLightView.swift */,
+				B0C85D322A7A6D07004EC4B8 /* StatusMessageView.swift */,
+				B0C85D302A7A65CD004EC4B8 /* MessageTableView.swift */,
+				B0C85D342A7A6F6F004EC4B8 /* RoadView.swift */,
+				B0C85D0A2A7A4FF2004EC4B8 /* Assets.xcassets */,
+				B0C85D0C2A7A4FF2004EC4B8 /* Preview Content */,
+			);
+			path = "Stengt Tunnel";
+			sourceTree = "<group>";
+		};
+		B0C85D0C2A7A4FF2004EC4B8 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				B0C85D0D2A7A4FF2004EC4B8 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B0C85D162A7A4FF3004EC4B8 /* Stengt TunnelTests */ = {
+			isa = PBXGroup;
+			children = (
+				B0C85D172A7A4FF3004EC4B8 /* Stengt_TunnelTests.swift */,
+			);
+			path = "Stengt TunnelTests";
+			sourceTree = "<group>";
+		};
+		B0C85D202A7A4FF3004EC4B8 /* Stengt TunnelUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B0C85D212A7A4FF3004EC4B8 /* Stengt_TunnelUITests.swift */,
+				B0C85D232A7A4FF3004EC4B8 /* Stengt_TunnelUITestsLaunchTests.swift */,
+			);
+			path = "Stengt TunnelUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B0C85D022A7A4FF1004EC4B8 /* Stengt Tunnel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B0C85D272A7A4FF3004EC4B8 /* Build configuration list for PBXNativeTarget "Stengt Tunnel" */;
+			buildPhases = (
+				B0C85CFF2A7A4FF1004EC4B8 /* Sources */,
+				B0C85D002A7A4FF1004EC4B8 /* Frameworks */,
+				B0C85D012A7A4FF1004EC4B8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Stengt Tunnel";
+			productName = "Stengt Tunnel";
+			productReference = B0C85D032A7A4FF1004EC4B8 /* Stengt Tunnel.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B0C85D122A7A4FF3004EC4B8 /* Stengt TunnelTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B0C85D2A2A7A4FF3004EC4B8 /* Build configuration list for PBXNativeTarget "Stengt TunnelTests" */;
+			buildPhases = (
+				B0C85D0F2A7A4FF3004EC4B8 /* Sources */,
+				B0C85D102A7A4FF3004EC4B8 /* Frameworks */,
+				B0C85D112A7A4FF3004EC4B8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B0C85D152A7A4FF3004EC4B8 /* PBXTargetDependency */,
+			);
+			name = "Stengt TunnelTests";
+			productName = "Stengt TunnelTests";
+			productReference = B0C85D132A7A4FF3004EC4B8 /* Stengt TunnelTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B0C85D1C2A7A4FF3004EC4B8 /* Stengt TunnelUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B0C85D2D2A7A4FF3004EC4B8 /* Build configuration list for PBXNativeTarget "Stengt TunnelUITests" */;
+			buildPhases = (
+				B0C85D192A7A4FF3004EC4B8 /* Sources */,
+				B0C85D1A2A7A4FF3004EC4B8 /* Frameworks */,
+				B0C85D1B2A7A4FF3004EC4B8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B0C85D1F2A7A4FF3004EC4B8 /* PBXTargetDependency */,
+			);
+			name = "Stengt TunnelUITests";
+			productName = "Stengt TunnelUITests";
+			productReference = B0C85D1D2A7A4FF3004EC4B8 /* Stengt TunnelUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B0C85CFB2A7A4FF1004EC4B8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					B0C85D022A7A4FF1004EC4B8 = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+					B0C85D122A7A4FF3004EC4B8 = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = B0C85D022A7A4FF1004EC4B8;
+					};
+					B0C85D1C2A7A4FF3004EC4B8 = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = B0C85D022A7A4FF1004EC4B8;
+					};
+				};
+			};
+			buildConfigurationList = B0C85CFE2A7A4FF1004EC4B8 /* Build configuration list for PBXProject "Stengt Tunnel" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B0C85CFA2A7A4FF1004EC4B8;
+			productRefGroup = B0C85D042A7A4FF1004EC4B8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B0C85D022A7A4FF1004EC4B8 /* Stengt Tunnel */,
+				B0C85D122A7A4FF3004EC4B8 /* Stengt TunnelTests */,
+				B0C85D1C2A7A4FF3004EC4B8 /* Stengt TunnelUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B0C85D012A7A4FF1004EC4B8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0C85D0E2A7A4FF2004EC4B8 /* Preview Assets.xcassets in Resources */,
+				B0C85D0B2A7A4FF2004EC4B8 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B0C85D112A7A4FF3004EC4B8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B0C85D1B2A7A4FF3004EC4B8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B0C85CFF2A7A4FF1004EC4B8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0C85D312A7A65CD004EC4B8 /* MessageTableView.swift in Sources */,
+				B0C85D092A7A4FF1004EC4B8 /* TrafficLightView.swift in Sources */,
+				B0C85D072A7A4FF1004EC4B8 /* Stengt_TunnelApp.swift in Sources */,
+				B0C85D352A7A6F6F004EC4B8 /* RoadView.swift in Sources */,
+				B0C85D332A7A6D07004EC4B8 /* StatusMessageView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B0C85D0F2A7A4FF3004EC4B8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0C85D182A7A4FF3004EC4B8 /* Stengt_TunnelTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B0C85D192A7A4FF3004EC4B8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0C85D222A7A4FF3004EC4B8 /* Stengt_TunnelUITests.swift in Sources */,
+				B0C85D242A7A4FF3004EC4B8 /* Stengt_TunnelUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B0C85D152A7A4FF3004EC4B8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B0C85D022A7A4FF1004EC4B8 /* Stengt Tunnel */;
+			targetProxy = B0C85D142A7A4FF3004EC4B8 /* PBXContainerItemProxy */;
+		};
+		B0C85D1F2A7A4FF3004EC4B8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B0C85D022A7A4FF1004EC4B8 /* Stengt Tunnel */;
+			targetProxy = B0C85D1E2A7A4FF3004EC4B8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		B0C85D252A7A4FF3004EC4B8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B0C85D262A7A4FF3004EC4B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B0C85D282A7A4FF3004EC4B8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Stengt Tunnel/Preview Content\"";
+				DEVELOPMENT_TEAM = XQ85U6R33U;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.adapptic.Stengt-Tunnel";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B0C85D292A7A4FF3004EC4B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Stengt Tunnel/Preview Content\"";
+				DEVELOPMENT_TEAM = XQ85U6R33U;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.adapptic.Stengt-Tunnel";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B0C85D2B2A7A4FF3004EC4B8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XQ85U6R33U;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.adapptic.Stengt-TunnelTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Stengt Tunnel.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Stengt Tunnel";
+			};
+			name = Debug;
+		};
+		B0C85D2C2A7A4FF3004EC4B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XQ85U6R33U;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.adapptic.Stengt-TunnelTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Stengt Tunnel.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Stengt Tunnel";
+			};
+			name = Release;
+		};
+		B0C85D2E2A7A4FF3004EC4B8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XQ85U6R33U;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.adapptic.Stengt-TunnelUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Stengt Tunnel";
+			};
+			name = Debug;
+		};
+		B0C85D2F2A7A4FF3004EC4B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XQ85U6R33U;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.adapptic.Stengt-TunnelUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Stengt Tunnel";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B0C85CFE2A7A4FF1004EC4B8 /* Build configuration list for PBXProject "Stengt Tunnel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B0C85D252A7A4FF3004EC4B8 /* Debug */,
+				B0C85D262A7A4FF3004EC4B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B0C85D272A7A4FF3004EC4B8 /* Build configuration list for PBXNativeTarget "Stengt Tunnel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B0C85D282A7A4FF3004EC4B8 /* Debug */,
+				B0C85D292A7A4FF3004EC4B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B0C85D2A2A7A4FF3004EC4B8 /* Build configuration list for PBXNativeTarget "Stengt TunnelTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B0C85D2B2A7A4FF3004EC4B8 /* Debug */,
+				B0C85D2C2A7A4FF3004EC4B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B0C85D2D2A7A4FF3004EC4B8 /* Build configuration list for PBXNativeTarget "Stengt TunnelUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B0C85D2E2A7A4FF3004EC4B8 /* Debug */,
+				B0C85D2F2A7A4FF3004EC4B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B0C85CFB2A7A4FF1004EC4B8 /* Project object */;
+}
