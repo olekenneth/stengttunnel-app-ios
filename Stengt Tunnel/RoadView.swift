@@ -7,65 +7,108 @@
 
 import SwiftUI
 
-enum StatusTypes {
-    case green
-    case yellow
-    case red
+enum StatusType: String, Codable {
+    case green = "green"
+    case yellow = "yellow"
+    case red = "red"
 }
 
-struct Status: Identifiable {
-    var id = UUID()
-    var roadName: String
-    var messages: [Message]
-    var urlFriendly: String
+struct GPS: Codable {
+    var lat: Float
+    var lon: Float
+}
+
+struct Status: Identifiable, Codable {
+    var id: UUID { UUID() }
     var statusMessage: String
-    var status: StatusTypes
-    var gps = {
-        var lat: Float
-        var lon: Float
-    }
+    var messages: [Message]?
+    var status: StatusType
+    // var gps: GPS
 }
 
 struct RoadView: View {
-    @State var status: Status
+    let urlFriendly: String
+    @State var status: Status?
     
     var body: some View {
         VStack(alignment: .leading) {
-            StatusMessageView(color: status.status, statusMessage: status.statusMessage)
-                .padding()
-            if status.messages.count > 0 {
-                Rectangle()
-                    .foregroundColor(Color("lightGray"))
-                    .frame(height: 1)
-                MessageTableView(data: status.messages).padding()
+            if (status != nil) {
+                StatusMessageView(color: status!.status, statusMessage: status!.statusMessage.replacingOccurrences(of: "Tunnelen", with: urlFriendly.capitalized))
+                    .padding()
+                if !status!.messages!.isEmpty {
+                    Rectangle()
+                        .foregroundColor(Color("lightGray"))
+                        .frame(height: 1)
+                    MessageTableView(data: status!.messages!)
+                        .padding()
+                }
+            } else {
+                StatusMessageView(color: .yellow, statusMessage: "Tunnelen er ...")
+                    .padding()
             }
+            
         }
         .background(Color("white"))
+        .onAppear() {
+            loadData(road: urlFriendly) { status in
+                self.status = status
+            }
+        }
     }
 }
 
 
+private func loadData(road: String, completion:@escaping (_ status: Status) -> ()) {
+    guard let url = URL(string: "https://api.stengttunnel.no/" + road + "/v2") else {
+        print("unable to fetch")
+        return
+    }
+    let jsonDecoder = JSONDecoder()
+
+    let formatter = ISO8601DateFormatter()
+    formatter.formatOptions = [.withInternetDateTime]
+    formatter.formatOptions.insert(.withFractionalSeconds)
+
+    jsonDecoder.dateDecodingStrategy = .custom({ decoder in
+        let container = try decoder.singleValueContainer()
+        let dateStr = try container.decode(String.self)
+
+        if let date = formatter.date(from: dateStr) {
+            return date
+        }
+
+        return Date.now
+    })
+
+    let request = URLRequest(url: url)
+    URLSession.shared.dataTask(with: request) { data, resp, error in
+
+        if let data = data {
+//             do {
+//                 let res = try jsonDecoder.decode(Status.self, from: data)
+//             } catch {
+//                 print(error)
+//             }
+            if let response = try? jsonDecoder.decode(Status.self, from: data) {
+                print(response)
+                DispatchQueue.main.async {
+                    completion(response)
+                }
+            } else {
+                print("Unable to decode JSON")
+            }
+        }
+        
+    }.resume()
+}
 
 struct RoadView_Previews: PreviewProvider {
     static var previews: some View {
-        let open = Status(roadName: "Oslofjordtunnelen", messages: [], urlFriendly: "oslofjordtunnelen", statusMessage: "Oslofjordtunnelen ser ut til å være åpen.", status: .green)
-        
-        let m = Message(message: "Rv. 162 (avkjøringsveg) Hammersborgtunnelen i Oslo i retning mot Filipstad: Vegarbeid, vegen er stengt. Omkjøring er skiltet", source: "train.side.front.car", validFrom: Date.now, validTo: Date.now.addingTimeInterval(6000))
-
-        
-        let closed = Status(roadName: "Oslofjordtunnelen", messages: [m, m], urlFriendly: "oslofjordtunnelen", statusMessage: "Hammersborgtunnelen ser ut til å være stengt. Rødt lys kan bety at veien/tunnelen er stengt nå, men les meldingene under for nærmere informasjon.", status: .red)
-        
-        let unknown = Status(roadName: "Oslofjordtunnelen", messages: [m, m, m], urlFriendly: "oslofjordtunnelen", statusMessage: "Oslofjordtunnelen ser ut til å være stengt. Gult lys kan bety at veien/tunnelen er stengt nå, eller blir stengt i løpet av kort tid. Les meldingene under for nærmere informasjon.", status: .yellow)
-        
-
         ScrollView {
             VStack(alignment: .leading) {
-                RoadView(status: open)
-                RoadView(status: unknown)
-                RoadView(status: unknown)
-                RoadView(status: unknown)
-                RoadView(status: closed)
+                RoadView(urlFriendly: "oslofjordtunnelen")
             }
-        }.background(Color("lightGray"))
+        }
+        .background(Color("lightGray"))
     }
 }

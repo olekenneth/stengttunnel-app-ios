@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TrafficLightView: View {
-    @State var color: StatusTypes
+    @State var color: StatusType
 
     var body: some View {
         VStack(alignment: .center, spacing: 2) {

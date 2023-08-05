@@ -6,10 +6,17 @@
 //
 
 import SwiftUI
-struct Message: Identifiable {
-    var id = UUID()
+
+enum SourceType: String, Codable {
+    case svv = "Statens Vegvesen"
+    case user = "Brukerinnmeldt"
+}
+
+struct Message: Identifiable, Codable {
+    var id: UUID { UUID() }
+    var type: String?
+    var source: SourceType
     var message: String
-    var source: String
     var validFrom: Date
     var validTo: Date
 }
@@ -21,12 +28,12 @@ struct MessageTableView: View {
         VStack(alignment: .leading) {
             ForEach(data) { message in
                 HStack(alignment: .top) {
-                    Image(systemName: message.source)
+                    Image(message.source.rawValue)
                     VStack(alignment: .leading) {
                         HStack {
                             Text(message.validFrom.formatted(date: .abbreviated, time: .shortened))
                             Text("-")
-                            Text(message.validFrom.formatted(date: .abbreviated, time: .shortened))
+                            Text(message.validTo.formatted(date: .abbreviated, time: .shortened))
                         }
                         .font(.caption)
                             
@@ -37,16 +44,16 @@ struct MessageTableView: View {
                 }
                 Spacer().frame(height: 20)
             }
-        }
+        }.frame(maxWidth: .infinity, alignment: .leading)
     }
 }
 
 struct MessageTableView_Previews: PreviewProvider {
     static var previews: some View {
-        
+
         let d = [
-            Message(message: "Rv. 162 (avkjøringsveg) Hammersborgtunnelen i Oslo i retning mot Filipstad: Vegarbeid, vegen er stengt. Omkjøring er skiltet", source: "train.side.front.car", validFrom: Date.now, validTo: Date.now.addingTimeInterval(6000)),
-            Message(message: "Rv. 162 (avkjøringsveg) Hammersborgtunnelen i Oslo i retning mot Filipstad: Vegarbeid, vegen er stengt. Omkjøring er skiltet", source: "train.side.front.car", validFrom: Date.now, validTo: Date.now.addingTimeInterval(6000)),
+            Message(source: .svv, message: "Rv. 162 (avkjøringsveg) Hammersborgtunnelen i Oslo i retning mot Filipstad: Vegarbeid, vegen er stengt. Omkjøring er skiltet", validFrom: Date.now, validTo: Date.now.addingTimeInterval(6000)),
+            Message(source: .svv, message: "Vegarbeid, vegen er stengt. Omkjøring er skiltet", validFrom: Date.now.addingTimeInterval(86400), validTo: Date.now.addingTimeInterval(86400+86400)),
         ]
         ScrollView {
             MessageTableView(data: d).padding()
