@@ -9,7 +9,7 @@ import SwiftUI
 
 struct StatusMessageView: View {
     @State var color: StatusType
-    @State var statusMessage: String
+    @State var statusMessage: LocalizedStringKey
 
     var body: some View {
         HStack(alignment: .center) {

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
+  <file original="Stengt Tunnel/en.lproj/Localizable.strings" datatype="plaintext" source-language="en" target-language="nb">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3.1" build-num="14E300c"/>
+    </header>
+    <body>
+      <trans-unit id="-" xml:space="preserve">
+        <source>-</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Choose roads" xml:space="preserve">
+        <source>Choose roads</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Hammersborgtunnelen ser ut til å være stengt. Rødt lys kan bety at veien/tunnelen er stengt nå, men les meldingene under for nærmere informasjon." xml:space="preserve">
+        <source>Hammersborgtunnelen ser ut til å være stengt. Rødt lys kan bety at veien/tunnelen er stengt nå, men les meldingene under for nærmere informasjon.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Oslofjordtunnelen ser ut til å være åpen." xml:space="preserve">
+        <source>Oslofjordtunnelen ser ut til å være åpen.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Save" xml:space="preserve">
+        <source>Save</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Tunnelen er ..." xml:space="preserve">
+        <source>Tunnelen er ...</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="Stengt Tunnel/en.lproj/Stengt Tunnel-InfoPlist.strings" datatype="plaintext" source-language="en" target-language="nb">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3.1" build-num="14E300c"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleName" xml:space="preserve">
+        <source>Stengt Tunnel</source>
+        <note>Bundle name</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

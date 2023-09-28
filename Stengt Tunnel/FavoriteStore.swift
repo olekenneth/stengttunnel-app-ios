@@ -43,12 +43,11 @@ class FavoriteStore: ObservableObject {
         self.favorites = favorites
     }
     
-    func save(favorites: [Favorite]) async throws {
-        let task = Task {
+    func save(favorites: [Favorite]) {
+        Task {
             let data = try JSONEncoder().encode(favorites)
             let outfile = try Self.fileURL()
             try data.write(to: outfile)
         }
-        _ = try await task.value
     }
 }

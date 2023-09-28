@@ -11,16 +11,14 @@ struct Road: Identifiable, Codable {
     var id: String { urlFriendly }
     let roadName: String
     let urlFriendly: String
-    let url: URL
+    var url: URL { URL(string: "https://api.stengttunnel.no/" + urlFriendly + "/v2")! }
+    let messages: [Message]
+    let gps: GPS
 }
 
 private func saveStore(store: FavoriteStore) {
-    Task {
-        do {
-            try await store.save(favorites: store.favorites)
-        } catch {
-            fatalError(error.localizedDescription)
-        }
+    DispatchQueue.main.async {
+        store.save(favorites: store.favorites)
     }
 }
 
@@ -28,7 +26,6 @@ private func saveStore(store: FavoriteStore) {
 struct Stengt_TunnelApp: App {
     @StateObject private var store = FavoriteStore()
     @State private var roads = [Road]()
-
     @State private var searchText = ""
     @State private var favorites = Set<String>()
     @Environment(\.scenePhase) private var scenePhase
@@ -56,9 +53,8 @@ struct Stengt_TunnelApp: App {
                 if phase == .inactive {
                     saveStore(store: store)
                 }
-                
             }
-            .searchableOnce(text: $searchText, prompt: "Velg tunnel(er)")
+            .searchableOnce(text: $searchText, prompt: "Choose roads")
             .searchSuggestions {
                 Button("Save", role: .cancel) {
                     // dismissSearch()
@@ -83,12 +79,44 @@ struct Stengt_TunnelApp: App {
                         })
                         if (entry != nil) {
                             store.favorites.remove(at: entry!)
+                            if store.favorites.isEmpty {
+                                store.favorites.insert(Favorite(roadName: "Ingen tunnel valgt", urlFriendly: "no-road"), at: 0)
+                            }
                         } else {
                             store.favorites.insert(Favorite(roadName: road.roadName, urlFriendly: road.urlFriendly), at: 0)
                             
                         }
                     }
                 }
+//                List {
+//                    ForEach(searchResults) { road in
+//                        NavigationLink {
+//                            Text(road.roadName)
+//                                .font(.headline)
+//                            Spacer()
+//                            if (store.favorites.contains(where: { favorite in
+//                                favorite.urlFriendly == road.urlFriendly
+//                            })) {
+//                                Image(systemName: "checkmark")
+//                            } else {
+//                                Image(systemName: "plus")
+//                            }
+//
+//                        } label: {
+//                            Text(road.roadName)
+//                        }
+//                        //                     .onTapGesture {
+//                        //                         let entry = store.favorites.firstIndex(where: { favorite in
+//                        //                             favorite.urlFriendly == road.urlFriendly
+//                        //                         })
+//                        //                         if (entry != nil) {
+//                        //                             store.favorites.remove(at: entry!)
+//                        //                         } else {
+//                        //                             store.favorites.insert(Favorite(roadName: road.roadName, urlFriendly:  road.urlFriendly), at: 0)
+//                        //
+//                        //                         }
+//                    }
+//                }
             }
             .onAppear(perform: runSearch)
             .onSubmit(of: .search, runSearch)
@@ -97,10 +125,15 @@ struct Stengt_TunnelApp: App {
     
     func runSearch() {
         Task {
-            guard let url = URL(string: "https://stengttunnel.no/roads.json") else { return }
-
-            let (data, _) = try await URLSession.shared.data(from: url)
-            roads = try JSONDecoder().decode([Road].self, from: data)
+            Dataloader.shared.loadRoads { result in
+                // print(result.values)
+                roads = result.map({ (key: String, value: Road) in
+                    return value
+                }).sorted(by: { roadA, roadB  in
+                    return roadA.roadName < roadB.roadName
+                })
+                // print(roads)
+            }
         }
     }
 

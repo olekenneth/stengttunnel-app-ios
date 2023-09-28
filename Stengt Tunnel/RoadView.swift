@@ -23,6 +23,9 @@ struct Status: Identifiable, Codable {
     var statusMessage: String
     var messages: [Message]?
     var status: StatusType
+    var localizedStatusMessage: LocalizedStringKey {
+        return LocalizedStringKey(statusMessage)
+    }
     // var gps: GPS
 }
 
@@ -33,7 +36,7 @@ struct RoadView: View {
     var body: some View {
         VStack(alignment: .leading) {
             if (status != nil) {
-                StatusMessageView(color: status!.status, statusMessage: status!.statusMessage.replacingOccurrences(of: "Tunnelen", with: urlFriendly.capitalized))
+                StatusMessageView(color: status!.status, statusMessage: status!.localizedStatusMessage)
                     .padding()
                 if !status!.messages!.isEmpty {
                     Rectangle()
@@ -50,7 +53,7 @@ struct RoadView: View {
         }
         .background(Color("white"))
         .onAppear() {
-            loadData(road: urlFriendly) { status in
+            Dataloader.shared.loadRoad(road: urlFriendly) { status in
                 self.status = status
             }
         }
@@ -58,49 +61,6 @@ struct RoadView: View {
 }
 
 
-private func loadData(road: String, completion:@escaping (_ status: Status) -> ()) {
-    guard let url = URL(string: "https://api.stengttunnel.no/" + road + "/v2") else {
-        print("unable to fetch")
-        return
-    }
-    let jsonDecoder = JSONDecoder()
-
-    let formatter = ISO8601DateFormatter()
-    formatter.formatOptions = [.withInternetDateTime]
-    formatter.formatOptions.insert(.withFractionalSeconds)
-
-    jsonDecoder.dateDecodingStrategy = .custom({ decoder in
-        let container = try decoder.singleValueContainer()
-        let dateStr = try container.decode(String.self)
-
-        if let date = formatter.date(from: dateStr) {
-            return date
-        }
-
-        return Date.now
-    })
-
-    let request = URLRequest(url: url)
-    URLSession.shared.dataTask(with: request) { data, resp, error in
-
-        if let data = data {
-//             do {
-//                 let res = try jsonDecoder.decode(Status.self, from: data)
-//             } catch {
-//                 print(error)
-//             }
-            if let response = try? jsonDecoder.decode(Status.self, from: data) {
-                print(response)
-                DispatchQueue.main.async {
-                    completion(response)
-                }
-            } else {
-                print("Unable to decode JSON")
-            }
-        }
-        
-    }.resume()
-}
 
 struct RoadView_Previews: PreviewProvider {
     static var previews: some View {
