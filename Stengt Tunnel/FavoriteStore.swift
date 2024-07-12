@@ -6,10 +6,14 @@
 //
 import SwiftUI
 
-struct Favorite: Identifiable, Codable {
+struct Favorite: Identifiable, Codable, Equatable {
     var id = UUID()
     var roadName: String
     var urlFriendly: String
+    
+    static func ==(lhs: Favorite, rhs: Favorite) -> Bool {
+        return lhs.urlFriendly == rhs.urlFriendly
+    }
 }
 
 @MainActor
@@ -33,16 +37,28 @@ class FavoriteStore: ObservableObject {
             let yourFavorites = try JSONDecoder().decode([Favorite].self, from: data)
             return yourFavorites
         }
-        var favorites = try await task.value
-        
-        if favorites.isEmpty {
-            favorites.append(Favorite(roadName: "Hammersborgtunnelen", urlFriendly: "hammersborgtunnelen"))
-            favorites.append(Favorite(roadName: "Oslofjordtunnelen", urlFriendly: "oslofjordtunnelen"))
-        }
-        
-        self.favorites = favorites
+        self.favorites = try await task.value
     }
     
+    func remove(road: Favorite) {
+        self.favorites.removeAll { $0 == road }
+    }
+    
+    func insert(road: Favorite) {
+        self.favorites.insert(road, at: 0)
+        print(self.favorites)
+    }
+    
+    func toggle(road: Favorite) {
+        let exists = self.favorites.contains { $0 == road}
+        
+        if exists {
+            remove(road: road)
+        } else {
+            insert(road: road)
+        }
+    }
+        
     func save(favorites: [Favorite]) {
         Task {
             let data = try JSONEncoder().encode(favorites)

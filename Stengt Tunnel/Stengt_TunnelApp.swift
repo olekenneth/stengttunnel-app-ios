@@ -18,6 +18,7 @@ struct Road: Identifiable, Codable {
 
 private func saveStore(store: FavoriteStore) {
     DispatchQueue.main.async {
+        print("Saving store")
         store.save(favorites: store.favorites)
     }
 }
@@ -27,25 +28,36 @@ struct Stengt_TunnelApp: App {
     @StateObject private var store = FavoriteStore()
     @State private var roads = [Road]()
     @State private var searchText = ""
-    @State private var favorites = Set<String>()
     @Environment(\.scenePhase) private var scenePhase
-
+    @State private var isSearching = false
+    @State private var showSearch = false
+    
     var body: some Scene {
         WindowGroup {
             NavigationStack {
                 ScrollView {
-                    VStack(alignment: .leading) {
-                        ForEach($store.favorites) { $favorite in
-                            RoadView(urlFriendly: favorite.urlFriendly)
+                    if $store.favorites.isEmpty {
+                        HStack {
+                            Spacer()
+                            VStack {
+                                Text("Ingen favoritter")
+                                    .font(.headline)
+                                Text("Klikk for å legge til")
+                                    .font(.subheadline)
+                            }
+                            Spacer()
+                        }.padding()
+                            .onTapGesture(perform: {
+                                print("CLICKING ")
+                                showSearch = true
+                            })
+                    } else {
+                        VStack(alignment: .leading) {
+                            ForEach($store.favorites) { $favorite in
+                                RoadView(urlFriendly: favorite.urlFriendly)
+                            }
                         }
-                    }
-                    .background(Color("lightGray"))
-                    .task {
-                        do {
-                            try await store.load()
-                        } catch {
-                            fatalError(error.localizedDescription)
-                        }
+                        .background(Color("lightGray"))
                     }
                 }
             }
@@ -54,11 +66,27 @@ struct Stengt_TunnelApp: App {
                     saveStore(store: store)
                 }
             }
-            .searchableOnce(text: $searchText, prompt: "Choose roads")
+            .onAppear() {
+                Task {
+                    do {
+                        print("Loading favorites store")
+                        try await store.load()
+                    } catch {
+                        fatalError(error.localizedDescription)
+                    }
+                }
+                if store.favorites.isEmpty {
+                    showSearch = true
+                }
+            }
+            .searchableOnce(text: $searchText, prompt: "Choose roads", isPresented: $showSearch)
             .searchSuggestions {
-                Button("Save", role: .cancel) {
-                    // dismissSearch()
-                    saveStore(store: store)
+                if searchResults.isEmpty {
+                    HStack {
+                        Text(searchResults.isEmpty && !searchText.isEmpty ? "No result found" : "Loading roads. Please wait...")
+                            .font(.headline)
+                        Spacer()
+                    }
                 }
                 ForEach(searchResults) { road in
                     HStack {
@@ -74,49 +102,10 @@ struct Stengt_TunnelApp: App {
                         }
                     }
                     .onTapGesture {
-                        let entry = store.favorites.firstIndex(where: { favorite in
-                            favorite.urlFriendly == road.urlFriendly
-                        })
-                        if (entry != nil) {
-                            store.favorites.remove(at: entry!)
-                            if store.favorites.isEmpty {
-                                store.favorites.insert(Favorite(roadName: "Ingen tunnel valgt", urlFriendly: "no-road"), at: 0)
-                            }
-                        } else {
-                            store.favorites.insert(Favorite(roadName: road.roadName, urlFriendly: road.urlFriendly), at: 0)
-                            
-                        }
+                        store.toggle(road: Favorite(roadName: road.roadName, urlFriendly: road.urlFriendly))
+                        store.save(favorites: store.favorites)
                     }
                 }
-//                List {
-//                    ForEach(searchResults) { road in
-//                        NavigationLink {
-//                            Text(road.roadName)
-//                                .font(.headline)
-//                            Spacer()
-//                            if (store.favorites.contains(where: { favorite in
-//                                favorite.urlFriendly == road.urlFriendly
-//                            })) {
-//                                Image(systemName: "checkmark")
-//                            } else {
-//                                Image(systemName: "plus")
-//                            }
-//
-//                        } label: {
-//                            Text(road.roadName)
-//                        }
-//                        //                     .onTapGesture {
-//                        //                         let entry = store.favorites.firstIndex(where: { favorite in
-//                        //                             favorite.urlFriendly == road.urlFriendly
-//                        //                         })
-//                        //                         if (entry != nil) {
-//                        //                             store.favorites.remove(at: entry!)
-//                        //                         } else {
-//                        //                             store.favorites.insert(Favorite(roadName: road.roadName, urlFriendly:  road.urlFriendly), at: 0)
-//                        //
-//                        //                         }
-//                    }
-//                }
             }
             .onAppear(perform: runSearch)
             .onSubmit(of: .search, runSearch)
@@ -124,22 +113,38 @@ struct Stengt_TunnelApp: App {
     }
     
     func runSearch() {
+        if isSearching {
+            return;
+        }
+        print("HELLO")
         Task {
+            isSearching = true
             Dataloader.shared.loadRoads { result in
                 // print(result.values)
-                roads = result.map({ (key: String, value: Road) in
-                    return value
-                }).sorted(by: { roadA, roadB  in
+                isSearching = false
+                roads = result.sorted(by: { roadA, roadB  in
                     return roadA.roadName < roadB.roadName
                 })
+                
+                // store.purge(roads: roads)
                 // print(roads)
             }
         }
     }
-
+    
     var searchResults: [Road] {
         if searchText.isEmpty {
-            return roads
+            var allRoads = roads
+            let allFavorties = store.favorites.map { favorite in
+                allRoads.removeAll { road in
+                    road.urlFriendly == favorite.urlFriendly
+                }
+                return Road(roadName: favorite.roadName, urlFriendly: favorite.urlFriendly, messages: [], gps: GPS(lat: 0, lon: 0))
+            }.sorted(by: { roadA, roadB  in
+                return roadA.roadName < roadB.roadName
+            })
+            return allFavorties + allRoads
+            
         } else {
             return roads.filter { $0.roadName.localizedCaseInsensitiveContains(searchText) }
         }
