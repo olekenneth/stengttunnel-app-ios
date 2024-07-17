@@ -31,6 +31,7 @@ struct Stengt_TunnelApp: App {
     @Environment(\.scenePhase) private var scenePhase
     @State private var isSearching = false
     @State private var showSearch = false
+    @State private var lastRefreshed = Date.now
     
     var body: some Scene {
         WindowGroup {
@@ -48,42 +49,49 @@ struct Stengt_TunnelApp: App {
                             Spacer()
                         }.padding()
                             .onTapGesture(perform: {
-                                print("CLICKING ")
                                 showSearch = true
                             })
                     } else {
                         VStack(alignment: .leading) {
                             ForEach($store.favorites) { $favorite in
-                                RoadView(urlFriendly: favorite.urlFriendly)
+                                RoadView(urlFriendly: favorite.urlFriendly, lastUpdated: $lastRefreshed)
                             }
                         }
                         .background(Color("lightGray"))
                     }
                 }
             }
-            .onChange(of: scenePhase) { phase in
+            .refreshable {
+                runSearch()
+                print(lastRefreshed)
+                lastRefreshed = Date.now
+                print(lastRefreshed)
+            }
+            .onChange(of: scenePhase) { oldPhase, phase in
                 if phase == .inactive {
                     saveStore(store: store)
+                }
+                if oldPhase == .inactive && phase == .active {
+                    runSearch()
                 }
             }
             .onAppear() {
                 Task {
                     do {
-                        print("Loading favorites store")
                         try await store.load()
+                        if store.favorites.isEmpty {
+                            showSearch = true
+                        }
                     } catch {
                         fatalError(error.localizedDescription)
                     }
                 }
-                if store.favorites.isEmpty {
-                    showSearch = true
-                }
             }
-            .searchableOnce(text: $searchText, prompt: "Choose roads", isPresented: $showSearch)
+            .searchableOnce(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Velg tunnel(er)", isPresented: $showSearch)
             .searchSuggestions {
                 if searchResults.isEmpty {
                     HStack {
-                        Text(searchResults.isEmpty && !searchText.isEmpty ? "No result found" : "Loading roads. Please wait...")
+                        Text(searchResults.isEmpty && !searchText.isEmpty ? "Ingen resultat" : "Laster tunnelene. Vennligst vent...")
                             .font(.headline)
                         Spacer()
                     }
@@ -116,18 +124,15 @@ struct Stengt_TunnelApp: App {
         if isSearching {
             return;
         }
-        print("HELLO")
         Task {
             isSearching = true
             Dataloader.shared.loadRoads { result in
-                // print(result.values)
                 isSearching = false
-                roads = result.sorted(by: { roadA, roadB  in
-                    return roadA.roadName < roadB.roadName
-                })
-                
-                // store.purge(roads: roads)
-                // print(roads)
+                guard result == nil else {
+                    return roads = result!.sorted(by: { roadA, roadB  in
+                        return roadA.roadName < roadB.roadName
+                    })
+                }
             }
         }
     }

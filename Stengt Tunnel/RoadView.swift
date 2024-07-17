@@ -32,6 +32,17 @@ struct Status: Identifiable, Codable {
 struct RoadView: View {
     let urlFriendly: String
     @State var status: Status?
+    @Binding var lastUpdated: Date
+    @Environment(\.scenePhase) private var scenePhase
+    
+    func reload() {
+        Dataloader.shared.loadRoad(road: urlFriendly) { status in
+            guard status == nil else {
+                self.status = status
+                return
+            }
+        }
+    }
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -52,23 +63,30 @@ struct RoadView: View {
             
         }
         .background(Color("white"))
+        .onChange(of: scenePhase) { _, newValue in
+            if newValue == .active {
+                reload()
+            }
+        }
+        .onChange(of: lastUpdated, { _, _ in
+            reload()
+        })
         .onAppear() {
-            Dataloader.shared.loadRoad(road: urlFriendly) { status in
-                self.status = status
-            }
+            reload()
         }
+        
     }
 }
 
 
 
-struct RoadView_Previews: PreviewProvider {
-    static var previews: some View {
-        ScrollView {
-            VStack(alignment: .leading) {
-                RoadView(urlFriendly: "oslofjordtunnelen")
-            }
-        }
-        .background(Color("lightGray"))
-    }
-}
+//struct RoadView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ScrollView {
+//            VStack(alignment: .leading) {
+//                RoadView(urlFriendly: "oslofjordtunnelen")
+//            }
+//        }
+//        .background(Color("lightGray"))
+//    }
+//}

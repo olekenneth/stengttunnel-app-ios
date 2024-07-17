@@ -26,21 +26,21 @@ class Dataloader {
         })
     }
     
-    public func loadRoad(road: String, completion:@escaping (_ status: Status) -> ()) {
+    public func loadRoad(road: String, completion:@escaping (_ status: Status?) -> ()) {
         loadData(url: URL(string: "https://api.stengttunnel.no/" + road + "/v2")!, type: Status.self) { status in
             completion(status)
         }
     }
     
-    public func loadRoads(completion:@escaping (_ result: [Road]) -> ()) {
+    public func loadRoads(completion:@escaping (_ result: [Road]?) -> ()) {
         loadData(url: URL(string: "https://api.stengttunnel.no/v2")!, type: [String: Road].self) { result in
-            completion(result.map({ (key: String, value: Road) in
+            completion(result?.map({ (key: String, value: Road) in
                 return value
             }))
         }
     }
     
-    private func loadData<T>(url: URL, type: T.Type, completion:@escaping (_ result: T) -> ()) where T : Decodable {
+    private func loadData<T>(url: URL, type: T.Type, completion:@escaping (_ result: T?) -> ()) where T : Decodable {
         print("Requesting", url)
         let request = URLRequest(url: url)
         URLSession.shared.dataTask(with: request) { data, resp, error in
@@ -56,8 +56,14 @@ class Dataloader {
                     } catch {
                         print(error)
                     }
+                    DispatchQueue.main.async {
+                        completion(nil)
+                    }
                     print("Unable to decode JSON")
                 }
+            }
+            DispatchQueue.main.async {
+                completion(nil)
             }
         }.resume()
     }

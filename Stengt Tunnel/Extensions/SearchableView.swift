@@ -49,7 +49,7 @@ fileprivate struct Dismisser<Content: View>: View {
     var body: some View {
         content
             .onChange(of: wantDismiss) {
-                newValue in
+                _, newValue in
                     if newValue {
                         dismissSearch()
                         wantDismiss = false
