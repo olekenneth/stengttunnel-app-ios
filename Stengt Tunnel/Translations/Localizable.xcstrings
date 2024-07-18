@@ -1,0 +1,66 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "-" : {
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "-"
+          }
+        }
+      }
+    },
+    "Choose roads" : {
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Velg tunnel(er)"
+          }
+        }
+      }
+    },
+    "Click to add" : {
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Klikk for å legge til"
+          }
+        }
+      }
+    },
+    "Loading roads. Please wait..." : {
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Laster tunneler. Vennligst vent..."
+          }
+        }
+      }
+    },
+    "No favorites" : {
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingen favoritter"
+          }
+        }
+      }
+    },
+    "No result" : {
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingen resultat"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

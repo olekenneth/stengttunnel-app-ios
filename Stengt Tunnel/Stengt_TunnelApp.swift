@@ -7,15 +7,6 @@
 
 import SwiftUI
 
-struct Road: Identifiable, Codable {
-    var id: String { urlFriendly }
-    let roadName: String
-    let urlFriendly: String
-    var url: URL { URL(string: "https://api.stengttunnel.no/" + urlFriendly + "/v2")! }
-    let messages: [Message]
-    let gps: GPS
-}
-
 private func saveStore(store: FavoriteStore) {
     DispatchQueue.main.async {
         print("Saving store")
@@ -32,6 +23,12 @@ struct Stengt_TunnelApp: App {
     @State private var isSearching = false
     @State private var showSearch = false
     @State private var lastRefreshed = Date.now
+    var favorites: [Road] {
+        return store.favorites.map { favorite in
+            return Road(roadName: favorite.roadName, urlFriendly: favorite.urlFriendly, messages: [], gps: GPS(lat: 0, lon: 0))
+        }
+    }
+
     
     var body: some Scene {
         WindowGroup {
@@ -41,9 +38,9 @@ struct Stengt_TunnelApp: App {
                         HStack {
                             Spacer()
                             VStack {
-                                Text("Ingen favoritter")
+                                Text("No favorites")
                                     .font(.headline)
-                                Text("Klikk for å legge til")
+                                Text("Click to add")
                                     .font(.subheadline)
                             }
                             Spacer()
@@ -53,8 +50,8 @@ struct Stengt_TunnelApp: App {
                             })
                     } else {
                         VStack(alignment: .leading) {
-                            ForEach($store.favorites) { $favorite in
-                                RoadView(urlFriendly: favorite.urlFriendly, lastUpdated: $lastRefreshed)
+                            ForEach(favorites) { favorite in
+                                RoadView(road: favorite, lastUpdated: $lastRefreshed)
                             }
                         }
                         .background(Color("lightGray"))
@@ -87,11 +84,11 @@ struct Stengt_TunnelApp: App {
                     }
                 }
             }
-            .searchableOnce(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Velg tunnel(er)", isPresented: $showSearch)
+            .searchableOnce(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Choose roads", isPresented: $showSearch)
             .searchSuggestions {
                 if searchResults.isEmpty {
                     HStack {
-                        Text(searchResults.isEmpty && !searchText.isEmpty ? "Ingen resultat" : "Laster tunnelene. Vennligst vent...")
+                        Text(searchResults.isEmpty && !searchText.isEmpty ? "No result" : "Loading roads. Please wait...")
                             .font(.headline)
                         Spacer()
                     }

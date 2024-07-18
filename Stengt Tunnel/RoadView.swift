@@ -7,6 +7,15 @@
 
 import SwiftUI
 
+struct Road: Identifiable, Codable {
+    var id: String { urlFriendly }
+    let roadName: String
+    let urlFriendly: String
+    var url: URL { URL(string: "https://api.stengttunnel.no/" + urlFriendly + "/v2")! }
+    let messages: [Message]
+    let gps: GPS
+}
+
 enum StatusType: String, Codable {
     case green = "green"
     case yellow = "yellow"
@@ -29,25 +38,23 @@ struct Status: Identifiable, Codable {
     // var gps: GPS
 }
 
-struct RoadView: View {
-    let urlFriendly: String
+public struct RoadView: View {
+    let road: Road
     @State var status: Status?
     @Binding var lastUpdated: Date
     @Environment(\.scenePhase) private var scenePhase
     
     func reload() {
-        Dataloader.shared.loadRoad(road: urlFriendly) { status in
-            guard status == nil else {
-                self.status = status
-                return
-            }
+        Dataloader.shared.loadRoad(road: road.urlFriendly) { status in
+            guard status != nil else { return }
+            self.status = status
         }
     }
     
-    var body: some View {
+    public var body: some View {
         VStack(alignment: .leading) {
             if (status != nil) {
-                StatusMessageView(color: status!.status, statusMessage: status!.localizedStatusMessage)
+                StatusMessageView(color: status!.status, statusMessage: status!.statusMessage.replacingOccurrences(of: "Tunnelen", with: road.roadName))
                     .padding()
                 if !status!.messages!.isEmpty {
                     Rectangle()
@@ -57,7 +64,7 @@ struct RoadView: View {
                         .padding()
                 }
             } else {
-                StatusMessageView(color: .yellow, statusMessage: "Tunnelen er ...")
+                StatusMessageView(color: .yellow, statusMessage: "The road is ...")
                     .padding()
             }
             
