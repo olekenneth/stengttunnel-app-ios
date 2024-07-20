@@ -14,7 +14,7 @@ struct StatusMessageView: View {
     var body: some View {
         HStack(alignment: .center) {
             TrafficLightView(color: color)
-            Text(statusMessage)
+            Text(LocalizedStringKey(statusMessage))
                 .baselineOffset(0)
                 .font(.headline)
                 .frame(maxWidth: .infinity, alignment: .leading)

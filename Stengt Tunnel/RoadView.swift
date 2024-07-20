@@ -41,6 +41,7 @@ struct Status: Identifiable, Codable {
 public struct RoadView: View {
     let road: Road
     @State var status: Status?
+    @State var isSharing = false
     @Binding var lastUpdated: Date
     @Environment(\.scenePhase) private var scenePhase
     
@@ -81,7 +82,6 @@ public struct RoadView: View {
         .onAppear() {
             reload()
         }
-        
     }
 }
 

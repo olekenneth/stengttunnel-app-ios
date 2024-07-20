@@ -60,6 +60,17 @@
           }
         }
       }
+    },
+    "The road is ..." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tunnelen er ..."
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
