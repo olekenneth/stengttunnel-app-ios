@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import AppTrackingTransparency
+import GoogleMobileAds
 
 private func saveStore(store: FavoriteStore) {
     DispatchQueue.main.async {
@@ -14,8 +16,21 @@ private func saveStore(store: FavoriteStore) {
     }
 }
 
+class AppDelegate: UIResponder, UIApplicationDelegate {
+
+  func application(_ application: UIApplication,
+      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+
+    GADMobileAds.sharedInstance().start(completionHandler: nil)
+
+    return true
+  }
+}
+
 @main
 struct Stengt_TunnelApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+
     @StateObject private var store = FavoriteStore()
     @State private var roads = [Road]()
     @State private var searchText = ""
@@ -28,7 +43,12 @@ struct Stengt_TunnelApp: App {
             return Road(roadName: favorite.roadName, urlFriendly: favorite.urlFriendly, messages: [], gps: GPS(lat: 0, lon: 0))
         }
     }
+    
+    var width: CGFloat = UIScreen.main.bounds.width
 
+    var size: CGSize {
+        return GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(width).size
+    }
     
     var body: some Scene {
         WindowGroup {
@@ -49,26 +69,26 @@ struct Stengt_TunnelApp: App {
                                 showSearch = true
                             })
                     } else {
-                        VStack(alignment: .leading) {
-                            ForEach(favorites) { favorite in
+                        VStack() {
+                            ForEach(favorites, id: \.self.urlFriendly) { favorite in
                                 RoadView(road: favorite, lastUpdated: $lastRefreshed)
+                                BannerView().frame(height: size.height)
                             }
-                        }
-                        .background(Color("lightGray"))
+                        }.padding(.bottom)
+                            .background(Color("lightGray"))
                     }
                 }
             }
             .refreshable {
                 runSearch()
-                print(lastRefreshed)
                 lastRefreshed = Date.now
-                print(lastRefreshed)
             }
             .onChange(of: scenePhase) { oldPhase, phase in
                 if phase == .inactive {
                     saveStore(store: store)
                 }
                 if oldPhase == .inactive && phase == .active {
+                    ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in })
                     runSearch()
                 }
             }
