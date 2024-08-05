@@ -14,34 +14,14 @@
 		B02C30A22C60DF77001098B7 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = B02C30A12C60DF77001098B7 /* GoogleMobileAds */; };
 		B07C26C82A7EE38F006139AA /* SearchableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07C26C72A7EE38F006139AA /* SearchableView.swift */; };
 		B08FBAA32A97534E0003D203 /* Dataloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08FBAA22A97534E0003D203 /* Dataloader.swift */; };
-		B0C85D072A7A4FF1004EC4B8 /* Stengt_TunnelApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C85D062A7A4FF1004EC4B8 /* Stengt_TunnelApp.swift */; };
+		B0C85D072A7A4FF1004EC4B8 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C85D062A7A4FF1004EC4B8 /* App.swift */; };
 		B0C85D092A7A4FF1004EC4B8 /* TrafficLightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C85D082A7A4FF1004EC4B8 /* TrafficLightView.swift */; };
 		B0C85D0B2A7A4FF2004EC4B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0C85D0A2A7A4FF2004EC4B8 /* Assets.xcassets */; };
 		B0C85D0E2A7A4FF2004EC4B8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0C85D0D2A7A4FF2004EC4B8 /* Preview Assets.xcassets */; };
-		B0C85D182A7A4FF3004EC4B8 /* Stengt_TunnelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C85D172A7A4FF3004EC4B8 /* Stengt_TunnelTests.swift */; };
-		B0C85D222A7A4FF3004EC4B8 /* Stengt_TunnelUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C85D212A7A4FF3004EC4B8 /* Stengt_TunnelUITests.swift */; };
-		B0C85D242A7A4FF3004EC4B8 /* Stengt_TunnelUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C85D232A7A4FF3004EC4B8 /* Stengt_TunnelUITestsLaunchTests.swift */; };
 		B0C85D312A7A65CD004EC4B8 /* MessageTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C85D302A7A65CD004EC4B8 /* MessageTableView.swift */; };
 		B0C85D332A7A6D07004EC4B8 /* StatusMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C85D322A7A6D07004EC4B8 /* StatusMessageView.swift */; };
 		B0C85D352A7A6F6F004EC4B8 /* RoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C85D342A7A6F6F004EC4B8 /* RoadView.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		B0C85D142A7A4FF3004EC4B8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B0C85CFB2A7A4FF1004EC4B8 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B0C85D022A7A4FF1004EC4B8;
-			remoteInfo = "Stengt Tunnel";
-		};
-		B0C85D1E2A7A4FF3004EC4B8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B0C85CFB2A7A4FF1004EC4B8 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B0C85D022A7A4FF1004EC4B8;
-			remoteInfo = "Stengt Tunnel";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		B010DE132C486895000736B3 /* Embed Foundation Extensions */ = {
@@ -61,21 +41,16 @@
 		B010DE032C486893000736B3 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		B010DE192C49993F000736B3 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		B010DE1B2C49A884000736B3 /* BannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerViewController.swift; sourceTree = "<group>"; };
-		B010DE1E2C49AA28000736B3 /* Stengt-Tunnel-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Stengt-Tunnel-Info.plist"; sourceTree = SOURCE_ROOT; };
+		B010DE1E2C49AA28000736B3 /* Stengt-tunnel-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Stengt-tunnel-Info.plist"; sourceTree = SOURCE_ROOT; };
 		B010DE1F2C49ADA8000736B3 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
 		B02B8E4D2A7ED45C007E783E /* FavoriteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteStore.swift; sourceTree = "<group>"; };
 		B07C26C72A7EE38F006139AA /* SearchableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchableView.swift; sourceTree = "<group>"; };
 		B08FBAA22A97534E0003D203 /* Dataloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dataloader.swift; sourceTree = "<group>"; };
 		B0C85D032A7A4FF1004EC4B8 /* Stengt tunnel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stengt tunnel.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B0C85D062A7A4FF1004EC4B8 /* Stengt_TunnelApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stengt_TunnelApp.swift; sourceTree = "<group>"; };
+		B0C85D062A7A4FF1004EC4B8 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		B0C85D082A7A4FF1004EC4B8 /* TrafficLightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficLightView.swift; sourceTree = "<group>"; };
 		B0C85D0A2A7A4FF2004EC4B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B0C85D0D2A7A4FF2004EC4B8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		B0C85D132A7A4FF3004EC4B8 /* Stengt tunnelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Stengt tunnelTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B0C85D172A7A4FF3004EC4B8 /* Stengt_TunnelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stengt_TunnelTests.swift; sourceTree = "<group>"; };
-		B0C85D1D2A7A4FF3004EC4B8 /* Stengt tunnelUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Stengt tunnelUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B0C85D212A7A4FF3004EC4B8 /* Stengt_TunnelUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stengt_TunnelUITests.swift; sourceTree = "<group>"; };
-		B0C85D232A7A4FF3004EC4B8 /* Stengt_TunnelUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stengt_TunnelUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B0C85D302A7A65CD004EC4B8 /* MessageTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableView.swift; sourceTree = "<group>"; };
 		B0C85D322A7A6D07004EC4B8 /* StatusMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMessageView.swift; sourceTree = "<group>"; };
 		B0C85D342A7A6F6F004EC4B8 /* RoadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadView.swift; sourceTree = "<group>"; };
@@ -87,20 +62,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B02C30A22C60DF77001098B7 /* GoogleMobileAds in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B0C85D102A7A4FF3004EC4B8 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B0C85D1A2A7A4FF3004EC4B8 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,9 +97,7 @@
 		B0C85CFA2A7A4FF1004EC4B8 = {
 			isa = PBXGroup;
 			children = (
-				B0C85D052A7A4FF1004EC4B8 /* Stengt Tunnel */,
-				B0C85D162A7A4FF3004EC4B8 /* Stengt TunnelTests */,
-				B0C85D202A7A4FF3004EC4B8 /* Stengt TunnelUITests */,
+				B0C85D052A7A4FF1004EC4B8 /* stengttunnel */,
 				B010DE002C486892000736B3 /* Frameworks */,
 				B0C85D042A7A4FF1004EC4B8 /* Products */,
 			);
@@ -148,17 +107,15 @@
 			isa = PBXGroup;
 			children = (
 				B0C85D032A7A4FF1004EC4B8 /* Stengt tunnel.app */,
-				B0C85D132A7A4FF3004EC4B8 /* Stengt tunnelTests.xctest */,
-				B0C85D1D2A7A4FF3004EC4B8 /* Stengt tunnelUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B0C85D052A7A4FF1004EC4B8 /* Stengt Tunnel */ = {
+		B0C85D052A7A4FF1004EC4B8 /* stengttunnel */ = {
 			isa = PBXGroup;
 			children = (
-				B010DE1E2C49AA28000736B3 /* Stengt-Tunnel-Info.plist */,
-				B0C85D062A7A4FF1004EC4B8 /* Stengt_TunnelApp.swift */,
+				B010DE1E2C49AA28000736B3 /* Stengt-tunnel-Info.plist */,
+				B0C85D062A7A4FF1004EC4B8 /* App.swift */,
 				B02B8E4D2A7ED45C007E783E /* FavoriteStore.swift */,
 				B0C85D082A7A4FF1004EC4B8 /* TrafficLightView.swift */,
 				B0C85D322A7A6D07004EC4B8 /* StatusMessageView.swift */,
@@ -171,7 +128,7 @@
 				B08FBAAA2A9897020003D203 /* Translations */,
 				B0C85D0C2A7A4FF2004EC4B8 /* Preview Content */,
 			);
-			path = "Stengt Tunnel";
+			path = stengttunnel;
 			sourceTree = "<group>";
 		};
 		B0C85D0C2A7A4FF2004EC4B8 /* Preview Content */ = {
@@ -180,23 +137,6 @@
 				B0C85D0D2A7A4FF2004EC4B8 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		B0C85D162A7A4FF3004EC4B8 /* Stengt TunnelTests */ = {
-			isa = PBXGroup;
-			children = (
-				B0C85D172A7A4FF3004EC4B8 /* Stengt_TunnelTests.swift */,
-			);
-			path = "Stengt TunnelTests";
-			sourceTree = "<group>";
-		};
-		B0C85D202A7A4FF3004EC4B8 /* Stengt TunnelUITests */ = {
-			isa = PBXGroup;
-			children = (
-				B0C85D212A7A4FF3004EC4B8 /* Stengt_TunnelUITests.swift */,
-				B0C85D232A7A4FF3004EC4B8 /* Stengt_TunnelUITestsLaunchTests.swift */,
-			);
-			path = "Stengt TunnelUITests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,42 +163,6 @@
 			productReference = B0C85D032A7A4FF1004EC4B8 /* Stengt tunnel.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B0C85D122A7A4FF3004EC4B8 /* Stengt tunnelTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B0C85D2A2A7A4FF3004EC4B8 /* Build configuration list for PBXNativeTarget "Stengt tunnelTests" */;
-			buildPhases = (
-				B0C85D0F2A7A4FF3004EC4B8 /* Sources */,
-				B0C85D102A7A4FF3004EC4B8 /* Frameworks */,
-				B0C85D112A7A4FF3004EC4B8 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B0C85D152A7A4FF3004EC4B8 /* PBXTargetDependency */,
-			);
-			name = "Stengt tunnelTests";
-			productName = "Stengt TunnelTests";
-			productReference = B0C85D132A7A4FF3004EC4B8 /* Stengt tunnelTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		B0C85D1C2A7A4FF3004EC4B8 /* Stengt tunnelUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B0C85D2D2A7A4FF3004EC4B8 /* Build configuration list for PBXNativeTarget "Stengt tunnelUITests" */;
-			buildPhases = (
-				B0C85D192A7A4FF3004EC4B8 /* Sources */,
-				B0C85D1A2A7A4FF3004EC4B8 /* Frameworks */,
-				B0C85D1B2A7A4FF3004EC4B8 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B0C85D1F2A7A4FF3004EC4B8 /* PBXTargetDependency */,
-			);
-			name = "Stengt tunnelUITests";
-			productName = "Stengt TunnelUITests";
-			productReference = B0C85D1D2A7A4FF3004EC4B8 /* Stengt tunnelUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -271,14 +175,6 @@
 				TargetAttributes = {
 					B0C85D022A7A4FF1004EC4B8 = {
 						CreatedOnToolsVersion = 14.3.1;
-					};
-					B0C85D122A7A4FF3004EC4B8 = {
-						CreatedOnToolsVersion = 14.3.1;
-						TestTargetID = B0C85D022A7A4FF1004EC4B8;
-					};
-					B0C85D1C2A7A4FF3004EC4B8 = {
-						CreatedOnToolsVersion = 14.3.1;
-						TestTargetID = B0C85D022A7A4FF1004EC4B8;
 					};
 				};
 			};
@@ -300,8 +196,6 @@
 			projectRoot = "";
 			targets = (
 				B0C85D022A7A4FF1004EC4B8 /* Stengt tunnel */,
-				B0C85D122A7A4FF3004EC4B8 /* Stengt tunnelTests */,
-				B0C85D1C2A7A4FF3004EC4B8 /* Stengt tunnelUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -317,20 +211,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B0C85D112A7A4FF3004EC4B8 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B0C85D1B2A7A4FF3004EC4B8 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -342,7 +222,7 @@
 				B07C26C82A7EE38F006139AA /* SearchableView.swift in Sources */,
 				B0C85D312A7A65CD004EC4B8 /* MessageTableView.swift in Sources */,
 				B0C85D092A7A4FF1004EC4B8 /* TrafficLightView.swift in Sources */,
-				B0C85D072A7A4FF1004EC4B8 /* Stengt_TunnelApp.swift in Sources */,
+				B0C85D072A7A4FF1004EC4B8 /* App.swift in Sources */,
 				B08FBAA32A97534E0003D203 /* Dataloader.swift in Sources */,
 				B02B8E4E2A7ED45C007E783E /* FavoriteStore.swift in Sources */,
 				B0C85D352A7A6F6F004EC4B8 /* RoadView.swift in Sources */,
@@ -351,37 +231,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B0C85D0F2A7A4FF3004EC4B8 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B0C85D182A7A4FF3004EC4B8 /* Stengt_TunnelTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B0C85D192A7A4FF3004EC4B8 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B0C85D222A7A4FF3004EC4B8 /* Stengt_TunnelUITests.swift in Sources */,
-				B0C85D242A7A4FF3004EC4B8 /* Stengt_TunnelUITestsLaunchTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		B0C85D152A7A4FF3004EC4B8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B0C85D022A7A4FF1004EC4B8 /* Stengt tunnel */;
-			targetProxy = B0C85D142A7A4FF3004EC4B8 /* PBXContainerItemProxy */;
-		};
-		B0C85D1F2A7A4FF3004EC4B8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B0C85D022A7A4FF1004EC4B8 /* Stengt tunnel */;
-			targetProxy = B0C85D1E2A7A4FF3004EC4B8 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		B0C85D252A7A4FF3004EC4B8 /* Debug */ = {
@@ -514,11 +364,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Stengt Tunnel/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"stengttunnel/Preview Content\"";
 				DEVELOPMENT_TEAM = XQ85U6R33U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Stengt-Tunnel-Info.plist";
+				INFOPLIST_FILE = "Stengt-tunnel-Info.plist";
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "slik at Google kan vise personlig tilpasset reklame";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -549,11 +399,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Stengt Tunnel/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"stengttunnel/Preview Content\"";
 				DEVELOPMENT_TEAM = XQ85U6R33U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Stengt-Tunnel-Info.plist";
+				INFOPLIST_FILE = "Stengt-tunnel-Info.plist";
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "slik at Google kan vise personlig tilpasset reklame";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -576,84 +426,6 @@
 			};
 			name = Release;
 		};
-		B0C85D2B2A7A4FF3004EC4B8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = XQ85U6R33U;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.adapptic.Stengt-TunnelTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Stengt tunnel.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Stengt tunnel";
-			};
-			name = Debug;
-		};
-		B0C85D2C2A7A4FF3004EC4B8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = XQ85U6R33U;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.adapptic.Stengt-TunnelTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Stengt tunnel.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Stengt tunnel";
-			};
-			name = Release;
-		};
-		B0C85D2E2A7A4FF3004EC4B8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = XQ85U6R33U;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.adapptic.Stengt-TunnelUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Stengt Tunnel";
-			};
-			name = Debug;
-		};
-		B0C85D2F2A7A4FF3004EC4B8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = XQ85U6R33U;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.adapptic.Stengt-TunnelUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Stengt Tunnel";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -671,24 +443,6 @@
 			buildConfigurations = (
 				B0C85D282A7A4FF3004EC4B8 /* Debug */,
 				B0C85D292A7A4FF3004EC4B8 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B0C85D2A2A7A4FF3004EC4B8 /* Build configuration list for PBXNativeTarget "Stengt tunnelTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B0C85D2B2A7A4FF3004EC4B8 /* Debug */,
-				B0C85D2C2A7A4FF3004EC4B8 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B0C85D2D2A7A4FF3004EC4B8 /* Build configuration list for PBXNativeTarget "Stengt tunnelUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B0C85D2E2A7A4FF3004EC4B8 /* Debug */,
-				B0C85D2F2A7A4FF3004EC4B8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

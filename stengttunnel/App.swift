@@ -1,5 +1,5 @@
 //
-//  Stengt_TunnelApp.swift
+//  Stengt_tunnelApp.swift
 //  Stengt tunnel
 //
 //  Created by Ole-Kenneth on 02/08/2023.
@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 @main
-struct Stengt_TunnelApp: App {
+struct Stengt_tunnelApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
     @StateObject private var store = FavoriteStore()
