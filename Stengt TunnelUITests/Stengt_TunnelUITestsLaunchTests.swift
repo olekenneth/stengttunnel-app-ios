@@ -1,6 +1,6 @@
 //
 //  Stengt_TunnelUITestsLaunchTests.swift
-//  Stengt TunnelUITests
+//  Stengt tunnelUITests
 //
 //  Created by Ole-Kenneth on 02/08/2023.
 //

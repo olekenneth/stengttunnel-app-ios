@@ -1,6 +1,6 @@
 //
 //  Stengt_TunnelApp.swift
-//  Stengt Tunnel
+//  Stengt tunnel
 //
 //  Created by Ole-Kenneth on 02/08/2023.
 //

@@ -1,6 +1,6 @@
 //
 //  SearchableView.swift
-//  Stengt Tunnel
+//  Stengt tunnel
 //
 //  Created by Ole-Kenneth on 05/08/2023.
 //

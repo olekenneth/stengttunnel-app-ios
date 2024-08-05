@@ -1,6 +1,6 @@
 //
 //  Dataloader.swift
-//  Stengt Tunnel
+//  Stengt tunnel
 //
 //  Created by Ole-Kenneth on 24/08/2023.
 //
