@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B0C85D022A7A4FF1004EC4B8"
-               BuildableName = "Stengt Tunnel.app"
-               BlueprintName = "Stengt Tunnel"
+               BuildableName = "Stengt tunnel.app"
+               BlueprintName = "Stengt tunnel"
                ReferencedContainer = "container:Stengt Tunnel.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -69,8 +69,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B0C85D022A7A4FF1004EC4B8"
-            BuildableName = "Stengt Tunnel.app"
-            BlueprintName = "Stengt Tunnel"
+            BuildableName = "Stengt tunnel.app"
+            BlueprintName = "Stengt tunnel"
             ReferencedContainer = "container:Stengt Tunnel.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -86,8 +86,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B0C85D022A7A4FF1004EC4B8"
-            BuildableName = "Stengt Tunnel.app"
-            BlueprintName = "Stengt Tunnel"
+            BuildableName = "Stengt tunnel.app"
+            BlueprintName = "Stengt tunnel"
             ReferencedContainer = "container:Stengt Tunnel.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

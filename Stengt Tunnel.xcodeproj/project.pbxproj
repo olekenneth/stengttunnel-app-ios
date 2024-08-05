@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B0091CF72C49B1E500AAB060 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = B0091CF62C49B1E500AAB060 /* GoogleMobileAds */; };
 		B010DE1A2C49993F000736B3 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B010DE192C49993F000736B3 /* Localizable.xcstrings */; };
 		B010DE1C2C49A884000736B3 /* BannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B010DE1B2C49A884000736B3 /* BannerViewController.swift */; };
 		B010DE202C49ADA8000736B3 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B010DE1F2C49ADA8000736B3 /* BannerView.swift */; };
 		B02B8E4E2A7ED45C007E783E /* FavoriteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02B8E4D2A7ED45C007E783E /* FavoriteStore.swift */; };
 		B07C26C82A7EE38F006139AA /* SearchableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07C26C72A7EE38F006139AA /* SearchableView.swift */; };
 		B08FBAA32A97534E0003D203 /* Dataloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08FBAA22A97534E0003D203 /* Dataloader.swift */; };
+		B09C59792C5D047800730806 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = B09C59782C5D047800730806 /* GoogleMobileAds */; };
 		B0C85D072A7A4FF1004EC4B8 /* Stengt_TunnelApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C85D062A7A4FF1004EC4B8 /* Stengt_TunnelApp.swift */; };
 		B0C85D092A7A4FF1004EC4B8 /* TrafficLightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C85D082A7A4FF1004EC4B8 /* TrafficLightView.swift */; };
 		B0C85D0B2A7A4FF2004EC4B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0C85D0A2A7A4FF2004EC4B8 /* Assets.xcassets */; };
@@ -66,7 +66,7 @@
 		B02B8E4D2A7ED45C007E783E /* FavoriteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteStore.swift; sourceTree = "<group>"; };
 		B07C26C72A7EE38F006139AA /* SearchableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchableView.swift; sourceTree = "<group>"; };
 		B08FBAA22A97534E0003D203 /* Dataloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dataloader.swift; sourceTree = "<group>"; };
-		B0C85D032A7A4FF1004EC4B8 /* Stengt Tunnel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stengt Tunnel.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0C85D032A7A4FF1004EC4B8 /* Stengt tunnel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stengt tunnel.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0C85D062A7A4FF1004EC4B8 /* Stengt_TunnelApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stengt_TunnelApp.swift; sourceTree = "<group>"; };
 		B0C85D082A7A4FF1004EC4B8 /* TrafficLightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficLightView.swift; sourceTree = "<group>"; };
 		B0C85D0A2A7A4FF2004EC4B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -86,7 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0091CF72C49B1E500AAB060 /* GoogleMobileAds in Frameworks */,
+				B09C59792C5D047800730806 /* GoogleMobileAds in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,7 +147,7 @@
 		B0C85D042A7A4FF1004EC4B8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B0C85D032A7A4FF1004EC4B8 /* Stengt Tunnel.app */,
+				B0C85D032A7A4FF1004EC4B8 /* Stengt tunnel.app */,
 				B0C85D132A7A4FF3004EC4B8 /* Stengt TunnelTests.xctest */,
 				B0C85D1D2A7A4FF3004EC4B8 /* Stengt TunnelUITests.xctest */,
 			);
@@ -202,9 +202,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B0C85D022A7A4FF1004EC4B8 /* Stengt Tunnel */ = {
+		B0C85D022A7A4FF1004EC4B8 /* Stengt tunnel */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B0C85D272A7A4FF3004EC4B8 /* Build configuration list for PBXNativeTarget "Stengt Tunnel" */;
+			buildConfigurationList = B0C85D272A7A4FF3004EC4B8 /* Build configuration list for PBXNativeTarget "Stengt tunnel" */;
 			buildPhases = (
 				B0C85CFF2A7A4FF1004EC4B8 /* Sources */,
 				B0C85D002A7A4FF1004EC4B8 /* Frameworks */,
@@ -215,12 +215,12 @@
 			);
 			dependencies = (
 			);
-			name = "Stengt Tunnel";
+			name = "Stengt tunnel";
 			packageProductDependencies = (
-				B0091CF62C49B1E500AAB060 /* GoogleMobileAds */,
+				B09C59782C5D047800730806 /* GoogleMobileAds */,
 			);
 			productName = "Stengt Tunnel";
-			productReference = B0C85D032A7A4FF1004EC4B8 /* Stengt Tunnel.app */;
+			productReference = B0C85D032A7A4FF1004EC4B8 /* Stengt tunnel.app */;
 			productType = "com.apple.product-type.application";
 		};
 		B0C85D122A7A4FF3004EC4B8 /* Stengt TunnelTests */ = {
@@ -282,7 +282,7 @@
 					};
 				};
 			};
-			buildConfigurationList = B0C85CFE2A7A4FF1004EC4B8 /* Build configuration list for PBXProject "Stengt Tunnel" */;
+			buildConfigurationList = B0C85CFE2A7A4FF1004EC4B8 /* Build configuration list for PBXProject "Stengt tunnel" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -299,7 +299,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B0C85D022A7A4FF1004EC4B8 /* Stengt Tunnel */,
+				B0C85D022A7A4FF1004EC4B8 /* Stengt tunnel */,
 				B0C85D122A7A4FF3004EC4B8 /* Stengt TunnelTests */,
 				B0C85D1C2A7A4FF3004EC4B8 /* Stengt TunnelUITests */,
 			);
@@ -373,12 +373,12 @@
 /* Begin PBXTargetDependency section */
 		B0C85D152A7A4FF3004EC4B8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B0C85D022A7A4FF1004EC4B8 /* Stengt Tunnel */;
+			target = B0C85D022A7A4FF1004EC4B8 /* Stengt tunnel */;
 			targetProxy = B0C85D142A7A4FF3004EC4B8 /* PBXContainerItemProxy */;
 		};
 		B0C85D1F2A7A4FF3004EC4B8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B0C85D022A7A4FF1004EC4B8 /* Stengt Tunnel */;
+			target = B0C85D022A7A4FF1004EC4B8 /* Stengt tunnel */;
 			targetProxy = B0C85D1E2A7A4FF3004EC4B8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -529,9 +529,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.adapptic.Stengt-Tunnel";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -561,9 +564,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.adapptic.Stengt-Tunnel";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -651,7 +657,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B0C85CFE2A7A4FF1004EC4B8 /* Build configuration list for PBXProject "Stengt Tunnel" */ = {
+		B0C85CFE2A7A4FF1004EC4B8 /* Build configuration list for PBXProject "Stengt tunnel" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B0C85D252A7A4FF3004EC4B8 /* Debug */,
@@ -660,7 +666,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B0C85D272A7A4FF3004EC4B8 /* Build configuration list for PBXNativeTarget "Stengt Tunnel" */ = {
+		B0C85D272A7A4FF3004EC4B8 /* Build configuration list for PBXNativeTarget "Stengt tunnel" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B0C85D282A7A4FF3004EC4B8 /* Debug */,
@@ -695,15 +701,14 @@
 			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 11.7.0;
+				minimumVersion = 11.6.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		B0091CF62C49B1E500AAB060 /* GoogleMobileAds */ = {
+		B09C59782C5D047800730806 /* GoogleMobileAds */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = B010DE1D2C49A9B9000736B3 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
 			productName = GoogleMobileAds;
 		};
 /* End XCSwiftPackageProductDependency section */

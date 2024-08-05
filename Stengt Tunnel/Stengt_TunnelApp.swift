@@ -7,6 +7,7 @@
 
 import SwiftUI
 import AppTrackingTransparency
+
 import GoogleMobileAds
 
 private func saveStore(store: FavoriteStore) {
@@ -18,10 +19,9 @@ private func saveStore(store: FavoriteStore) {
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-  func application(_ application: UIApplication,
-      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-
-    GADMobileAds.sharedInstance().start(completionHandler: nil)
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+      GADMobileAds.sharedInstance().start(completionHandler: nil)
+      // GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [ "dd2a8297212c345481b88d737efcb859" ]
 
     return true
   }
@@ -38,6 +38,7 @@ struct Stengt_TunnelApp: App {
     @State private var isSearching = false
     @State private var showSearch = false
     @State private var lastRefreshed = Date.now
+    @State private var showSettings = false
     var favorites: [Road] {
         return store.favorites.map { favorite in
             return Road(roadName: favorite.roadName, urlFriendly: favorite.urlFriendly, messages: [], gps: GPS(lat: 0, lon: 0))
@@ -78,6 +79,22 @@ struct Stengt_TunnelApp: App {
                             .background(Color("lightGray"))
                     }
                 }
+                .navigationTitle(Text("Stengt tunnel"))
+                .toolbar {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        // Button("Settings", systemImage: "person.circle", role: .destructive) {
+                        //     showSettings = !showSettings
+                        // }
+                    }
+                }
+                .sheet(isPresented: $showSettings) {
+                    Button("Close", role: .destructive) {
+                        showSettings = false
+                    }
+                    Text("This is the settings page")
+                }
+                .toolbarTitleDisplayMode(.inlineLarge)
+
             }
             .refreshable {
                 runSearch()

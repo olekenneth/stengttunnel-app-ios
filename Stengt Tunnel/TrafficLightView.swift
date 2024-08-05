@@ -23,7 +23,7 @@ struct TrafficLightView: View {
                 .clipShape(Circle())
         }
         .padding(4)
-        .background(Color("black"))
+        .background(Color(.stBlack))
         .cornerRadius(180)
         .aspectRatio(0.36, contentMode: .fit)
         .frame(width: 36, height: 100)

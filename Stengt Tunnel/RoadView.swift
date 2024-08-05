@@ -11,7 +11,6 @@ struct Road: Identifiable, Codable {
     var id: String { urlFriendly }
     let roadName: String
     let urlFriendly: String
-    var url: URL { URL(string: "https://api.stengttunnel.no/" + urlFriendly + "/v2")! }
     let messages: [Message]
     let gps: GPS
 }
@@ -41,11 +40,11 @@ struct Status: Identifiable, Codable {
 public struct RoadView: View {
     let road: Road
     @State var status: Status?
-    @State var isSharing = false
     @Binding var lastUpdated: Date
     @Environment(\.scenePhase) private var scenePhase
     
     func reload() {
+        print("Reloading for \(road.roadName)")
         Dataloader.shared.loadRoad(road: road.urlFriendly) { status in
             guard status != nil else { return }
             self.status = status
@@ -55,9 +54,12 @@ public struct RoadView: View {
     public var body: some View {
         VStack(alignment: .leading) {
             if (status != nil) {
-                StatusMessageView(color: status!.status, statusMessage: status!.statusMessage.replacingOccurrences(of: "Tunnelen", with: road.roadName))
-                    .padding()
-                if !status!.messages!.isEmpty {
+                let statusMessage = status!.statusMessage.replacingOccurrences(of: "Tunnelen", with: road.roadName)
+                ShareLink(item: URL(string: "https://stengttunnel.no/\(road.urlFriendly)")!, preview: SharePreview(statusMessage, image: Image("App"))) {
+                    StatusMessageView(color: status!.status, statusMessage: statusMessage)
+                        .padding()
+                }
+                if status?.messages != nil && !status!.messages!.isEmpty {
                     Rectangle()
                         .foregroundColor(Color("lightGray"))
                         .frame(height: 1)
@@ -70,7 +72,7 @@ public struct RoadView: View {
             }
             
         }
-        .background(Color("white"))
+        .background(Color(.systemBackground))
         .onChange(of: scenePhase) { _, newValue in
             if newValue == .active {
                 reload()
@@ -85,15 +87,55 @@ public struct RoadView: View {
     }
 }
 
+#Preview {
+    struct Preview: View {
+        @State private var lastRefreshed = Date.now
+        @State private var searchText = ""
+        @State private var showSettings = false
+        
+        var body: some View {
+            NavigationStack {
+                ScrollView {
+                    VStack(alignment: .leading) {
+                        RoadView(road: Road(roadName: "Oslofjordtunnelen", urlFriendly: "oslofjordtunnelen", messages: [], gps: GPS(lat: 0, lon: 0)), status: nil, lastUpdated: $lastRefreshed)
+                        BannerView().frame(height: 100)
+                        RoadView(road: Road(roadName: "Oslofjordtunnelen", urlFriendly: "oslofjordtunnelen", messages: [], gps: GPS(lat: 0, lon: 0)), status: nil, lastUpdated: $lastRefreshed)
+                        BannerView().frame(height: 100)
+                        RoadView(road: Road(roadName: "Oslofjordtunnelen", urlFriendly: "oslofjordtunnelen", messages: [], gps: GPS(lat: 0, lon: 0)), status: nil, lastUpdated: $lastRefreshed)
+                        BannerView().frame(height: 100)
+                        RoadView(road: Road(roadName: "Oslofjordtunnelen", urlFriendly: "oslofjordtunnelen", messages: [], gps: GPS(lat: 0, lon: 0)), status: nil, lastUpdated: $lastRefreshed)
+                        BannerView().frame(height: 100)
+                        RoadView(road: Road(roadName: "Oslofjordtunnelen", urlFriendly: "oslofjordtunnelen", messages: [], gps: GPS(lat: 0, lon: 0)), status: nil, lastUpdated: $lastRefreshed)
+                        BannerView().frame(height: 100)
+                    }
+                    .padding(.bottom)
+                }
+                .searchable(text: $searchText)
+                .background(Color("lightGray"))
+                .navigationTitle(Text("Stengt tunnel"))
+                .toolbar {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button {
+                            showSettings = true
+                        } label: {
+                            Image("menu")
+                        }.sheet(isPresented: $showSettings) {
+                            Text("hello")
+                        }
 
+                    }
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button("Settings", systemImage: "person.circle", role: .destructive) {
+                            // Do Nothing
+                        }
+                    }
+                }
+                .toolbarTitleDisplayMode(.inlineLarge)
+            }
+            
+        }
+    }
 
-//struct RoadView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ScrollView {
-//            VStack(alignment: .leading) {
-//                RoadView(urlFriendly: "oslofjordtunnelen")
-//            }
-//        }
-//        .background(Color("lightGray"))
-//    }
-//}
+    return Preview()
+}
+

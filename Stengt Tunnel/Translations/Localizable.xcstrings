@@ -31,6 +31,12 @@
         }
       }
     },
+    "Close" : {
+
+    },
+    "hello" : {
+
+    },
     "Loading roads. Please wait..." : {
       "localizations" : {
         "nb" : {
@@ -61,6 +67,12 @@
         }
       }
     },
+    "Settings" : {
+
+    },
+    "Stengt tunnel" : {
+
+    },
     "The road is ..." : {
       "extractionState" : "manual",
       "localizations" : {
@@ -71,6 +83,9 @@
           }
         }
       }
+    },
+    "This is the settings page" : {
+
     }
   },
   "version" : "1.0"
