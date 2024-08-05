@@ -178,7 +178,7 @@
 					};
 				};
 			};
-			buildConfigurationList = B0C85CFE2A7A4FF1004EC4B8 /* Build configuration list for PBXProject "Stengt tunnel" */;
+			buildConfigurationList = B0C85CFE2A7A4FF1004EC4B8 /* Build configuration list for PBXProject "Stengttunnel" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -429,7 +429,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B0C85CFE2A7A4FF1004EC4B8 /* Build configuration list for PBXProject "Stengt tunnel" */ = {
+		B0C85CFE2A7A4FF1004EC4B8 /* Build configuration list for PBXProject "Stengttunnel" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B0C85D252A7A4FF3004EC4B8 /* Debug */,
