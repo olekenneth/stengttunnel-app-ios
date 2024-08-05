@@ -8,8 +8,6 @@
 import SwiftUI
 import GoogleMobileAds
 
-// Delegate methods for receiving width update messages.
-
 protocol BannerViewControllerWidthDelegate: AnyObject {
     func bannerViewController(_ bannerViewController: BannerViewController, didUpdate width: CGFloat)
 }
@@ -17,7 +15,7 @@ protocol BannerViewControllerWidthDelegate: AnyObject {
 struct BannerView: UIViewControllerRepresentable {
     @State private var viewWidth: CGFloat = .zero
     private let bannerView = GADBannerView()
-    private let adUnitID = "ca-app-pub-8133897183984535/3599635240" // TEST id; "ca-app-pub-3940256099942544/2435281174" // ROAD BANNER STENGT TUNNEL:
+    private let adUnitID = "ca-app-pub-8133897183984535/3599635240"
     
     func makeUIViewController(context: Context) -> some UIViewController {
         let bannerViewController = BannerViewController()
@@ -55,34 +53,16 @@ struct BannerView: UIViewControllerRepresentable {
             parent.viewWidth = width
         }
     }
-    
-    // MARK: - GADBannerViewDelegate methods
-    
-    func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
-        print("\(#function) called")
-    }
-    
-    func bannerView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: Error) {
-        print("\(#function) called")
-    }
-    
-    func bannerViewDidRecordImpression(_ bannerView: GADBannerView) {
-        print("\(#function) called")
-    }
-    
-    func bannerViewWillPresentScreen(_ bannerView: GADBannerView) {
-        print("\(#function) called")
-    }
-    
-    func bannerViewWillDismissScreen(_ bannerView: GADBannerView) {
-        print("\(#function) called")
-    }
-    
-    func bannerViewDidDismissScreen(_ bannerView: GADBannerView) {
-        print("\(#function) called")
-    }
-    
 }
+// struct BannerView: UIViewControllerRepresentable {
+//     func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+//         // Do something
+//     }
+//
+//     func makeUIViewController(context: Context) -> some UIViewController {
+//         return BannerViewController()
+//     }
+// }
 
 #Preview {
     BannerView()
