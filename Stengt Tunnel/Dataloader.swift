@@ -11,6 +11,7 @@ class Dataloader {
     static var shared = Dataloader()
     let jsonDecoder = JSONDecoder()
     let formatter = ISO8601DateFormatter()
+    let API_HOST = "https://api.stengttunnel.no"
 
     init() {
         formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
@@ -27,13 +28,13 @@ class Dataloader {
     }
     
     public func loadRoad(road: String, completion:@escaping (_ status: Status?) -> ()) {
-        loadData(url: URL(string: "https://api.stengttunnel.no/" + road + "/v2")!, type: Status.self) { status in
+        loadData(url: URL(string: "\(API_HOST)/\(road)/v2")!, type: Status.self) { status in
             completion(status)
         }
     }
     
     public func loadRoads(completion:@escaping (_ result: [Road]?) -> ()) {
-        loadData(url: URL(string: "https://api.stengttunnel.no/v2")!, type: [String: Road].self) { result in
+        loadData(url: URL(string: API_HOST + "/v2")!, type: [String: Road].self) { result in
             completion(result?.map({ (key: String, value: Road) in
                 return value
             }))
