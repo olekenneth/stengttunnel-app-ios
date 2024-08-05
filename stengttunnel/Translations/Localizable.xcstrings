@@ -11,6 +11,19 @@
         }
       }
     },
+    "Abonner for %@ %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Abonner for %1$@ %2$@"
+          }
+        }
+      }
+    },
+    "Abonner for å fjerne reklame" : {
+
+    },
     "Choose roads" : {
       "localizations" : {
         "nb" : {
@@ -32,6 +45,9 @@
       }
     },
     "Close" : {
+
+    },
+    "Gjenopprett kjøp" : {
 
     },
     "hello" : {
@@ -67,10 +83,22 @@
         }
       }
     },
+    "Original Purchase Date : %@" : {
+
+    },
+    "Purchase Date : %@" : {
+
+    },
     "Settings" : {
 
     },
     "Stengt tunnel" : {
+
+    },
+    "Subscription Expiration Date : %@" : {
+
+    },
+    "Takk for at du abonnerer! Ingen reklame vises." : {
 
     },
     "The road is ..." : {
@@ -85,6 +113,9 @@
       }
     },
     "This is the settings page" : {
+
+    },
+    "Ved å abonnere, støtter du videre utvikling av appen." : {
 
     }
   },

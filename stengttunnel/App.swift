@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
       GADMobileAds.sharedInstance().start(completionHandler: nil)
-      GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [ "dd2a8297212c345481b88d737efcb859" ]
+      GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [ "dd2a8297212c345481b88d737efcb859", "39047ab61ba93265f45268e643febead" ]
 
     return true
   }
@@ -30,6 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 @main
 struct Stengt_tunnelApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
+    var storeManager = StoreManager.shared
 
     @StateObject private var store = FavoriteStore()
     @State private var roads = [Road]()
@@ -82,9 +84,9 @@ struct Stengt_tunnelApp: App {
                 .navigationTitle(Text("Stengt tunnel"))
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing) {
-                        // Button("Settings", systemImage: "person.circle", role: .destructive) {
-                        //     showSettings = !showSettings
-                        // }
+                        Button("Settings", systemImage: "person.circle", role: .destructive) {
+                            showSettings = !showSettings
+                        }
                     }
                 }
                 .sheet(isPresented: $showSettings) {
@@ -92,6 +94,7 @@ struct Stengt_tunnelApp: App {
                         showSettings = false
                     }
                     Text("This is the settings page")
+                    SubscriptionView()
                 }
                 .toolbarTitleDisplayMode(.inlineLarge)
 
