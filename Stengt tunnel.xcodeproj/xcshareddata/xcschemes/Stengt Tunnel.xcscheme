@@ -17,7 +17,7 @@
                BlueprintIdentifier = "B0C85D022A7A4FF1004EC4B8"
                BuildableName = "Stengt tunnel.app"
                BlueprintName = "Stengt tunnel"
-               ReferencedContainer = "container:Stengt Tunnel.xcodeproj">
+               ReferencedContainer = "container:Stengt tunnel.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,9 +35,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B0C85D122A7A4FF3004EC4B8"
-               BuildableName = "Stengt TunnelTests.xctest"
-               BlueprintName = "Stengt TunnelTests"
-               ReferencedContainer = "container:Stengt Tunnel.xcodeproj">
+               BuildableName = "Stengt tunnelTests.xctest"
+               BlueprintName = "Stengt tunnelTests"
+               ReferencedContainer = "container:Stengt tunnel.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -46,9 +46,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B0C85D1C2A7A4FF3004EC4B8"
-               BuildableName = "Stengt TunnelUITests.xctest"
-               BlueprintName = "Stengt TunnelUITests"
-               ReferencedContainer = "container:Stengt Tunnel.xcodeproj">
+               BuildableName = "Stengt tunnelUITests.xctest"
+               BlueprintName = "Stengt tunnelUITests"
+               ReferencedContainer = "container:Stengt tunnel.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -71,7 +71,7 @@
             BlueprintIdentifier = "B0C85D022A7A4FF1004EC4B8"
             BuildableName = "Stengt tunnel.app"
             BlueprintName = "Stengt tunnel"
-            ReferencedContainer = "container:Stengt Tunnel.xcodeproj">
+            ReferencedContainer = "container:Stengt tunnel.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -88,7 +88,7 @@
             BlueprintIdentifier = "B0C85D022A7A4FF1004EC4B8"
             BuildableName = "Stengt tunnel.app"
             BlueprintName = "Stengt tunnel"
-            ReferencedContainer = "container:Stengt Tunnel.xcodeproj">
+            ReferencedContainer = "container:Stengt tunnel.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

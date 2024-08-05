@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
       GADMobileAds.sharedInstance().start(completionHandler: nil)
-      // GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [ "dd2a8297212c345481b88d737efcb859" ]
+      GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [ "dd2a8297212c345481b88d737efcb859" ]
 
     return true
   }
