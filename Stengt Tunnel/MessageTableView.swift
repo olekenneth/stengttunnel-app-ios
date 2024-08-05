@@ -28,7 +28,14 @@ struct MessageTableView: View {
         VStack(alignment: .leading) {
             ForEach(data) { message in
                 HStack(alignment: .top) {
-                    Image(message.source.rawValue)
+                    ZStack {
+                        Circle()
+                            .fill(.white)
+                            .frame(width: 50)
+                        Image(message.source.rawValue)
+                            .padding(2)
+                    }
+                    .frame(width: 50)
                     VStack(alignment: .leading) {
                         HStack {
                             Text(message.validFrom.formatted(date: .abbreviated, time: .shortened))
