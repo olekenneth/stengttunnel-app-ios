@@ -17,18 +17,17 @@ extension SKProduct {
            let unit: String
            switch period.unit {
            case .day:
-               unit = period.numberOfUnits == 1 ? "dag" : "dager"
+               unit = "dag"
            case .week:
-               unit = period.numberOfUnits == 1 ? "uke" : "uker"
+               unit = "uke"
            case .month:
-               unit = period.numberOfUnits == 1 ? "måned" : "måneder"
+               unit = "måned"
            case .year:
-               unit = period.numberOfUnits == 1 ? "år" : "år"
+               unit = "år"
            @unknown default:
                unit = "periode"
            }
-
-           return "hver \(period.numberOfUnits) \(unit)"
+        return "hver \(period.numberOfUnits > 1 ? String(period.numberOfUnits) + ". " : "")\(unit)"
        }
 }
 
@@ -36,11 +35,12 @@ class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate, SKPay
     static let shared = StoreManager() // Singleton
     
     let productIds = ["adfreeProduct"]
-        
+    
     @Published var purchase: InAppPurchase? = nil
     @Published var products: [SKProduct] = []
     @Published var subscriptionActive: Bool = false {
         didSet {
+            print("DID SET NEW VALUE", subscriptionActive)
             UserDefaults.standard.set(subscriptionActive, forKey: "subscriptionActive")
         }
     }
@@ -63,7 +63,7 @@ class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate, SKPay
         validateReceipt()
         isOnDebouncePeriod = true
         
-        DispatchQueue.global().asyncAfter(deadline: .now() + 0.5) { [weak self] in
+        DispatchQueue.global().asyncAfter(deadline: .now() + 3) { [weak self] in
             self?.isOnDebouncePeriod = false
         }
     }
@@ -80,9 +80,17 @@ class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate, SKPay
                 DispatchQueue.main.async {
                     self.purchase = purchase
                     self.subscriptionActive = purchase != nil
-                    print("Receipt validation successfull: ", purchase != nil, purchase!)
+                    print("Receipt validation successfull: ", purchase != nil, purchase ?? "")
                 }
             } catch {
+                InAppReceipt.refresh { (error) in
+                  if let err = error
+                  {
+                    print(err)
+                  }
+                    print("Refreshed IAP")
+                }
+
                 DispatchQueue.main.async {
                     self.subscriptionActive = false
                     print("Receipt validation failed: ", error)
@@ -91,10 +99,11 @@ class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate, SKPay
         }
     }
 
+    var request: SKProductsRequest!
 
     func fetchProducts() {
         let productIdentifiers = Set(productIds) // Add your product identifiers here
-        let request = SKProductsRequest(productIdentifiers: productIdentifiers)
+        request = SKProductsRequest(productIdentifiers: productIdentifiers)
         request.delegate = self
         request.start()
     }
@@ -151,7 +160,7 @@ class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate, SKPay
     }
 
     func loadSubscriptionState() {
-        self.subscriptionActive = UserDefaults.standard.bool(forKey: "subscriptionActive")
+        subscriptionActive = UserDefaults.standard.bool(forKey: "subscriptionActive")
     }
 
     func restorePurchases() {
