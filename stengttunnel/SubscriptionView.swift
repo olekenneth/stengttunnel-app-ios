@@ -22,10 +22,13 @@ struct SubscriptionView: View {
         return dateFormatter.string(from: date!)
     }
     
-    let later = Calendar.current.date(byAdding: .hour, value: 1, to: Date()) ?? Date()
+    let later = Date()
     
     var body: some View {
         VStack {
+            Text("By subscribing to Stengt tunnel+, you'll enjoy an **ad-free experience** and the ability to **add more than two roads**.")
+                .multilineTextAlignment(.center)
+                .padding()
             if storeManager.subscriptionActive {
                 Text("Takk for at du abonnerer! Ingen reklame vises.")
                 VStack(alignment: .leading, spacing: 10) {
@@ -40,16 +43,11 @@ struct SubscriptionView: View {
 
                 }
             } else {
-                Text("Abonner for å fjerne reklame")
-                    .font(.title)
-                    .padding(.bottom)
-                
                 ForEach(storeManager.products, id: \.self) { product in
                     Button(action: {
-                        print("Trykket på kjøp-knappen")
                         storeManager.purchaseProduct(product)
                     }) {
-                        Text("Abonner for \(product.localizedPrice) \(product.subscriptionPeriodText)")
+                        Text("Subscribe for \(product.localizedPrice) \(product.subscriptionPeriodText)")
                             .padding()
                             .background(Color.blue)
                             .foregroundColor(.white)
@@ -60,15 +58,19 @@ struct SubscriptionView: View {
                 
             }
             
-            Button("Gjenopprett kjøp") {
+            Button("Restore purchase") {
                 storeManager.restorePurchases()
             }
             .padding(.top, 20)
 
-            Text("Ved å abonnere, støtter du videre utvikling av appen.")
+            Text("By subscribing to Stengt tunnel+, you'll be directly supporting the continued development of the app")
                 .multilineTextAlignment(.center)
                 .padding(.top, 20)
         }
         .padding()
     }
+}
+
+#Preview {
+    SubscriptionView()
 }

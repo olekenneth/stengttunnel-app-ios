@@ -11,18 +11,25 @@
         }
       }
     },
-    "Abonner for %@ %@" : {
+    "By subscribing to Stengt tunnel+, you'll be directly supporting the continued development of the app" : {
       "localizations" : {
-        "en" : {
+        "nb" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "Abonner for %1$@ %2$@"
+            "state" : "translated",
+            "value" : "Ved å abonnere på Stengt tunnel+ vil du direkte støtte den videre utviklingen av appen."
           }
         }
       }
     },
-    "Abonner for å fjerne reklame" : {
-
+    "By subscribing to Stengt tunnel+, you'll enjoy an **ad-free experience** and the ability to **add more than two roads**." : {
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ved å abonnere på Stengt tunnel+ får du en **reklamefri opplevelse** og muligheten til å **legge til mer enn to tunneler**."
+          }
+        }
+      }
     },
     "Choose roads" : {
       "localizations" : {
@@ -44,14 +51,15 @@
         }
       }
     },
-    "Close" : {
-
-    },
-    "Gjenopprett kjøp" : {
-
-    },
-    "hello" : {
-
+    "Done" : {
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ferdig"
+          }
+        }
+      }
     },
     "Loading roads. Please wait..." : {
       "localizations" : {
@@ -89,11 +97,24 @@
     "Purchase Date : %@" : {
 
     },
+    "Restore purchase" : {
+
+    },
     "Settings" : {
 
     },
     "Stengt tunnel" : {
 
+    },
+    "Subscribe for %@ %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Subscribe for %1$@ %2$@"
+          }
+        }
+      }
     },
     "Subscription Expiration Date : %@" : {
 
@@ -111,12 +132,6 @@
           }
         }
       }
-    },
-    "This is the settings page" : {
-
-    },
-    "Ved å abonnere, støtter du videre utvikling av appen." : {
-
     }
   },
   "version" : "1.0"

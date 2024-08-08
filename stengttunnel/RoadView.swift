@@ -90,49 +90,9 @@ public struct RoadView: View {
 #Preview {
     struct Preview: View {
         @State private var lastRefreshed = Date.now
-        @State private var searchText = ""
-        @State private var showSettings = false
         
         var body: some View {
-            NavigationStack {
-                ScrollView {
-                    VStack(alignment: .leading) {
-                        RoadView(road: Road(roadName: "Oslofjordtunnelen", urlFriendly: "oslofjordtunnelen", messages: [], gps: GPS(lat: 0, lon: 0)), status: nil, lastUpdated: $lastRefreshed)
-                        BannerView().frame(height: 100)
-                        RoadView(road: Road(roadName: "Oslofjordtunnelen", urlFriendly: "oslofjordtunnelen", messages: [], gps: GPS(lat: 0, lon: 0)), status: nil, lastUpdated: $lastRefreshed)
-                        BannerView().frame(height: 100)
-                        RoadView(road: Road(roadName: "Oslofjordtunnelen", urlFriendly: "oslofjordtunnelen", messages: [], gps: GPS(lat: 0, lon: 0)), status: nil, lastUpdated: $lastRefreshed)
-                        BannerView().frame(height: 100)
-                        RoadView(road: Road(roadName: "Oslofjordtunnelen", urlFriendly: "oslofjordtunnelen", messages: [], gps: GPS(lat: 0, lon: 0)), status: nil, lastUpdated: $lastRefreshed)
-                        BannerView().frame(height: 100)
-                        RoadView(road: Road(roadName: "Oslofjordtunnelen", urlFriendly: "oslofjordtunnelen", messages: [], gps: GPS(lat: 0, lon: 0)), status: nil, lastUpdated: $lastRefreshed)
-                        BannerView().frame(height: 100)
-                    }
-                    .padding(.bottom)
-                }
-                .searchable(text: $searchText)
-                .background(Color("lightGray"))
-                .navigationTitle(Text("Stengt tunnel"))
-                .toolbar {
-                    ToolbarItem(placement: .topBarLeading) {
-                        Button {
-                            showSettings = true
-                        } label: {
-                            Image("menu")
-                        }.sheet(isPresented: $showSettings) {
-                            Text("hello")
-                        }
-
-                    }
-                    ToolbarItem(placement: .topBarTrailing) {
-                        Button("Settings", systemImage: "person.circle", role: .destructive) {
-                            // Do Nothing
-                        }
-                    }
-                }
-                .toolbarTitleDisplayMode(.inlineLarge)
-            }
-            
+            RoadView(road: Road(roadName: "Oslofjordtunnelen", urlFriendly: "oslofjordtunnelen", messages: [], gps: GPS(lat: 0, lon: 0)), status: nil, lastUpdated: $lastRefreshed)
         }
     }
 
