@@ -61,13 +61,15 @@ struct RoadList: View {
                         VStack() {
                             ForEach(favorites, id: \.self.urlFriendly) { favorite in
                                 RoadView(road: favorite, lastUpdated: $lastRefreshed)
-                                BannerView().frame(height: size.height)
-                                PlusTeaser(showSettings: $showSettings).frame(height: size.height)
+                                if !storeManager.subscriptionActive {
+                                    BannerView().frame(height: size.height)
+                                    PlusTeaser(showSettings: $showSettings).frame(height: size.height)
+                                }
                             }
-                        }.padding(.bottom)
-                            .background(Color("lightGray"))
+                        }
+                        .background(Color("lightGray"))
                     }
-                }
+                }.padding(0)
                 .refreshable {
                     runSearch()
                     lastRefreshed = Date.now

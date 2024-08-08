@@ -64,7 +64,7 @@ public struct RoadView: View {
                         .foregroundColor(Color("lightGray"))
                         .frame(height: 1)
                     MessageTableView(data: status!.messages!)
-                        .padding()
+                        .padding([.top, .leading])
                 }
             } else {
                 StatusMessageView(color: .yellow, statusMessage: "The road is ...")
@@ -92,7 +92,10 @@ public struct RoadView: View {
         @State private var lastRefreshed = Date.now
         
         var body: some View {
-            RoadView(road: Road(roadName: "Oslofjordtunnelen", urlFriendly: "oslofjordtunnelen", messages: [], gps: GPS(lat: 0, lon: 0)), status: nil, lastUpdated: $lastRefreshed)
+            ScrollView {
+                RoadView(road: Road(roadName: "Oslofjordtunnelen", urlFriendly: "oslofjordtunnelen", messages: [], gps: GPS(lat: 0, lon: 0)), status: nil, lastUpdated: $lastRefreshed)
+                RoadView(road: Road(roadName: "Oslofjordtunnelen", urlFriendly: "oslofjordtunnelen", messages: [], gps: GPS(lat: 0, lon: 0)), status: nil, lastUpdated: $lastRefreshed)
+            }.background(Color.lightGray)
         }
     }
 
