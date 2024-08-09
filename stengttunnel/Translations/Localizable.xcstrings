@@ -11,6 +11,26 @@
         }
       }
     },
+    "By subscribing to Stengt tunnel+, you'll be directly supporting the continued development of the app" : {
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ved å abonnere på Stengt tunnel+ vil du direkte støtte den videre utviklingen av appen."
+          }
+        }
+      }
+    },
+    "By subscribing to Stengt tunnel+, you'll enjoy an **ad-free experience** and the ability to **add more than two roads**." : {
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ved å abonnere på Stengt tunnel+ får du en **reklamefri opplevelse** og muligheten til å **legge til mer enn to tunneler**."
+          }
+        }
+      }
+    },
     "Choose roads" : {
       "localizations" : {
         "nb" : {
@@ -31,11 +51,26 @@
         }
       }
     },
-    "Close" : {
-
+    "day" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dag"
+          }
+        }
+      }
     },
-    "hello" : {
-
+    "Done" : {
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ferdig"
+          }
+        }
+      }
     },
     "Loading roads. Please wait..." : {
       "localizations" : {
@@ -43,6 +78,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Laster tunneler. Vennligst vent..."
+          }
+        }
+      }
+    },
+    "month" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "måned"
           }
         }
       }
@@ -67,11 +113,54 @@
         }
       }
     },
+    "Restore purchase" : {
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gjenopprett kjøp"
+          }
+        }
+      }
+    },
     "Settings" : {
-
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Innstillinger"
+          }
+        }
+      }
     },
     "Stengt tunnel" : {
 
+    },
+    "Subscribe for %@ every %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Subscribe for %1$@ every %2$@"
+          }
+        },
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abonner for %1$@ hver %2$@"
+          }
+        }
+      }
+    },
+    "Thank you for subscribing to Stengt tunnel+" : {
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Takk for at du abonnerer på Stengt tunnel+."
+          }
+        }
+      }
     },
     "The road is ..." : {
       "extractionState" : "manual",
@@ -84,8 +173,16 @@
         }
       }
     },
-    "This is the settings page" : {
-
+    "year" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "år"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

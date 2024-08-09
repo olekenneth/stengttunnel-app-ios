@@ -57,18 +57,16 @@ public struct RoadView: View {
                 let statusMessage = status!.statusMessage.replacingOccurrences(of: "Tunnelen", with: road.roadName)
                 ShareLink(item: URL(string: "https://stengttunnel.no/\(road.urlFriendly)")!, preview: SharePreview(statusMessage, image: Image("App"))) {
                     StatusMessageView(color: status!.status, statusMessage: statusMessage)
-                        .padding()
                 }
                 if status?.messages != nil && !status!.messages!.isEmpty {
                     Rectangle()
                         .foregroundColor(Color("lightGray"))
                         .frame(height: 1)
                     MessageTableView(data: status!.messages!)
-                        .padding()
+                        .padding([.top, .leading, .bottom])
                 }
             } else {
                 StatusMessageView(color: .yellow, statusMessage: "The road is ...")
-                    .padding()
             }
             
         }
@@ -90,49 +88,15 @@ public struct RoadView: View {
 #Preview {
     struct Preview: View {
         @State private var lastRefreshed = Date.now
-        @State private var searchText = ""
-        @State private var showSettings = false
         
         var body: some View {
-            NavigationStack {
-                ScrollView {
-                    VStack(alignment: .leading) {
-                        RoadView(road: Road(roadName: "Oslofjordtunnelen", urlFriendly: "oslofjordtunnelen", messages: [], gps: GPS(lat: 0, lon: 0)), status: nil, lastUpdated: $lastRefreshed)
-                        BannerView().frame(height: 100)
-                        RoadView(road: Road(roadName: "Oslofjordtunnelen", urlFriendly: "oslofjordtunnelen", messages: [], gps: GPS(lat: 0, lon: 0)), status: nil, lastUpdated: $lastRefreshed)
-                        BannerView().frame(height: 100)
-                        RoadView(road: Road(roadName: "Oslofjordtunnelen", urlFriendly: "oslofjordtunnelen", messages: [], gps: GPS(lat: 0, lon: 0)), status: nil, lastUpdated: $lastRefreshed)
-                        BannerView().frame(height: 100)
-                        RoadView(road: Road(roadName: "Oslofjordtunnelen", urlFriendly: "oslofjordtunnelen", messages: [], gps: GPS(lat: 0, lon: 0)), status: nil, lastUpdated: $lastRefreshed)
-                        BannerView().frame(height: 100)
-                        RoadView(road: Road(roadName: "Oslofjordtunnelen", urlFriendly: "oslofjordtunnelen", messages: [], gps: GPS(lat: 0, lon: 0)), status: nil, lastUpdated: $lastRefreshed)
-                        BannerView().frame(height: 100)
-                    }
-                    .padding(.bottom)
-                }
-                .searchable(text: $searchText)
-                .background(Color("lightGray"))
-                .navigationTitle(Text("Stengt tunnel"))
-                .toolbar {
-                    ToolbarItem(placement: .topBarLeading) {
-                        Button {
-                            showSettings = true
-                        } label: {
-                            Image("menu")
-                        }.sheet(isPresented: $showSettings) {
-                            Text("hello")
-                        }
-
-                    }
-                    ToolbarItem(placement: .topBarTrailing) {
-                        Button("Settings", systemImage: "person.circle", role: .destructive) {
-                            // Do Nothing
-                        }
-                    }
-                }
-                .toolbarTitleDisplayMode(.inlineLarge)
-            }
-            
+            ScrollView {
+                RoadView(road: Road(roadName: "Bamletunnelen", urlFriendly: "bamletunnelen", messages: [
+                    Message(source: .svv, message: "Rv. 162 (avkjøringsveg) Hammersborgtunnelen i Oslo i retning mot Filipstad: Vegarbeid, vegen er stengt. Omkjøring er skiltet", validFrom: Date.now, validTo: Date.now.addingTimeInterval(6000)),
+                    Message(source: .svv, message: "Vegarbeid, vegen er stengt. Omkjøring er skiltet", validFrom: Date.now.addingTimeInterval(86400), validTo: Date.now.addingTimeInterval(86400+86400)),
+                ], gps: GPS(lat: 0, lon: 0)), status: nil, lastUpdated: $lastRefreshed)
+                RoadView(road: Road(roadName: "Oslofjordtunnelen", urlFriendly: "oslofjordtunnelen", messages: [], gps: GPS(lat: 0, lon: 0)), status: nil, lastUpdated: $lastRefreshed)
+            }.background(Color.lightGray)
         }
     }
 

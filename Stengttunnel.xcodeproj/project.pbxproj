@@ -12,8 +12,14 @@
 		B010DE202C49ADA8000736B3 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B010DE1F2C49ADA8000736B3 /* BannerView.swift */; };
 		B02B8E4E2A7ED45C007E783E /* FavoriteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02B8E4D2A7ED45C007E783E /* FavoriteStore.swift */; };
 		B02C30A22C60DF77001098B7 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = B02C30A12C60DF77001098B7 /* GoogleMobileAds */; };
+		B044C9722C615D2B007846BF /* TPInAppReceipt in Frameworks */ = {isa = PBXBuildFile; productRef = B044C9712C615D2B007846BF /* TPInAppReceipt */; };
 		B07C26C82A7EE38F006139AA /* SearchableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07C26C72A7EE38F006139AA /* SearchableView.swift */; };
+		B08428BF2C6103E900EF23ED /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B08428BE2C6103E900EF23ED /* StoreKit.framework */; };
+		B08428C12C61040F00EF23ED /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08428C02C61040F00EF23ED /* StoreManager.swift */; };
+		B08428C32C61051400EF23ED /* SubscriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08428C22C61051400EF23ED /* SubscriptionView.swift */; };
 		B08FBAA32A97534E0003D203 /* Dataloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08FBAA22A97534E0003D203 /* Dataloader.swift */; };
+		B0B6A62F2C6538590006FD33 /* RoadList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B6A62E2C6538590006FD33 /* RoadList.swift */; };
+		B0B6A6312C653DE00006FD33 /* PlusTeaser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B6A6302C653DE00006FD33 /* PlusTeaser.swift */; };
 		B0C85D072A7A4FF1004EC4B8 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C85D062A7A4FF1004EC4B8 /* App.swift */; };
 		B0C85D092A7A4FF1004EC4B8 /* TrafficLightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C85D082A7A4FF1004EC4B8 /* TrafficLightView.swift */; };
 		B0C85D0B2A7A4FF2004EC4B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0C85D0A2A7A4FF2004EC4B8 /* Assets.xcassets */; };
@@ -45,7 +51,12 @@
 		B010DE1F2C49ADA8000736B3 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
 		B02B8E4D2A7ED45C007E783E /* FavoriteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteStore.swift; sourceTree = "<group>"; };
 		B07C26C72A7EE38F006139AA /* SearchableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchableView.swift; sourceTree = "<group>"; };
+		B08428BE2C6103E900EF23ED /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		B08428C02C61040F00EF23ED /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
+		B08428C22C61051400EF23ED /* SubscriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionView.swift; sourceTree = "<group>"; };
 		B08FBAA22A97534E0003D203 /* Dataloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dataloader.swift; sourceTree = "<group>"; };
+		B0B6A62E2C6538590006FD33 /* RoadList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadList.swift; sourceTree = "<group>"; };
+		B0B6A6302C653DE00006FD33 /* PlusTeaser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusTeaser.swift; sourceTree = "<group>"; };
 		B0C85D032A7A4FF1004EC4B8 /* Stengt tunnel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stengt tunnel.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0C85D062A7A4FF1004EC4B8 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		B0C85D082A7A4FF1004EC4B8 /* TrafficLightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficLightView.swift; sourceTree = "<group>"; };
@@ -62,6 +73,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B02C30A22C60DF77001098B7 /* GoogleMobileAds in Frameworks */,
+				B08428BF2C6103E900EF23ED /* StoreKit.framework in Frameworks */,
+				B044C9722C615D2B007846BF /* TPInAppReceipt in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +84,7 @@
 		B010DE002C486892000736B3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B08428BE2C6103E900EF23ED /* StoreKit.framework */,
 				B0091CF42C49B1B100AAB060 /* swift-package-manager-google-mobile-ads */,
 				B010DE032C486893000736B3 /* SwiftUI.framework */,
 			);
@@ -116,13 +130,17 @@
 			children = (
 				B010DE1E2C49AA28000736B3 /* Stengt-tunnel-Info.plist */,
 				B0C85D062A7A4FF1004EC4B8 /* App.swift */,
+				B0B6A62E2C6538590006FD33 /* RoadList.swift */,
 				B02B8E4D2A7ED45C007E783E /* FavoriteStore.swift */,
 				B0C85D082A7A4FF1004EC4B8 /* TrafficLightView.swift */,
 				B0C85D322A7A6D07004EC4B8 /* StatusMessageView.swift */,
 				B0C85D302A7A65CD004EC4B8 /* MessageTableView.swift */,
+				B0B6A6302C653DE00006FD33 /* PlusTeaser.swift */,
 				B0C85D342A7A6F6F004EC4B8 /* RoadView.swift */,
 				B08FBAA22A97534E0003D203 /* Dataloader.swift */,
 				B010DE1F2C49ADA8000736B3 /* BannerView.swift */,
+				B08428C22C61051400EF23ED /* SubscriptionView.swift */,
+				B08428C02C61040F00EF23ED /* StoreManager.swift */,
 				B0C4908B2AC6C277006145A6 /* Extensions */,
 				B0C85D0A2A7A4FF2004EC4B8 /* Assets.xcassets */,
 				B08FBAAA2A9897020003D203 /* Translations */,
@@ -158,6 +176,7 @@
 			name = "Stengt tunnel";
 			packageProductDependencies = (
 				B02C30A12C60DF77001098B7 /* GoogleMobileAds */,
+				B044C9712C615D2B007846BF /* TPInAppReceipt */,
 			);
 			productName = "Stengt Tunnel";
 			productReference = B0C85D032A7A4FF1004EC4B8 /* Stengt tunnel.app */;
@@ -190,6 +209,7 @@
 			mainGroup = B0C85CFA2A7A4FF1004EC4B8;
 			packageReferences = (
 				B02C30A02C60DF77001098B7 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
+				B044C9702C615D2B007846BF /* XCRemoteSwiftPackageReference "TPInAppReceipt" */,
 			);
 			productRefGroup = B0C85D042A7A4FF1004EC4B8 /* Products */;
 			projectDirPath = "";
@@ -221,11 +241,15 @@
 				B010DE202C49ADA8000736B3 /* BannerView.swift in Sources */,
 				B07C26C82A7EE38F006139AA /* SearchableView.swift in Sources */,
 				B0C85D312A7A65CD004EC4B8 /* MessageTableView.swift in Sources */,
+				B08428C12C61040F00EF23ED /* StoreManager.swift in Sources */,
 				B0C85D092A7A4FF1004EC4B8 /* TrafficLightView.swift in Sources */,
+				B08428C32C61051400EF23ED /* SubscriptionView.swift in Sources */,
 				B0C85D072A7A4FF1004EC4B8 /* App.swift in Sources */,
 				B08FBAA32A97534E0003D203 /* Dataloader.swift in Sources */,
 				B02B8E4E2A7ED45C007E783E /* FavoriteStore.swift in Sources */,
+				B0B6A62F2C6538590006FD33 /* RoadList.swift in Sources */,
 				B0C85D352A7A6F6F004EC4B8 /* RoadView.swift in Sources */,
+				B0B6A6312C653DE00006FD33 /* PlusTeaser.swift in Sources */,
 				B010DE1C2C49A884000736B3 /* BannerViewController.swift in Sources */,
 				B0C85D332A7A6D07004EC4B8 /* StatusMessageView.swift in Sources */,
 			);
@@ -379,7 +403,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.3;
+				MARKETING_VERSION = 2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.adapptic.Stengt-Tunnel";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -414,7 +438,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.3;
+				MARKETING_VERSION = 2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.adapptic.Stengt-Tunnel";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -458,6 +482,14 @@
 				minimumVersion = 11.5.0;
 			};
 		};
+		B044C9702C615D2B007846BF /* XCRemoteSwiftPackageReference "TPInAppReceipt" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tikhop/TPInAppReceipt";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.4.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -465,6 +497,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B02C30A02C60DF77001098B7 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
 			productName = GoogleMobileAds;
+		};
+		B044C9712C615D2B007846BF /* TPInAppReceipt */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B044C9702C615D2B007846BF /* XCRemoteSwiftPackageReference "TPInAppReceipt" */;
+			productName = TPInAppReceipt;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
