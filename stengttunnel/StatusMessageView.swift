@@ -21,16 +21,15 @@ struct StatusMessageView: View {
                 .foregroundStyle(.foreground)
                 .frame(maxWidth: .infinity, alignment: .topLeading)
         }
+        .padding()
     }
 }
 
 struct StatusMessageView_Previews: PreviewProvider {
     static var previews: some View {
-        VStack(alignment: .leading) {
+        ScrollView() {
             StatusMessageView(color: .green, statusMessage: "Oslofjordtunnelen ser ut til å være åpen.")
             StatusMessageView(color: .red, statusMessage: "Hammersborgtunnelen ser ut til å være stengt. Rødt lys kan bety at veien/tunnelen er stengt nå, men les meldingene under for nærmere informasjon.")
         }
-        .padding()
-        .background(Color("lightGray"))
     }
 }

@@ -51,6 +51,17 @@
         }
       }
     },
+    "day" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dag"
+          }
+        }
+      }
+    },
     "Done" : {
       "localizations" : {
         "nb" : {
@@ -67,6 +78,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Laster tunneler. Vennligst vent..."
+          }
+        }
+      }
+    },
+    "month" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "måned"
           }
         }
       }
@@ -91,36 +113,54 @@
         }
       }
     },
-    "Original Purchase Date : %@" : {
-
-    },
-    "Purchase Date : %@" : {
-
-    },
     "Restore purchase" : {
-
-    },
-    "Settings" : {
-
-    },
-    "Stengt tunnel" : {
-
-    },
-    "Subscribe for %@ %@" : {
       "localizations" : {
-        "en" : {
+        "nb" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "Subscribe for %1$@ %2$@"
+            "state" : "translated",
+            "value" : "Gjenopprett kjøp"
           }
         }
       }
     },
-    "Subscription Expiration Date : %@" : {
+    "Settings" : {
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Innstillinger"
+          }
+        }
+      }
+    },
+    "Stengt tunnel" : {
 
     },
-    "Takk for at du abonnerer! Ingen reklame vises." : {
-
+    "Subscribe for %@ every %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Subscribe for %1$@ every %2$@"
+          }
+        },
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abonner for %1$@ hver %2$@"
+          }
+        }
+      }
+    },
+    "Thank you for subscribing to Stengt tunnel+" : {
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Takk for at du abonnerer på Stengt tunnel+."
+          }
+        }
+      }
     },
     "The road is ..." : {
       "extractionState" : "manual",
@@ -129,6 +169,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tunnelen er ..."
+          }
+        }
+      }
+    },
+    "year" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "år"
           }
         }
       }

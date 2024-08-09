@@ -30,24 +30,14 @@ struct SubscriptionView: View {
                 .multilineTextAlignment(.center)
                 .padding()
             if storeManager.subscriptionActive {
-                Text("Takk for at du abonnerer! Ingen reklame vises.")
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("Product Identifier : \(storeManager.purchase?.productIdentifier)")
-                    Text("Purchase Date : \(self.localDateString(storeManager.purchase?.purchaseDate))")
-                    Text("Original Purchase Date : \(self.localDateString(storeManager.purchase?.originalPurchaseDate))")
-                    Text("Subscription Expiration Date : \(self.localDateString(storeManager.purchase?.subscriptionExpirationDate))")
-                    Text("isActiveAutoRenewableSub for \(self.localDateString(later)): \(storeManager.purchase?.isActiveAutoRenewableSubscription(forDate: later).description)")
-                    Text("Quantity : \(storeManager.purchase?.quantity.description)")
-                    Text("isRenewable : \(storeManager.purchase?.isRenewableSubscription.description)")
-
-
-                }
+                Text("Thank you for subscribing to Stengt tunnel+").font(.title2).multilineTextAlignment(.center)
+                
             } else {
                 ForEach(storeManager.products, id: \.self) { product in
                     Button(action: {
                         storeManager.purchaseProduct(product)
                     }) {
-                        Text("Subscribe for \(product.localizedPrice) \(product.subscriptionPeriodText)")
+                        Text("Subscribe for \(product.localizedPrice) every \(product.subscriptionPeriodText)")
                             .padding()
                             .background(Color.blue)
                             .foregroundColor(.white)

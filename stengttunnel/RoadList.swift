@@ -97,7 +97,7 @@ struct RoadList: View {
                             }
                         }
                         .onTapGesture {
-                            if !(store.favorites.contains(where: { favorite in
+                            if !storeManager.subscriptionActive && !(store.favorites.contains(where: { favorite in
                                 favorite.urlFriendly == road.urlFriendly
                             })) && store.favorites.count > 1 {
                                 showSearch = false

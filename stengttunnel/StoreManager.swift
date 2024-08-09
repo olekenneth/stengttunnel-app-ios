@@ -10,44 +10,45 @@ extension SKProduct {
     }
     
     var subscriptionPeriodText: String {
-           guard let period = self.subscriptionPeriod else {
-               return ""
-           }
+        guard let period = self.subscriptionPeriod else {
+            return ""
+        }
 
-           let unit: String
-           switch period.unit {
-           case .day:
-               unit = "dag"
-           case .week:
-               unit = "uke"
-           case .month:
-               unit = "måned"
-           case .year:
-               unit = "år"
-           @unknown default:
-               unit = "periode"
-           }
-        return "hver \(period.numberOfUnits > 1 ? String(period.numberOfUnits) + ". " : "")\(unit)"
-       }
+        let unitKey: String
+        switch period.unit {
+        case .day:
+            unitKey = "day"
+        case .week:
+            unitKey = "week"
+        case .month:
+            unitKey = "month"
+        case .year:
+            unitKey = "year"
+        @unknown default:
+            unitKey = "period"
+        }
+
+        let unitsText = period.numberOfUnits > 1 ? "\(period.numberOfUnits). " : ""
+
+        return "\(unitsText)\(NSLocalizedString(unitKey, comment: ""))"
+    }
 }
 
 class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate, SKPaymentTransactionObserver {
     static let shared = StoreManager() // Singleton
     
-    let productIds = ["adfreeProduct"]
+    let productIds = ["stplus"]
     
     @Published var purchase: InAppPurchase? = nil
     @Published var products: [SKProduct] = []
     @Published var subscriptionActive: Bool = false {
         didSet {
-            print("DID SET NEW VALUE", subscriptionActive)
             UserDefaults.standard.set(subscriptionActive, forKey: "subscriptionActive")
         }
     }
 
     override init() {
         super.init()
-        print("INIT StoreManager")
         loadSubscriptionState()
 
         SKPaymentQueue.default().add(self)

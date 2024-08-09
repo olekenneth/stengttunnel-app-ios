@@ -46,6 +46,8 @@ struct MessageTableView: View {
                             
                         Text(message.message)
                             .font(.subheadline)
+                            .padding(.trailing)
+                            
                     }
                     
                 }
@@ -63,7 +65,7 @@ struct MessageTableView_Previews: PreviewProvider {
             Message(source: .svv, message: "Vegarbeid, vegen er stengt. Omkjøring er skiltet", validFrom: Date.now.addingTimeInterval(86400), validTo: Date.now.addingTimeInterval(86400+86400)),
         ]
         ScrollView {
-            MessageTableView(data: d).padding()
+            MessageTableView(data: d)
         }
     }
 }
