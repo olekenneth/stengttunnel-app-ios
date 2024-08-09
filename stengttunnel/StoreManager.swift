@@ -70,7 +70,6 @@ class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate, SKPay
     }
     
     func validateReceipt() {
-        print("VALIDATING")
         DispatchQueue.global().async {
             do {
                 let receipt = try InAppReceipt.localReceipt()

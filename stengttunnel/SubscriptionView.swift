@@ -9,21 +9,7 @@ import SwiftUI
 
 struct SubscriptionView: View {
     @ObservedObject var storeManager = StoreManager.shared
-    let dateFormatter: DateFormatter = {
-        let df = DateFormatter()
-        df.dateStyle = .medium
-        df.timeStyle = .short
-        return df
-    }()
-    
-    func localDateString(_ date: Date?) -> String {
-        guard date != nil else { return "" }
         
-        return dateFormatter.string(from: date!)
-    }
-    
-    let later = Date()
-    
     var body: some View {
         VStack {
             Text("By subscribing to Stengt tunnel+, you'll enjoy an **ad-free experience** and the ability to **add more than two roads**.")
