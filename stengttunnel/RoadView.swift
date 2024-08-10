@@ -44,6 +44,7 @@ public struct RoadView: View {
     @Environment(\.scenePhase) private var scenePhase
     
     func reload() {
+        self.status = nil
         print("Reloading for \(road.roadName)")
         Dataloader.shared.loadRoad(road: road.urlFriendly) { status in
             guard status != nil else { return }
@@ -66,7 +67,7 @@ public struct RoadView: View {
                         .padding([.top, .leading, .bottom])
                 }
             } else {
-                StatusMessageView(color: .yellow, statusMessage: "The road is ...")
+                StatusMessageView(color: .yellow, statusMessage: "\(road.roadName) "  + NSLocalizedString("is ...", comment: ""))
             }
             
         }

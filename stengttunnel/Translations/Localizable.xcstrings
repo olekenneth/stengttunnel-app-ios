@@ -72,6 +72,17 @@
         }
       }
     },
+    "is ..." : {
+      "comment" : "Testing",
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "er ..."
+          }
+        }
+      }
+    },
     "Loading roads. Please wait..." : {
       "localizations" : {
         "nb" : {
@@ -134,7 +145,14 @@
       }
     },
     "Stengt tunnel" : {
-
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stengt tunnel"
+          }
+        }
+      }
     },
     "Subscribe for %@ every %@" : {
       "localizations" : {
@@ -158,17 +176,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Takk for at du abonnerer på Stengt tunnel+."
-          }
-        }
-      }
-    },
-    "The road is ..." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "nb" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tunnelen er ..."
           }
         }
       }
