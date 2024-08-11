@@ -6,6 +6,8 @@
 	<string>ca-app-pub-8133897183984535~7525982964</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>To help you find the closest roads, we need access to your location. Your location data remains private, used only on your device and never shared externally.</string>
 	<key>SKAdNetworkItems</key>
 	<array>
 		<dict>

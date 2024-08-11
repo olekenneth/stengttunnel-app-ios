@@ -28,6 +28,9 @@ struct RoadList: View {
     @State private var showSearch = false
     @State private var lastRefreshed = Date.now
     @State private var showSettings = false
+    @StateObject var locationManager = LocationManager.shared
+
+
     var favorites: [Road] {
         return store.favorites.map { favorite in
             return Road(roadName: favorite.roadName, urlFriendly: favorite.urlFriendly, messages: [], gps: GPS(lat: 0, lon: 0))
@@ -82,6 +85,12 @@ struct RoadList: View {
                                 .font(.headline)
                             Spacer()
                         }
+                    }
+                    if let location = locationManager.location {
+                        Text("Latitude: \(location.coordinate.latitude)")
+                        Text("Longitude: \(location.coordinate.longitude)")
+                    } else {
+                        Text("Getting location...")
                     }
                     ForEach(searchResults) { road in
                         HStack {
@@ -179,6 +188,7 @@ struct RoadList: View {
     }
     
     var searchResults: [Road] {
+        
         if searchText.isEmpty {
             var allRoads = roads
             let allFavorties = store.favorites.map { favorite in
@@ -189,8 +199,12 @@ struct RoadList: View {
             }.sorted(by: { roadA, roadB  in
                 return roadA.roadName < roadB.roadName
             })
-            return allFavorties + allRoads
             
+            guard locationManager.location != nil else {
+                return allFavorties + allRoads
+            }
+            
+            return allFavorties + locationManager.sortLocationsByDistance(locations: allRoads)
         } else {
             return roads.filter { $0.roadName.localizedCaseInsensitiveContains(searchText) }
         }

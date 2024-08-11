@@ -27,6 +27,7 @@
 		B0C85D312A7A65CD004EC4B8 /* MessageTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C85D302A7A65CD004EC4B8 /* MessageTableView.swift */; };
 		B0C85D332A7A6D07004EC4B8 /* StatusMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C85D322A7A6D07004EC4B8 /* StatusMessageView.swift */; };
 		B0C85D352A7A6F6F004EC4B8 /* RoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C85D342A7A6F6F004EC4B8 /* RoadView.swift */; };
+		B0DC68992C68A7B600213C08 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DC68982C68A7B600213C08 /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -65,6 +66,7 @@
 		B0C85D302A7A65CD004EC4B8 /* MessageTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableView.swift; sourceTree = "<group>"; };
 		B0C85D322A7A6D07004EC4B8 /* StatusMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMessageView.swift; sourceTree = "<group>"; };
 		B0C85D342A7A6F6F004EC4B8 /* RoadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadView.swift; sourceTree = "<group>"; };
+		B0DC68982C68A7B600213C08 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 				B08FBAA22A97534E0003D203 /* Dataloader.swift */,
 				B010DE1F2C49ADA8000736B3 /* BannerView.swift */,
 				B08428C22C61051400EF23ED /* SubscriptionView.swift */,
+				B0DC68982C68A7B600213C08 /* LocationManager.swift */,
 				B08428C02C61040F00EF23ED /* StoreManager.swift */,
 				B0C4908B2AC6C277006145A6 /* Extensions */,
 				B0C85D0A2A7A4FF2004EC4B8 /* Assets.xcassets */,
@@ -240,6 +243,7 @@
 			files = (
 				B010DE202C49ADA8000736B3 /* BannerView.swift in Sources */,
 				B07C26C82A7EE38F006139AA /* SearchableView.swift in Sources */,
+				B0DC68992C68A7B600213C08 /* LocationManager.swift in Sources */,
 				B0C85D312A7A65CD004EC4B8 /* MessageTableView.swift in Sources */,
 				B08428C12C61040F00EF23ED /* StoreManager.swift in Sources */,
 				B0C85D092A7A4FF1004EC4B8 /* TrafficLightView.swift in Sources */,

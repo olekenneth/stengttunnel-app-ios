@@ -22,8 +22,8 @@ enum StatusType: String, Codable {
 }
 
 struct GPS: Codable {
-    var lat: Float
-    var lon: Float
+    var lat: Double
+    var lon: Double
 }
 
 struct Status: Identifiable, Codable {
