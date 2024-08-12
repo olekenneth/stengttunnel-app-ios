@@ -35,7 +35,7 @@ struct RoadList: View {
     @State private var searchText = ""
     @Environment(\.scenePhase) private var scenePhase
     @State private var isSearching = false
-    @State private var showSearch = true
+    @State private var showSearch = false
     @State private var lastRefreshed = Date.now
     @State private var showSettings = false
     @State private var sorted: SortOptions = .name
