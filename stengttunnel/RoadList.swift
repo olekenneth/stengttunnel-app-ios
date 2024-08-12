@@ -17,6 +17,16 @@ private func saveStore(store: FavoriteStore) {
     }
 }
 
+struct SearchResults {
+    let favorites: [Favorite]
+    let roads: [Road]
+}
+
+enum SortOptions: String, CaseIterable, Identifiable {
+    case distance, name
+    var id: Self { self }
+}
+
 struct RoadList: View {
     var storeManager = StoreManager.shared
 
@@ -25,9 +35,10 @@ struct RoadList: View {
     @State private var searchText = ""
     @Environment(\.scenePhase) private var scenePhase
     @State private var isSearching = false
-    @State private var showSearch = false
+    @State private var showSearch = true
     @State private var lastRefreshed = Date.now
     @State private var showSettings = false
+    @State private var sorted: SortOptions = .name
     @StateObject var locationManager = LocationManager.shared
 
 
@@ -79,44 +90,68 @@ struct RoadList: View {
                 }
                 .searchableOnce(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Choose roads", isPresented: $showSearch)
                 .searchSuggestions {
-                    if searchResults.isEmpty {
+                    if locationManager.location != nil {
                         HStack {
-                            Text(searchResults.isEmpty && !searchText.isEmpty ? "No result" : "Loading roads. Please wait...")
-                                .font(.headline)
+                            Text("Sort by")
                             Spacer()
+                            Picker("Sort by", selection: $sorted) {
+                                Text("Name").tag(SortOptions.name)
+                                HStack {
+                                    Text("Distance")
+                                    Image(systemName: "location")
+                                }.tag(SortOptions.distance)
+                            }
                         }
-                    }
-                    if let location = locationManager.location {
-                        Text("Latitude: \(location.coordinate.latitude)")
-                        Text("Longitude: \(location.coordinate.longitude)")
+                        .listRowSeparator(.hidden)
                     } else {
-                        Text("Getting location...")
-                    }
-                    ForEach(searchResults) { road in
-                        HStack {
-                            Text(road.roadName)
-                                .font(.headline)
+                        HStack(alignment: .top) {
+                            Image(systemName: "location.circle")
+                            Text("Sort by distance")
                             Spacer()
-                            if (store.favorites.contains(where: { favorite in
-                                favorite.urlFriendly == road.urlFriendly
-                            })) {
-                                Image(systemName: "checkmark")
-                            } else {
-                                Image(systemName: "plus")
-                            }
                         }
+                        .listRowSeparator(.hidden)
+                        .contentShape(Rectangle())
                         .onTapGesture {
-                            if !storeManager.subscriptionActive && !(store.favorites.contains(where: { favorite in
-                                favorite.urlFriendly == road.urlFriendly
-                            })) && store.favorites.count > 1 {
-                                showSearch = false
-                                showSettings = true
-
-                                return
-                            }
-                            store.toggle(road: Favorite(roadName: road.roadName, urlFriendly: road.urlFriendly))
-                            store.save(favorites: store.favorites)
+                            sorted = .distance
+                            locationManager.updateLocation()
                         }
+                    }
+                    if !searchResults.favorites.isEmpty {
+                        Section {
+                            ForEach(searchResults.favorites) { favorite in
+                                let road = Road(roadName: favorite.roadName, urlFriendly: favorite.urlFriendly, messages: [], gps: GPS(lat: 0, lon: 0), distance: 0)
+                                SearchResultItem(road: road, isFavorite: true) {
+                                    store.toggle(road: favorite)
+                                    store.save(favorites: store.favorites)
+                                }
+                            }
+                        } header: {
+                            Text("Favorites")
+                        }
+                    }
+                    Section {
+                        ForEach(searchResults.roads) { road in
+                            SearchResultItem(road: road, isFavorite: false) {
+                                if !storeManager.subscriptionActive && store.favorites.count > 1 {
+                                    showSearch = false
+                                    searchText = ""
+                                    showSettings = true
+                                    
+                                    return
+                                }
+                                store.toggle(road: Favorite(roadName: road.roadName, urlFriendly: road.urlFriendly))
+                                store.save(favorites: store.favorites)
+                            }
+                        }
+                        if searchResults.roads.isEmpty {
+                            HStack {
+                                Text(searchResults.roads.isEmpty && !searchText.isEmpty ? "No result" : "Loading roads. Please wait...")
+                                    .font(.headline)
+                                Spacer()
+                            }
+                        }
+                    } header: {
+                        Text("Roads")
                     }
                 }
                 .toolbarTitleDisplayMode(.inlineLarge)
@@ -187,26 +222,30 @@ struct RoadList: View {
         }
     }
     
-    var searchResults: [Road] {
-        
-        if searchText.isEmpty {
-            var allRoads = roads
-            let allFavorties = store.favorites.map { favorite in
-                allRoads.removeAll { road in
-                    road.urlFriendly == favorite.urlFriendly
-                }
-                return Road(roadName: favorite.roadName, urlFriendly: favorite.urlFriendly, messages: [], gps: GPS(lat: 0, lon: 0))
-            }.sorted(by: { roadA, roadB  in
-                return roadA.roadName < roadB.roadName
+    var searchResults: SearchResults {
+        var allRoads = roads
+
+        if let _ = locationManager.location {
+            allRoads = locationManager.sortLocationsByDistance(locations: allRoads)
+        }
+
+        if sorted == .name {
+            allRoads = allRoads.sorted(by: { r1, r2 in
+                return r1.roadName < r2.roadName
             })
-            
-            guard locationManager.location != nil else {
-                return allFavorties + allRoads
+        }
+        
+        let allFavorties = store.favorites.map { favorite in
+            allRoads.removeAll { road in
+                road.urlFriendly == favorite.urlFriendly
             }
-            
-            return allFavorties + locationManager.sortLocationsByDistance(locations: allRoads)
+            return favorite
+        }
+
+        if searchText.isEmpty {
+            return SearchResults(favorites: allFavorties, roads: allRoads)
         } else {
-            return roads.filter { $0.roadName.localizedCaseInsensitiveContains(searchText) }
+            return SearchResults(favorites: allFavorties.filter {$0.roadName.localizedCaseInsensitiveContains(searchText) }, roads: allRoads.filter { $0.roadName.localizedCaseInsensitiveContains(searchText) })
         }
     }
 }

@@ -11,13 +11,12 @@
         }
       }
     },
-    "By subscribing to Stengt tunnel+, you'll be directly supporting the continued development of the app" : {
-      "extractionState" : "stale",
+    "%lld km" : {
       "localizations" : {
         "nb" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ved å abonnere på Stengt tunnel+ vil du direkte støtte den videre utviklingen av appen."
+            "value" : "%lld km"
           }
         }
       }
@@ -73,6 +72,16 @@
         }
       }
     },
+    "Distance" : {
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avstand"
+          }
+        }
+      }
+    },
     "Done" : {
       "localizations" : {
         "nb" : {
@@ -83,8 +92,15 @@
         }
       }
     },
-    "Getting location..." : {
-
+    "Favorites" : {
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favoritter"
+          }
+        }
+      }
     },
     "is ..." : {
       "comment" : "Testing",
@@ -97,9 +113,6 @@
         }
       }
     },
-    "Latitude: %lf" : {
-
-    },
     "Loading roads. Please wait..." : {
       "localizations" : {
         "nb" : {
@@ -110,9 +123,6 @@
         }
       }
     },
-    "Longitude: %lf" : {
-
-    },
     "month" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -120,6 +130,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "måned"
+          }
+        }
+      }
+    },
+    "Name" : {
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Navn"
           }
         }
       }
@@ -154,12 +174,42 @@
         }
       }
     },
+    "Roads" : {
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tunneler"
+          }
+        }
+      }
+    },
     "Settings" : {
       "localizations" : {
         "nb" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Innstillinger"
+          }
+        }
+      }
+    },
+    "Sort by" : {
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sorter etter"
+          }
+        }
+      }
+    },
+    "Sort by distance" : {
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sorter etter avstand"
           }
         }
       }

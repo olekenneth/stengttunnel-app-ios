@@ -13,6 +13,7 @@ struct Road: Identifiable, Codable {
     let urlFriendly: String
     let messages: [Message]
     let gps: GPS
+    var distance: Double? = 0.0
 }
 
 enum StatusType: String, Codable {

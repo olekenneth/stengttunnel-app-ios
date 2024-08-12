@@ -18,24 +18,28 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     private override init() {
         super.init()
         self.locationManager.delegate = self
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyReduced
+    }
+    
+    func updateLocation() {
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
     }
     
     func sortLocationsByDistance(locations: [Road]) -> [Road] {
-        return locations.sorted { loc1, loc2 in
-            let location1 = CLLocation(latitude: loc1.gps.lat, longitude: loc1.gps.lon)
-            let location2 = CLLocation(latitude: loc2.gps.lat, longitude: loc2.gps.lon)
-            
-            // Compare distances from userLocation
-            return location1.distance(from: self.location!) < location2.distance(from: self.location!)
+        guard self.location != nil else { return locations }
+        
+        return locations.map { road in
+            let location = CLLocation(latitude: road.gps.lat, longitude: road.gps.lon)
+            return Road(roadName: road.roadName, urlFriendly: road.urlFriendly, messages: road.messages, gps: road.gps, distance: Double((self.location?.distance(from: location))!))
         }
+        .sorted { $0.distance! < $1.distance! }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let newLocation = locations.last else { return }
         self.location = newLocation
+        self.locationManager.stopUpdatingLocation()
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
