@@ -38,8 +38,8 @@ struct SubscriptionView: View {
                 storeManager.restorePurchases()
             }
             .padding(.top, 20)
-
-            Text("By subscribing to Stengt tunnel+, you'll be directly supporting the continued development of the app")
+            
+            Text("By using this app, you agree to the [Apple Standard End User License Agreement](https://www.apple.com/legal/internet-services/itunes/dev/stdeula/) and Stengt tunnels [privacy policy](https://stengttunnel.no/privacy-policy).")
                 .multilineTextAlignment(.center)
                 .padding(.top, 20)
         }

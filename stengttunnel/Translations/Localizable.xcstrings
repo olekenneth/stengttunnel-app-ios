@@ -12,6 +12,7 @@
       }
     },
     "By subscribing to Stengt tunnel+, you'll be directly supporting the continued development of the app" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nb" : {
           "stringUnit" : {
@@ -27,6 +28,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ved å abonnere på Stengt tunnel+ får du en **reklamefri opplevelse** og muligheten til å **legge til mer enn to tunneler**."
+          }
+        }
+      }
+    },
+    "By using this app, you agree to the [Apple Standard End User License Agreement](https://www.apple.com/legal/internet-services/itunes/dev/stdeula/) and Stengt tunnels [privacy policy](https://stengttunnel.no/privacy-policy)." : {
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ved å bruke denne appen godtar du [Apples standard sluttbrukeravtale (EULA)](https://www.apple.com/legal/internet-services/itunes/dev/stdeula/) og Stengt tunnels [privacy policy](https://stengttunnel.no/privacy-policy)."
           }
         }
       }
