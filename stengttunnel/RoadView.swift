@@ -7,7 +7,11 @@
 
 import SwiftUI
 
-struct Road: Identifiable, Codable {
+struct Road: Identifiable, Codable, Equatable {
+    static func == (lhs: Road, rhs: Road) -> Bool {
+        lhs.roadName == rhs.roadName
+    }
+    
     var id: String { urlFriendly }
     let roadName: String
     let urlFriendly: String
@@ -16,15 +20,15 @@ struct Road: Identifiable, Codable {
     var distance: Double? = 0.0
 }
 
+struct GPS: Codable {
+    var lat: Double
+    var lon: Double
+}
+
 enum StatusType: String, Codable {
     case green = "green"
     case yellow = "yellow"
     case red = "red"
-}
-
-struct GPS: Codable {
-    var lat: Double
-    var lon: Double
 }
 
 struct Status: Identifiable, Codable {

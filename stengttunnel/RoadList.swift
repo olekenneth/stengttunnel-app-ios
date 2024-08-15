@@ -157,8 +157,16 @@ struct RoadList: View {
                 .toolbarTitleDisplayMode(.inlineLarge)
                 .navigationTitle(Text("Stengt tunnel"))
                 .toolbar {
+                    ToolbarItem() {
+                        NavigationLink {
+                            MapView(roads: roads)
+                        } label: {
+                            Image(systemName: "map.circle")
+                        }            
+                    }
+
                     ToolbarItem(placement: .topBarTrailing) {
-                        Button("Settings", systemImage: "person.circle", role: .destructive) {
+                        Button("Settings", systemImage: "person.circle") {
                             showSettings = !showSettings
                         }
                     }
