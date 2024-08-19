@@ -10,6 +10,7 @@ import MapKit
 
 struct MapView: View {
     var roads: [Road]
+    var locationManager = LocationManager.shared
     @State var selectedRoad: Road?
     @State private var lastUpdated = Date.now
     
@@ -27,9 +28,12 @@ struct MapView: View {
         }
     }
     
+    
     var body: some View {
         VStack {
-            Map() {
+            Map(initialPosition: .userLocation(fallback: .camera(
+                .init(centerCoordinate:  CLLocationCoordinate2D(latitude:59.66902, longitude: 10.62224), distance: 10000)
+            ))) {
                 ForEach(markers) { road in
                     MarkerView(road: road, selectedRoad: $selectedRoad).view()
                 }
@@ -44,9 +48,10 @@ struct MapView: View {
                 updateRoadInView()
             }
             .controlSize(.large)
+        }.onAppear() {
+            locationManager.updateLocation()
         }
         .navigationBarTitleDisplayMode(.inline)
-        //.mapScope(mapScope)
     }
 }
 

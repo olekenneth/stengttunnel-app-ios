@@ -123,6 +123,16 @@
         }
       }
     },
+    "Map" : {
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kart"
+          }
+        }
+      }
+    },
     "month" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -246,6 +256,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Takk for at du abonnerer på Stengt tunnel+."
+          }
+        }
+      }
+    },
+    "User" : {
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bruker"
           }
         }
       }
