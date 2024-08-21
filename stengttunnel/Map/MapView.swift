@@ -49,6 +49,9 @@ struct MapView: View {
                 if let urlFriendly = selectedMarker {
                     selectedRoad = Road(roadName: urlFriendly.localizedCapitalized, urlFriendly: urlFriendly, messages: [], gps: GPS(lat: 0, lon: 0))
                     lastUpdated = Date.now
+                } else {
+                    selectedRoad = nil
+                    lastUpdated = Date.now
                 }
             })
             .mapControls {
