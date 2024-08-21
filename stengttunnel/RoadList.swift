@@ -75,12 +75,12 @@ struct RoadList: View {
                     } else {
                         VStack() {
                             ForEach(Array(favorites.enumerated()), id: \.element.urlFriendly) { index, favorite in
-                                let showRoad = storeManager.subscriptionActive || index > 1
+                                let showRoad = storeManager.subscriptionActive || index < 2
                                 if showRoad {
-                                    RoadView(road: favorite, lastUpdated: $lastRefreshed, shouldUpdate: false)
-                                        .blur(radius: showRoad ? 3 : 0)
-                                } else {
                                     RoadView(road: favorite, lastUpdated: $lastRefreshed)
+                                } else {
+                                    RoadView(road: favorite, lastUpdated: $lastRefreshed, shouldUpdate: false)
+                                        .blur(radius: 3)
                                 }
                                 if !storeManager.subscriptionActive {
                                     BannerView().frame(height: size.height)
