@@ -22,7 +22,7 @@ struct SearchResults {
     let roads: [Road]
 }
 
-enum SortOptions: String, CaseIterable, Identifiable {
+enum SortOptions: Equatable, CaseIterable, Identifiable {
     case distance, name
     var id: Self { self }
 }
@@ -74,8 +74,14 @@ struct RoadList: View {
                             })
                     } else {
                         VStack() {
-                            ForEach(favorites, id: \.self.urlFriendly) { favorite in
-                                RoadView(road: favorite, lastUpdated: $lastRefreshed)
+                            ForEach(Array(favorites.enumerated()), id: \.element.urlFriendly) { index, favorite in
+                                let showRoad = storeManager.subscriptionActive || index > 1
+                                if showRoad {
+                                    RoadView(road: favorite, lastUpdated: $lastRefreshed, shouldUpdate: false)
+                                        .blur(radius: showRoad ? 3 : 0)
+                                } else {
+                                    RoadView(road: favorite, lastUpdated: $lastRefreshed)
+                                }
                                 if !storeManager.subscriptionActive {
                                     BannerView().frame(height: size.height)
                                     PlusTeaser(showSettings: $showSettings).frame(height: size.height)
@@ -101,6 +107,11 @@ struct RoadList: View {
                                         Text("Distance")
                                         Image(systemName: "location")
                                     }.tag(SortOptions.distance)
+                                }
+                                .onChange(of: sorted) { _, newValue in
+                                    if newValue == .distance  {
+                                        locationManager.updateLocation()
+                                    }
                                 }
                             }
                             .listRowSeparator(.hidden)

@@ -47,8 +47,10 @@ public struct RoadView: View {
     @State var status: Status?
     @Binding var lastUpdated: Date
     @Environment(\.scenePhase) private var scenePhase
+    @State var shouldUpdate: Bool? = true
     
     func reload() {
+        guard shouldUpdate == true else { return }
         self.status = nil
         print("Reloading for \(road.roadName)")
         Dataloader.shared.loadRoad(road: road.urlFriendly) { status in
