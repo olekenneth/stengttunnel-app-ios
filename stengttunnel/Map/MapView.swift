@@ -11,7 +11,8 @@ import MapKit
 struct MapView: View {
     var roads: [Road]
     var locationManager = LocationManager.shared
-    @State var selectedRoad: Road?
+    @State private var selectedMarker: String?
+    @State private var selectedRoad: Road?
     @State private var lastUpdated = Date.now
     
     @State private var visibleRegion: MKMapRect?
@@ -31,14 +32,25 @@ struct MapView: View {
     
     var body: some View {
         VStack {
-            Map(initialPosition: .userLocation(fallback: .camera(
-                .init(centerCoordinate:  CLLocationCoordinate2D(latitude:59.66902, longitude: 10.62224), distance: 10000)
-            ))) {
+            Map(initialPosition: .userLocation(fallback: .camera(.init(centerCoordinate:  CLLocationCoordinate2D(latitude:59.66902, longitude: 10.62224), distance: 10000))), selection: $selectedMarker) {
+
                 ForEach(markers) { road in
-                    MarkerView(road: road, selectedRoad: $selectedRoad).view()
+                    // MarkerView(road: road).view().tag(1)
+                    Marker(road.roadName, coordinate: CLLocationCoordinate2D(latitude: road.gps.lat, longitude: road.gps.lon)).tag(road.urlFriendly)
                 }
                 UserAnnotation()
             }
+            .safeAreaInset(edge: .bottom) {
+                if let road = selectedRoad {
+                    RoadView(road:road, lastUpdated: $lastUpdated)
+                }
+            }
+            .onChange(of: selectedMarker, { oldValue, newValue in
+                if let urlFriendly = selectedMarker {
+                    selectedRoad = Road(roadName: urlFriendly.localizedCapitalized, urlFriendly: urlFriendly, messages: [], gps: GPS(lat: 0, lon: 0))
+                    lastUpdated = Date.now
+                }
+            })
             .mapControls {
                 MapCompass()
                 MapUserLocationButton()
@@ -60,10 +72,9 @@ struct Preview: View {
         Road(roadName: "Oslofjordtunnelen", urlFriendly: "oslofjordtunnelen", messages: [], gps: GPS(lat: 59.748611, lon: 10.615833)),
         Road(roadName: "E39", urlFriendly: "e39", messages: [], gps: GPS(lat: 58.969975, lon: 5.733107)),
     ]
-    @State private var selectedRoad: Road?
     
     var body: some View {
-        MapView(roads: roads, selectedRoad: selectedRoad)
+        MapView(roads: roads)
     }
 }
 

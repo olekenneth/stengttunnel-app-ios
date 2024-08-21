@@ -10,8 +10,6 @@ import MapKit
 
 struct MarkerView {
     var road: Road
-    @Binding var selectedRoad: Road?
-    @State var lastUpdate = Date.now
     @State private var showPopover = false
     
     var body: some View {
@@ -37,7 +35,6 @@ struct MarkerView {
         }
         .contentShape(Rectangle())
         .onTapGesture {
-            selectedRoad = road
             print("Helo from tap gest")
 
         }
