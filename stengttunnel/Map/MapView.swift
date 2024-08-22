@@ -16,9 +16,10 @@ struct MapView: View {
     @State private var lastUpdated = Date.now
     
     @State private var visibleRegion: MKMapRect?
-    
     @State private var markers: [Road] = []
 
+    @State private var scrollViewContentSize: CGSize = .zero
+    
     func updateRoadInView() {
         markers.removeAll()
         for road in roads {
@@ -28,27 +29,43 @@ struct MapView: View {
             }
         }
     }
-    
-    
+        
     var body: some View {
         VStack {
             Map(initialPosition: .userLocation(fallback: .camera(.init(centerCoordinate:  CLLocationCoordinate2D(latitude:59.66902, longitude: 10.62224), distance: 10000))), selection: $selectedMarker) {
-
                 ForEach(markers) { road in
-                    // MarkerView(road: road).view().tag(1)
-                    Marker(road.roadName, coordinate: CLLocationCoordinate2D(latitude: road.gps.lat, longitude: road.gps.lon)).tag(road.urlFriendly)
+                    MarkerView(road: road).view().tag(road.urlFriendly)
                 }
                 UserAnnotation()
             }
             .safeAreaInset(edge: .bottom) {
                 if let road = selectedRoad {
-                    RoadView(road:road, lastUpdated: $lastUpdated)
+                    ScrollView {
+                        RoadView(road: road, lastUpdated: $lastUpdated)
+                            .background(
+                                GeometryReader { geo -> Color in
+                                    DispatchQueue.main.async {
+                                        print(geo.size)
+                                        scrollViewContentSize = geo.size
+                                    }
+                                    return Color.clear
+                                }
+                            )
+                    }
+                    .frame(
+                        maxHeight: min(scrollViewContentSize.height, UIScreen.main.bounds.height / 2)
+                    )
+                    .background(Color.white)
+                    .cornerRadius(10)
+                    .padding(5)
+                    .shadow(radius: 5)
                 }
+
             }
             .onChange(of: selectedMarker, { oldValue, newValue in
-                if let urlFriendly = selectedMarker {
-                    selectedRoad = Road(roadName: urlFriendly.localizedCapitalized, urlFriendly: urlFriendly, messages: [], gps: GPS(lat: 0, lon: 0))
-                    lastUpdated = Date.now
+                if let urlFriendly = newValue, let road = markers.first(where: { $0.urlFriendly == urlFriendly }) {
+                    selectedRoad = road
+                    lastUpdated = Date()
                 } else {
                     selectedRoad = nil
                     lastUpdated = Date.now
@@ -68,6 +85,7 @@ struct MapView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
     }
+    
 }
 
 struct Preview: View {
