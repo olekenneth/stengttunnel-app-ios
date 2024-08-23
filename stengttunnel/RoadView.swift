@@ -47,7 +47,7 @@ public struct RoadView: View {
     @State var status: Status?
     @Binding var lastUpdated: Date
     @Environment(\.scenePhase) private var scenePhase
-    @State var shouldUpdate: Bool? = true
+    @State var shouldUpdate: Bool = true
     
     func reload() {
         guard shouldUpdate == true else { return }
@@ -61,20 +61,18 @@ public struct RoadView: View {
     
     public var body: some View {
         VStack(alignment: .leading) {
-            if (status != nil) {
-                let statusMessage = status!.statusMessage.replacingOccurrences(of: "Tunnelen", with: road.roadName)
-                ShareLink(item: URL(string: "https://stengttunnel.no/\(road.urlFriendly)")!, preview: SharePreview(statusMessage, image: Image("App"))) {
-                    StatusMessageView(color: status!.status, statusMessage: statusMessage)
-                }
-                if status?.messages != nil && !status!.messages!.isEmpty {
+            if let status {
+                let statusMessage = status.statusMessage.replacingOccurrences(of: "Tunnelen", with: road.roadName)
+                StatusMessageView(color: status.status, statusMessage: statusMessage)
+                if status.messages != nil && !status.messages!.isEmpty {
                     Rectangle()
                         .foregroundColor(Color("lightGray"))
                         .frame(height: 1)
-                    MessageTableView(data: status!.messages!)
+                    MessageTableView(data: status.messages!)
                         .padding([.top, .leading, .bottom])
                 }
             } else {
-                StatusMessageView(color: .yellow, statusMessage: "\(road.roadName) "  + NSLocalizedString("is ...", comment: ""))
+                StatusMessageView(color: .yellow, statusMessage: "\(road.roadName) "  + NSLocalizedString("is ...", comment: ""), disabled: !shouldUpdate)
             }
             
         }
@@ -99,11 +97,14 @@ public struct RoadView: View {
         
         var body: some View {
             ScrollView {
-                RoadView(road: Road(roadName: "Bamletunnelen", urlFriendly: "bamletunnelen", messages: [
-                    Message(source: .svv, message: "Rv. 162 (avkjøringsveg) Hammersborgtunnelen i Oslo i retning mot Filipstad: Vegarbeid, vegen er stengt. Omkjøring er skiltet", validFrom: Date.now, validTo: Date.now.addingTimeInterval(6000)),
+                RoadView(road: Road(roadName: "Bamletunnelen", urlFriendly: "bamletunnelen", messages: [], gps: GPS(lat: 0, lon: 0)), status: Status(statusMessage: "Bamletunnelen er åpen", messages: [
                     Message(source: .svv, message: "Vegarbeid, vegen er stengt. Omkjøring er skiltet", validFrom: Date.now.addingTimeInterval(86400), validTo: Date.now.addingTimeInterval(86400+86400)),
-                ], gps: GPS(lat: 0, lon: 0)), status: nil, lastUpdated: $lastRefreshed)
+                ], status: .green), lastUpdated: $lastRefreshed, shouldUpdate: false)
                 RoadView(road: Road(roadName: "Oslofjordtunnelen", urlFriendly: "oslofjordtunnelen", messages: [], gps: GPS(lat: 0, lon: 0)), status: nil, lastUpdated: $lastRefreshed)
+                RoadView(road: Road(roadName: "Bragernestunnelen", urlFriendly: "bragernestunnelen", messages: [], gps: GPS(lat: 0, lon: 0)), status: Status(statusMessage: "Bragernestunnelen er stengt", messages: [
+                    Message(source: .svv, message: "Vegarbeid, vegen er stengt. Omkjøring er skiltet", validFrom: Date.now.addingTimeInterval(-86400), validTo: Date.now.addingTimeInterval(86400+86400)),
+                    Message(source: .svv, message: "Rv. 162 (avkjøringsveg) Hammersborgtunnelen i Oslo i retning mot Filipstad: Vegarbeid, vegen er stengt. Omkjøring er skiltet", validFrom: Date.now, validTo: Date.now.addingTimeInterval(6000)),
+                ], status: .red), lastUpdated: $lastRefreshed, shouldUpdate: false)
             }.background(Color.lightGray)
         }
     }

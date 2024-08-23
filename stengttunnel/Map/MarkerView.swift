@@ -10,7 +10,6 @@ import MapKit
 
 struct MarkerView {
     var road: Road
-    @State private var showPopover = false
         
     let marker = MKMapItem()
     

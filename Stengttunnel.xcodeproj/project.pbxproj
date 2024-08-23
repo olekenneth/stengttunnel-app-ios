@@ -33,6 +33,7 @@
 		B0C85D332A7A6D07004EC4B8 /* StatusMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C85D322A7A6D07004EC4B8 /* StatusMessageView.swift */; };
 		B0C85D352A7A6F6F004EC4B8 /* RoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C85D342A7A6F6F004EC4B8 /* RoadView.swift */; };
 		B0DC68992C68A7B600213C08 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DC68982C68A7B600213C08 /* LocationManager.swift */; };
+		B0FF51A52C79023E005127FB /* SwipeableRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FF51A42C79023E005127FB /* SwipeableRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -77,6 +78,7 @@
 		B0C85D322A7A6D07004EC4B8 /* StatusMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMessageView.swift; sourceTree = "<group>"; };
 		B0C85D342A7A6F6F004EC4B8 /* RoadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadView.swift; sourceTree = "<group>"; };
 		B0DC68982C68A7B600213C08 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		B0FF51A42C79023E005127FB /* SwipeableRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeableRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 				B0C85D322A7A6D07004EC4B8 /* StatusMessageView.swift */,
 				B0C85D302A7A65CD004EC4B8 /* MessageTableView.swift */,
 				B0B6A6302C653DE00006FD33 /* PlusTeaser.swift */,
+				B0FF51A42C79023E005127FB /* SwipeableRow.swift */,
 				B0C85D342A7A6F6F004EC4B8 /* RoadView.swift */,
 				B08FBAA22A97534E0003D203 /* Dataloader.swift */,
 				B010DE1F2C49ADA8000736B3 /* BannerView.swift */,
@@ -274,6 +277,7 @@
 				B003CBF22C6D48A4007717F6 /* MKCoordinateRegion.swift in Sources */,
 				B0C85D092A7A4FF1004EC4B8 /* TrafficLightView.swift in Sources */,
 				B093F1402C6A9D2D00128194 /* MapView.swift in Sources */,
+				B0FF51A52C79023E005127FB /* SwipeableRow.swift in Sources */,
 				B08428C32C61051400EF23ED /* SubscriptionView.swift in Sources */,
 				B0C85D072A7A4FF1004EC4B8 /* App.swift in Sources */,
 				B08FBAA32A97534E0003D203 /* Dataloader.swift in Sources */,
