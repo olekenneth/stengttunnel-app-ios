@@ -17,9 +17,19 @@ private func saveStore(store: FavoriteStore) {
     }
 }
 
+struct SearchResults {
+    let favorites: [Favorite]
+    let roads: [Road]
+}
+
+enum SortOptions: Equatable, CaseIterable, Identifiable {
+    case distance, name
+    var id: Self { self }
+}
+
 struct RoadList: View {
     var storeManager = StoreManager.shared
-
+    
     @StateObject private var store = FavoriteStore()
     @State private var roads = [Road]()
     @State private var searchText = ""
@@ -28,6 +38,10 @@ struct RoadList: View {
     @State private var showSearch = false
     @State private var lastRefreshed = Date.now
     @State private var showSettings = false
+    @State private var sorted: SortOptions = .name
+    @StateObject var locationManager = LocationManager.shared
+    
+    
     var favorites: [Road] {
         return store.favorites.map { favorite in
             return Road(roadName: favorite.roadName, urlFriendly: favorite.urlFriendly, messages: [], gps: GPS(lat: 0, lon: 0))
@@ -35,12 +49,13 @@ struct RoadList: View {
     }
     
     var width: CGFloat = UIScreen.main.bounds.width
-
+    
     var size: CGSize {
         return GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(width).size
     }
     
     var body: some View {
+        TabView {
             NavigationStack {
                 ScrollView {
                     if $store.favorites.isEmpty {
@@ -59,8 +74,14 @@ struct RoadList: View {
                             })
                     } else {
                         VStack() {
-                            ForEach(favorites, id: \.self.urlFriendly) { favorite in
-                                RoadView(road: favorite, lastUpdated: $lastRefreshed)
+                            ForEach(Array(favorites.enumerated()), id: \.element.urlFriendly) { index, favorite in
+                                let showRoad = storeManager.subscriptionActive || index < 2
+                                if showRoad {
+                                    RoadView(road: favorite, lastUpdated: $lastRefreshed)
+                                } else {
+                                    RoadView(road: favorite, lastUpdated: $lastRefreshed, shouldUpdate: false)
+                                        .blur(radius: 3)
+                                }
                                 if !storeManager.subscriptionActive {
                                     BannerView().frame(height: size.height)
                                     PlusTeaser(showSettings: $showSettings).frame(height: size.height)
@@ -70,72 +91,100 @@ struct RoadList: View {
                         .background(Color("lightGray"))
                     }
                 }.padding(0)
-                .refreshable {
-                    runSearch()
-                    lastRefreshed = Date.now
-                }
-                .searchableOnce(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Choose roads", isPresented: $showSearch)
-                .searchSuggestions {
-                    if searchResults.isEmpty {
-                        HStack {
-                            Text(searchResults.isEmpty && !searchText.isEmpty ? "No result" : "Loading roads. Please wait...")
-                                .font(.headline)
-                            Spacer()
-                        }
+                    .refreshable {
+                        runSearch()
+                        lastRefreshed = Date.now
                     }
-                    ForEach(searchResults) { road in
-                        HStack {
-                            Text(road.roadName)
-                                .font(.headline)
-                            Spacer()
-                            if (store.favorites.contains(where: { favorite in
-                                favorite.urlFriendly == road.urlFriendly
-                            })) {
-                                Image(systemName: "checkmark")
-                            } else {
-                                Image(systemName: "plus")
+                    .searchableOnce(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Choose roads", isPresented: $showSearch)
+                    .searchSuggestions {
+                        if locationManager.location != nil {
+                            HStack {
+                                Text("Sort by")
+                                Spacer()
+                                Picker("Sort by", selection: $sorted) {
+                                    Text("Name").tag(SortOptions.name)
+                                    HStack {
+                                        Text("Distance")
+                                        Image(systemName: "location")
+                                    }.tag(SortOptions.distance)
+                                }
+                                .onChange(of: sorted) { _, newValue in
+                                    if newValue == .distance  {
+                                        locationManager.updateLocation()
+                                    }
+                                }
+                            }
+                            .listRowSeparator(.hidden)
+                        } else {
+                            HStack(alignment: .top) {
+                                Image(systemName: "location.circle")
+                                Text("Sort by distance")
+                                Spacer()
+                            }
+                            .listRowSeparator(.hidden)
+                            .contentShape(Rectangle())
+                            .onTapGesture {
+                                sorted = .distance
+                                locationManager.updateLocation()
                             }
                         }
-                        .onTapGesture {
-                            if !storeManager.subscriptionActive && !(store.favorites.contains(where: { favorite in
-                                favorite.urlFriendly == road.urlFriendly
-                            })) && store.favorites.count > 1 {
-                                showSearch = false
-                                showSettings = true
-
-                                return
+                        if !searchResults.favorites.isEmpty {
+                            Section {
+                                ForEach(searchResults.favorites) { favorite in
+                                    let road = Road(roadName: favorite.roadName, urlFriendly: favorite.urlFriendly, messages: [], gps: GPS(lat: 0, lon: 0), distance: 0)
+                                    SearchResultItem(road: road, isFavorite: true) {
+                                        store.toggle(road: favorite)
+                                        store.save(favorites: store.favorites)
+                                    }
+                                }
+                            } header: {
+                                Text("Favorites")
                             }
-                            store.toggle(road: Favorite(roadName: road.roadName, urlFriendly: road.urlFriendly))
-                            store.save(favorites: store.favorites)
+                        }
+                        Section {
+                            ForEach(searchResults.roads) { road in
+                                SearchResultItem(road: road, isFavorite: false) {
+                                    if !storeManager.subscriptionActive && store.favorites.count > 1 {
+                                        showSearch = false
+                                        searchText = ""
+                                        showSettings = true
+                                        
+                                        return
+                                    }
+                                    store.toggle(road: Favorite(roadName: road.roadName, urlFriendly: road.urlFriendly))
+                                    store.save(favorites: store.favorites)
+                                }
+                            }
+                            if searchResults.roads.isEmpty {
+                                HStack {
+                                    Text(searchResults.roads.isEmpty && !searchText.isEmpty ? "No result" : "Loading roads. Please wait...")
+                                        .font(.headline)
+                                    Spacer()
+                                }
+                            }
+                        } header: {
+                            Text("Roads")
                         }
                     }
-                }
-                .toolbarTitleDisplayMode(.inlineLarge)
-                .navigationTitle(Text("Stengt tunnel"))
-                .toolbar {
-                    ToolbarItem(placement: .topBarTrailing) {
-                        Button("Settings", systemImage: "person.circle", role: .destructive) {
-                            showSettings = !showSettings
-                        }
-                    }
-                }
-                .sheet(isPresented: $showSettings) {
-                    NavigationView {
-                        ScrollView {
-                            SubscriptionView()
-                        }
-                        .navigationTitle("Settings")
-                        .navigationBarTitleDisplayMode(.large)
-                        .toolbar {
-                            ToolbarItem {
-                                Button("Done") {
-                                    showSettings = false
+                    .toolbarTitleDisplayMode(.inlineLarge)
+                    .navigationTitle(Text("Stengt tunnel"))
+                    .sheet(isPresented: $showSettings) {
+                        NavigationView {
+                            ScrollView {
+                                SubscriptionView()
+                            }
+                            .navigationTitle("Settings")
+                            .navigationBarTitleDisplayMode(.large)
+                            .toolbar {
+                                ToolbarItem {
+                                    Button("Done") {
+                                        showSettings = false
+                                    }
                                 }
                             }
                         }
                     }
-                }
-
+                
             }
             .onChange(of: scenePhase) { oldPhase, phase in
                 if phase == .inactive {
@@ -159,7 +208,13 @@ struct RoadList: View {
                     }
                 }
             }
+            .tabItem { Label("Roads", systemImage: "list.dash") }
+            
+            MapView(roads: roads).tabItem { Label("Map", systemImage: "map") }
+            
+            SubscriptionView().tabItem { Label("User", systemImage: "person.circle") }
         }
+    }
     
     func runSearch() {
         if isSearching {
@@ -178,21 +233,30 @@ struct RoadList: View {
         }
     }
     
-    var searchResults: [Road] {
-        if searchText.isEmpty {
-            var allRoads = roads
-            let allFavorties = store.favorites.map { favorite in
-                allRoads.removeAll { road in
-                    road.urlFriendly == favorite.urlFriendly
-                }
-                return Road(roadName: favorite.roadName, urlFriendly: favorite.urlFriendly, messages: [], gps: GPS(lat: 0, lon: 0))
-            }.sorted(by: { roadA, roadB  in
-                return roadA.roadName < roadB.roadName
+    var searchResults: SearchResults {
+        var allRoads = roads
+        
+        if let _ = locationManager.location {
+            allRoads = locationManager.sortLocationsByDistance(locations: allRoads)
+        }
+        
+        if sorted == .name {
+            allRoads = allRoads.sorted(by: { r1, r2 in
+                return r1.roadName < r2.roadName
             })
-            return allFavorties + allRoads
-            
+        }
+        
+        let allFavorties = store.favorites.map { favorite in
+            allRoads.removeAll { road in
+                road.urlFriendly == favorite.urlFriendly
+            }
+            return favorite
+        }
+        
+        if searchText.isEmpty {
+            return SearchResults(favorites: allFavorties, roads: allRoads)
         } else {
-            return roads.filter { $0.roadName.localizedCaseInsensitiveContains(searchText) }
+            return SearchResults(favorites: allFavorties.filter {$0.roadName.localizedCaseInsensitiveContains(searchText) }, roads: allRoads.filter { $0.roadName.localizedCaseInsensitiveContains(searchText) })
         }
     }
 }

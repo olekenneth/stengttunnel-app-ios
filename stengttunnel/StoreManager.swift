@@ -109,8 +109,7 @@ class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate, SKPay
     }
     
     func requestDidFinish(_ request: SKRequest) {
-        print("Request did Finish")
-        print(request)
+        // Do nothing
     }
     
     func request(_ request: SKRequest, didFailWithError error: Error) {
@@ -126,10 +125,6 @@ class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate, SKPay
             print("No products received!")
             return
         }
-
-        print("Yey")
-        print(response)
-        print(response.products)
                 
         DispatchQueue.main.async {
             self.products = response.products

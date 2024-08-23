@@ -7,23 +7,28 @@
 
 import SwiftUI
 
-struct Road: Identifiable, Codable {
+struct Road: Identifiable, Codable, Equatable {
+    static func == (lhs: Road, rhs: Road) -> Bool {
+        lhs.roadName == rhs.roadName
+    }
+    
     var id: String { urlFriendly }
     let roadName: String
     let urlFriendly: String
     let messages: [Message]
     let gps: GPS
+    var distance: Double? = 0.0
+}
+
+struct GPS: Codable {
+    var lat: Double
+    var lon: Double
 }
 
 enum StatusType: String, Codable {
     case green = "green"
     case yellow = "yellow"
     case red = "red"
-}
-
-struct GPS: Codable {
-    var lat: Float
-    var lon: Float
 }
 
 struct Status: Identifiable, Codable {
@@ -42,8 +47,10 @@ public struct RoadView: View {
     @State var status: Status?
     @Binding var lastUpdated: Date
     @Environment(\.scenePhase) private var scenePhase
+    @State var shouldUpdate: Bool? = true
     
     func reload() {
+        guard shouldUpdate == true else { return }
         self.status = nil
         print("Reloading for \(road.roadName)")
         Dataloader.shared.loadRoad(road: road.urlFriendly) { status in

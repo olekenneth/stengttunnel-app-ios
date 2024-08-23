@@ -7,17 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B003CBF22C6D48A4007717F6 /* MKCoordinateRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B003CBF12C6D48A3007717F6 /* MKCoordinateRegion.swift */; };
 		B010DE1A2C49993F000736B3 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B010DE192C49993F000736B3 /* Localizable.xcstrings */; };
 		B010DE1C2C49A884000736B3 /* BannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B010DE1B2C49A884000736B3 /* BannerViewController.swift */; };
 		B010DE202C49ADA8000736B3 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B010DE1F2C49ADA8000736B3 /* BannerView.swift */; };
 		B02B8E4E2A7ED45C007E783E /* FavoriteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02B8E4D2A7ED45C007E783E /* FavoriteStore.swift */; };
 		B02C30A22C60DF77001098B7 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = B02C30A12C60DF77001098B7 /* GoogleMobileAds */; };
+		B04311C72C6CCC33007FA564 /* MarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04311C62C6CCC33007FA564 /* MarkerView.swift */; };
 		B044C9722C615D2B007846BF /* TPInAppReceipt in Frameworks */ = {isa = PBXBuildFile; productRef = B044C9712C615D2B007846BF /* TPInAppReceipt */; };
 		B07C26C82A7EE38F006139AA /* SearchableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07C26C72A7EE38F006139AA /* SearchableView.swift */; };
 		B08428BF2C6103E900EF23ED /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B08428BE2C6103E900EF23ED /* StoreKit.framework */; };
 		B08428C12C61040F00EF23ED /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08428C02C61040F00EF23ED /* StoreManager.swift */; };
 		B08428C32C61051400EF23ED /* SubscriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08428C22C61051400EF23ED /* SubscriptionView.swift */; };
 		B08FBAA32A97534E0003D203 /* Dataloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08FBAA22A97534E0003D203 /* Dataloader.swift */; };
+		B093F13C2C6A181400128194 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = B093F13B2C6A181400128194 /* Double.swift */; };
+		B093F13E2C6A2DBD00128194 /* SearchResultItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B093F13D2C6A2DBD00128194 /* SearchResultItem.swift */; };
+		B093F1402C6A9D2D00128194 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B093F13F2C6A9D2D00128194 /* MapView.swift */; };
 		B0B6A62F2C6538590006FD33 /* RoadList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B6A62E2C6538590006FD33 /* RoadList.swift */; };
 		B0B6A6312C653DE00006FD33 /* PlusTeaser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B6A6302C653DE00006FD33 /* PlusTeaser.swift */; };
 		B0C85D072A7A4FF1004EC4B8 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C85D062A7A4FF1004EC4B8 /* App.swift */; };
@@ -27,6 +32,7 @@
 		B0C85D312A7A65CD004EC4B8 /* MessageTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C85D302A7A65CD004EC4B8 /* MessageTableView.swift */; };
 		B0C85D332A7A6D07004EC4B8 /* StatusMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C85D322A7A6D07004EC4B8 /* StatusMessageView.swift */; };
 		B0C85D352A7A6F6F004EC4B8 /* RoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C85D342A7A6F6F004EC4B8 /* RoadView.swift */; };
+		B0DC68992C68A7B600213C08 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DC68982C68A7B600213C08 /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -43,6 +49,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B003CBF12C6D48A3007717F6 /* MKCoordinateRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKCoordinateRegion.swift; sourceTree = "<group>"; };
 		B0091CF42C49B1B100AAB060 /* swift-package-manager-google-mobile-ads */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "swift-package-manager-google-mobile-ads"; path = "/Users/olekenneth/Library/Developer/Xcode/DerivedData/Stengt_Tunnel-duwtnpagzamklmfczdefsimwbqpq/SourcePackages/checkouts/swift-package-manager-google-mobile-ads"; sourceTree = "<absolute>"; };
 		B010DE032C486893000736B3 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		B010DE192C49993F000736B3 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
@@ -50,11 +57,15 @@
 		B010DE1E2C49AA28000736B3 /* Stengt-tunnel-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Stengt-tunnel-Info.plist"; sourceTree = SOURCE_ROOT; };
 		B010DE1F2C49ADA8000736B3 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
 		B02B8E4D2A7ED45C007E783E /* FavoriteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteStore.swift; sourceTree = "<group>"; };
+		B04311C62C6CCC33007FA564 /* MarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkerView.swift; sourceTree = "<group>"; };
 		B07C26C72A7EE38F006139AA /* SearchableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchableView.swift; sourceTree = "<group>"; };
 		B08428BE2C6103E900EF23ED /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B08428C02C61040F00EF23ED /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
 		B08428C22C61051400EF23ED /* SubscriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionView.swift; sourceTree = "<group>"; };
 		B08FBAA22A97534E0003D203 /* Dataloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dataloader.swift; sourceTree = "<group>"; };
+		B093F13B2C6A181400128194 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
+		B093F13D2C6A2DBD00128194 /* SearchResultItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultItem.swift; sourceTree = "<group>"; };
+		B093F13F2C6A9D2D00128194 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		B0B6A62E2C6538590006FD33 /* RoadList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadList.swift; sourceTree = "<group>"; };
 		B0B6A6302C653DE00006FD33 /* PlusTeaser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusTeaser.swift; sourceTree = "<group>"; };
 		B0C85D032A7A4FF1004EC4B8 /* Stengt tunnel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stengt tunnel.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,6 +76,7 @@
 		B0C85D302A7A65CD004EC4B8 /* MessageTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableView.swift; sourceTree = "<group>"; };
 		B0C85D322A7A6D07004EC4B8 /* StatusMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMessageView.swift; sourceTree = "<group>"; };
 		B0C85D342A7A6F6F004EC4B8 /* RoadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadView.swift; sourceTree = "<group>"; };
+		B0DC68982C68A7B600213C08 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +103,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B04311C52C6CCC16007FA564 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				B093F13F2C6A9D2D00128194 /* MapView.swift */,
+				B04311C62C6CCC33007FA564 /* MarkerView.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
 		B08FBAAA2A9897020003D203 /* Translations */ = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +125,8 @@
 			children = (
 				B07C26C72A7EE38F006139AA /* SearchableView.swift */,
 				B010DE1B2C49A884000736B3 /* BannerViewController.swift */,
+				B093F13B2C6A181400128194 /* Double.swift */,
+				B003CBF12C6D48A3007717F6 /* MKCoordinateRegion.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -131,6 +154,7 @@
 				B010DE1E2C49AA28000736B3 /* Stengt-tunnel-Info.plist */,
 				B0C85D062A7A4FF1004EC4B8 /* App.swift */,
 				B0B6A62E2C6538590006FD33 /* RoadList.swift */,
+				B04311C52C6CCC16007FA564 /* Map */,
 				B02B8E4D2A7ED45C007E783E /* FavoriteStore.swift */,
 				B0C85D082A7A4FF1004EC4B8 /* TrafficLightView.swift */,
 				B0C85D322A7A6D07004EC4B8 /* StatusMessageView.swift */,
@@ -140,6 +164,8 @@
 				B08FBAA22A97534E0003D203 /* Dataloader.swift */,
 				B010DE1F2C49ADA8000736B3 /* BannerView.swift */,
 				B08428C22C61051400EF23ED /* SubscriptionView.swift */,
+				B093F13D2C6A2DBD00128194 /* SearchResultItem.swift */,
+				B0DC68982C68A7B600213C08 /* LocationManager.swift */,
 				B08428C02C61040F00EF23ED /* StoreManager.swift */,
 				B0C4908B2AC6C277006145A6 /* Extensions */,
 				B0C85D0A2A7A4FF2004EC4B8 /* Assets.xcassets */,
@@ -240,12 +266,18 @@
 			files = (
 				B010DE202C49ADA8000736B3 /* BannerView.swift in Sources */,
 				B07C26C82A7EE38F006139AA /* SearchableView.swift in Sources */,
+				B093F13C2C6A181400128194 /* Double.swift in Sources */,
+				B0DC68992C68A7B600213C08 /* LocationManager.swift in Sources */,
 				B0C85D312A7A65CD004EC4B8 /* MessageTableView.swift in Sources */,
+				B04311C72C6CCC33007FA564 /* MarkerView.swift in Sources */,
 				B08428C12C61040F00EF23ED /* StoreManager.swift in Sources */,
+				B003CBF22C6D48A4007717F6 /* MKCoordinateRegion.swift in Sources */,
 				B0C85D092A7A4FF1004EC4B8 /* TrafficLightView.swift in Sources */,
+				B093F1402C6A9D2D00128194 /* MapView.swift in Sources */,
 				B08428C32C61051400EF23ED /* SubscriptionView.swift in Sources */,
 				B0C85D072A7A4FF1004EC4B8 /* App.swift in Sources */,
 				B08FBAA32A97534E0003D203 /* Dataloader.swift in Sources */,
+				B093F13E2C6A2DBD00128194 /* SearchResultItem.swift in Sources */,
 				B02B8E4E2A7ED45C007E783E /* FavoriteStore.swift in Sources */,
 				B0B6A62F2C6538590006FD33 /* RoadList.swift in Sources */,
 				B0C85D352A7A6F6F004EC4B8 /* RoadView.swift in Sources */,
@@ -403,7 +435,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.4;
+				MARKETING_VERSION = 2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.adapptic.Stengt-Tunnel";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -438,7 +470,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.4;
+				MARKETING_VERSION = 2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.adapptic.Stengt-Tunnel";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
