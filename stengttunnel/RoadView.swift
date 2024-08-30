@@ -60,7 +60,7 @@ public struct RoadView: View {
     }
     
     public var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 0) {
             if let status {
                 let statusMessage = status.statusMessage.replacingOccurrences(of: "Tunnelen", with: road.roadName)
                 StatusMessageView(color: status.status, statusMessage: statusMessage)

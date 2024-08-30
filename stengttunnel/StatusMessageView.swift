@@ -13,8 +13,7 @@ struct StatusMessageView: View {
     var disabled = false
     
     var body: some View {
-        let view = HStack {
-            HStack(alignment: .center) {
+        let view = HStack(alignment: .center) {
                 TrafficLightView(color: color)
                 Text(LocalizedStringKey(statusMessage))
                     .multilineTextAlignment(.leading)
@@ -25,7 +24,6 @@ struct StatusMessageView: View {
             }
             .padding()
             .blur(radius: disabled ? 3 : 0)
-        }
         if disabled {
             view
         } else {
@@ -70,10 +68,18 @@ struct StatusMessageView: View {
 
 struct StatusMessageView_Previews: PreviewProvider {
     static var previews: some View {
-        ScrollView() {
+        List() {
             StatusMessageView(color: .green, statusMessage: "Oslofjordtunnelen ser ut til å være åpen.")
+                .border(.blue)
+            .listRowInsets(EdgeInsets())
             StatusMessageView(color: .red, statusMessage: "Hammersborgtunnelen ser ut til å være stengt. Rødt lys kan bety at veien/tunnelen er stengt nå, men les meldingene under for nærmere informasjon.")
+                .border(.red)
+            .listRowInsets(EdgeInsets())
+
             StatusMessageView(color: .red, statusMessage: "Hammersborgtunnelen ser ut til å være stengt. Rødt lys kan bety at veien/tunnelen er stengt nå, men les meldingene under for nærmere informasjon.", disabled: true)
+                .listRowInsets(EdgeInsets())
+
         }
+        .listStyle(.plain)
     }
 }
