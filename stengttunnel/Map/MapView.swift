@@ -55,7 +55,7 @@ struct MapView: View {
                     .frame(
                         maxHeight: min(scrollViewContentSize.height, UIScreen.main.bounds.height / 2)
                     )
-                    .background(Color.white)
+                    .background(Color(.systemBackground))
                     .cornerRadius(10)
                     .padding(5)
                     .shadow(radius: 5)
