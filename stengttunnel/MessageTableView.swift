@@ -7,20 +7,6 @@
 
 import SwiftUI
 
-enum SourceType: String, Codable {
-    case svv = "Statens Vegvesen"
-    case user = "Brukerinnmeldt"
-}
-
-struct Message: Identifiable, Codable {
-    var id: UUID { UUID() }
-    var type: String?
-    var source: SourceType
-    var message: String
-    var validFrom: Date
-    var validTo: Date
-}
-
 struct MessageTableView: View {
     @State var data: [Message]
 

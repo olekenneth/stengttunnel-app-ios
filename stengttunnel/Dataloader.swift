@@ -6,6 +6,56 @@
 //
 
 import Foundation
+import SwiftUI
+
+enum SourceType: String, Codable {
+    case svv = "Statens Vegvesen"
+    case user = "Brukerinnmeldt"
+}
+
+struct Message: Identifiable, Codable {
+    var id: UUID { UUID() }
+    var type: String?
+    var source: SourceType
+    var message: String
+    var validFrom: Date
+    var validTo: Date
+}
+
+struct Road: Identifiable, Codable, Equatable {
+    static func == (lhs: Road, rhs: Road) -> Bool {
+        lhs.roadName == rhs.roadName
+    }
+    
+    var id: String { urlFriendly }
+    let roadName: String
+    let urlFriendly: String
+    let messages: [Message]
+    let gps: GPS
+    var distance: Double? = 0.0
+}
+
+struct GPS: Codable {
+    var lat: Double
+    var lon: Double
+}
+
+enum StatusType: String, Codable {
+    case green = "green"
+    case yellow = "yellow"
+    case red = "red"
+}
+
+struct Status: Identifiable, Codable {
+    var id: UUID { UUID() }
+    var statusMessage: String
+    var messages: [Message]?
+    var status: StatusType
+    var localizedStatusMessage: LocalizedStringKey {
+        return LocalizedStringKey(statusMessage)
+    }
+    // var gps: GPS
+}
 
 class Dataloader {
     static var shared = Dataloader()
