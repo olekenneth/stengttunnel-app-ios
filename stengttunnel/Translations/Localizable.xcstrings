@@ -72,6 +72,9 @@
         }
       }
     },
+    "Del" : {
+
+    },
     "Distance" : {
       "localizations" : {
         "nb" : {
@@ -132,6 +135,9 @@
           }
         }
       }
+    },
+    "Meld inn" : {
+
     },
     "month" : {
       "extractionState" : "manual",
@@ -259,6 +265,9 @@
           }
         }
       }
+    },
+    "Tunnelen er åpen" : {
+
     },
     "User" : {
       "localizations" : {
