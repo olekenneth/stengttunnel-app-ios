@@ -112,6 +112,7 @@ struct SwipeableRow<Content: View, Buttons: View>: View {
                             } else {
                                 offset = max(min(value.translation.width, 0), -maxButtonWidth * 1.5)
                             }
+                            buttonWidth = -offset
                         }
                         .onEnded { value in
                             if value.translation.width <= -maxButtonWidth / 2 {
