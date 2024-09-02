@@ -16,8 +16,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B0649EA52C825424001E648E"
-               BuildableName = "Stengt tunnel watch Watch App.app"
-               BlueprintName = "Stengt tunnel watch Watch App"
+               BuildableName = "Stengt tunnel.app"
+               BlueprintName = "Stengt tunnel Watch App"
                ReferencedContainer = "container:Stengttunnel.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,8 +45,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B0649EA52C825424001E648E"
-            BuildableName = "Stengt tunnel watch Watch App.app"
-            BlueprintName = "Stengt tunnel watch Watch App"
+            BuildableName = "Stengt tunnel.app"
+            BlueprintName = "Stengt tunnel Watch App"
             ReferencedContainer = "container:Stengttunnel.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -62,8 +62,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B0649EA52C825424001E648E"
-            BuildableName = "Stengt tunnel watch Watch App.app"
-            BlueprintName = "Stengt tunnel watch Watch App"
+            BuildableName = "Stengt tunnel.app"
+            BlueprintName = "Stengt tunnel Watch App"
             ReferencedContainer = "container:Stengttunnel.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

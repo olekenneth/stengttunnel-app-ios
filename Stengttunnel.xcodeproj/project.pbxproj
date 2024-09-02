@@ -21,9 +21,8 @@
 		B0649EAB2C825424001E648E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0649EAA2C825424001E648E /* ContentView.swift */; };
 		B0649EAD2C825425001E648E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0649EAC2C825425001E648E /* Assets.xcassets */; };
 		B0649EB02C825425001E648E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0649EAF2C825425001E648E /* Preview Assets.xcassets */; };
-		B0649EB32C825425001E648E /* Stengt tunnel watch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = B0649EA62C825424001E648E /* Stengt tunnel watch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B0649EB32C825425001E648E /* Stengt tunnel.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = B0649EA62C825424001E648E /* Stengt tunnel.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B0649EB82C825459001E648E /* StatusMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C85D322A7A6D07004EC4B8 /* StatusMessageView.swift */; };
-		B0649EB92C825459001E648E /* Dataloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08FBAA22A97534E0003D203 /* Dataloader.swift */; };
 		B0649EBA2C825459001E648E /* FavoriteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02B8E4D2A7ED45C007E783E /* FavoriteStore.swift */; };
 		B0649EBB2C825496001E648E /* TrafficLightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C85D082A7A4FF1004EC4B8 /* TrafficLightView.swift */; };
 		B0649EBC2C82551A001E648E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0C85D0A2A7A4FF2004EC4B8 /* Assets.xcassets */; };
@@ -44,6 +43,7 @@
 		B0C85D312A7A65CD004EC4B8 /* MessageTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C85D302A7A65CD004EC4B8 /* MessageTableView.swift */; };
 		B0C85D332A7A6D07004EC4B8 /* StatusMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C85D322A7A6D07004EC4B8 /* StatusMessageView.swift */; };
 		B0C85D352A7A6F6F004EC4B8 /* RoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C85D342A7A6F6F004EC4B8 /* RoadView.swift */; };
+		B0DADC092C830494007D689D /* Dataloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08FBAA22A97534E0003D203 /* Dataloader.swift */; };
 		B0DC68992C68A7B600213C08 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DC68982C68A7B600213C08 /* LocationManager.swift */; };
 		B0F2540E2C8B0AB0004E77E7 /* CarPlaySceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F2540D2C8B0AB0004E77E7 /* CarPlaySceneDelegate.swift */; };
 /* End PBXBuildFile section */
@@ -75,7 +75,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				B0649EB32C825425001E648E /* Stengt tunnel watch Watch App.app in Embed Watch Content */,
+				B0649EB32C825425001E648E /* Stengt tunnel.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -92,7 +92,7 @@
 		B010DE1F2C49ADA8000736B3 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
 		B02B8E4D2A7ED45C007E783E /* FavoriteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteStore.swift; sourceTree = "<group>"; };
 		B04311C62C6CCC33007FA564 /* MarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkerView.swift; sourceTree = "<group>"; };
-		B0649EA62C825424001E648E /* Stengt tunnel watch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stengt tunnel watch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0649EA62C825424001E648E /* Stengt tunnel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stengt tunnel.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0649EA82C825424001E648E /* Stengt_tunnel_watchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stengt_tunnel_watchApp.swift; sourceTree = "<group>"; };
 		B0649EAA2C825424001E648E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B0649EAC2C825425001E648E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -213,7 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				B0C85D032A7A4FF1004EC4B8 /* Stengt tunnel.app */,
-				B0649EA62C825424001E648E /* Stengt tunnel watch Watch App.app */,
+				B0649EA62C825424001E648E /* Stengt tunnel.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -265,9 +265,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B0649EA52C825424001E648E /* Stengt tunnel watch Watch App */ = {
+		B0649EA52C825424001E648E /* Stengt tunnel Watch App */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B0649EB72C825425001E648E /* Build configuration list for PBXNativeTarget "Stengt tunnel watch Watch App" */;
+			buildConfigurationList = B0649EB72C825425001E648E /* Build configuration list for PBXNativeTarget "Stengt tunnel Watch App" */;
 			buildPhases = (
 				B0649EA22C825424001E648E /* Sources */,
 				B0649EA32C825424001E648E /* Frameworks */,
@@ -277,9 +277,9 @@
 			);
 			dependencies = (
 			);
-			name = "Stengt tunnel watch Watch App";
+			name = "Stengt tunnel Watch App";
 			productName = "Stengt tunnel watch Watch App";
-			productReference = B0649EA62C825424001E648E /* Stengt tunnel watch Watch App.app */;
+			productReference = B0649EA62C825424001E648E /* Stengt tunnel.app */;
 			productType = "com.apple.product-type.application";
 		};
 		B0C85D022A7A4FF1004EC4B8 /* Stengt tunnel */ = {
@@ -343,7 +343,7 @@
 			projectRoot = "";
 			targets = (
 				B0C85D022A7A4FF1004EC4B8 /* Stengt tunnel */,
-				B0649EA52C825424001E648E /* Stengt tunnel watch Watch App */,
+				B0649EA52C825424001E648E /* Stengt tunnel Watch App */,
 			);
 		};
 /* End PBXProject section */
@@ -380,8 +380,8 @@
 				B01A49542C8256A000172146 /* MessageTableView.swift in Sources */,
 				B01A49532C82567800172146 /* RoadView.swift in Sources */,
 				B0649EBB2C825496001E648E /* TrafficLightView.swift in Sources */,
+				B0DADC092C830494007D689D /* Dataloader.swift in Sources */,
 				B0649EB82C825459001E648E /* StatusMessageView.swift in Sources */,
-				B0649EB92C825459001E648E /* Dataloader.swift in Sources */,
 				B0649EBA2C825459001E648E /* FavoriteStore.swift in Sources */,
 				B0649EA92C825424001E648E /* Stengt_tunnel_watchApp.swift in Sources */,
 			);
@@ -420,7 +420,7 @@
 /* Begin PBXTargetDependency section */
 		B0649EB22C825425001E648E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B0649EA52C825424001E648E /* Stengt tunnel watch Watch App */;
+			target = B0649EA52C825424001E648E /* Stengt tunnel Watch App */;
 			targetProxy = B0649EB12C825425001E648E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -431,6 +431,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Stengt tunnel watch Watch App/Preview Content\"";
@@ -438,7 +439,6 @@
 				ENABLE_PREVIEWS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Stengt tunnel watch";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.adapptic.Stengt-Tunnel";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -447,7 +447,8 @@
 				);
 				MARKETING_VERSION = 2.6;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.adapptic.Stengt-Tunnel.watchkitapp";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Stengt tunnel";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
@@ -463,6 +464,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Stengt tunnel watch Watch App/Preview Content\"";
@@ -470,7 +472,6 @@
 				ENABLE_PREVIEWS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Stengt tunnel watch";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.adapptic.Stengt-Tunnel";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -479,7 +480,8 @@
 				);
 				MARKETING_VERSION = 2.6;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.adapptic.Stengt-Tunnel.watchkitapp";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Stengt tunnel";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -686,7 +688,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B0649EB72C825425001E648E /* Build configuration list for PBXNativeTarget "Stengt tunnel watch Watch App" */ = {
+		B0649EB72C825425001E648E /* Build configuration list for PBXNativeTarget "Stengt tunnel Watch App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B0649EB52C825425001E648E /* Debug */,
