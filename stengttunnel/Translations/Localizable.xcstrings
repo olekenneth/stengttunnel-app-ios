@@ -21,6 +21,16 @@
         }
       }
     },
+    "Buy Stengt tunnel+" : {
+      "localizations" : {
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kjøp Stengt tunnel+"
+          }
+        }
+      }
+    },
     "By subscribing to Stengt tunnel+, you'll enjoy an **ad-free experience** and the ability to **add more than two roads**." : {
       "localizations" : {
         "nb" : {
