@@ -14,6 +14,7 @@ protocol BannerViewControllerWidthDelegate: AnyObject {
 
 struct BannerView: UIViewControllerRepresentable {
     @State private var viewWidth: CGFloat = .zero
+    @State var adSize = GADAdSizeLargeBanner
     private let bannerView = GADBannerView()
     private let adUnitID = "ca-app-pub-8133897183984535/3599635240"
     
@@ -30,8 +31,8 @@ struct BannerView: UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
         guard viewWidth != .zero else { return }
         // Request a banner ad with the updated viewWidth.   
-        print("Loading ads with \(viewWidth)")
-        bannerView.adSize = GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(viewWidth)
+        print("Loading ads with \(viewWidth) adSize \(adSize)")
+        bannerView.adSize = adSize
         bannerView.load(GADRequest())
     }
     
@@ -65,5 +66,10 @@ struct BannerView: UIViewControllerRepresentable {
 // }
 
 #Preview {
-    BannerView()
+    ScrollView {
+        let size = GADAdSizeLargeBanner.size
+        BannerView().frame(width: size.width, height: size.height)
+        BannerView().frame(width: size.width, height: size.height)
+    }
+    
 }

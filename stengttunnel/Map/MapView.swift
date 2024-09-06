@@ -31,11 +31,7 @@ struct MapView: View {
         }
     }
     
-    var width: CGFloat = UIScreen.main.bounds.width
-    
-    var size: CGSize {
-        return GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(width).size
-    }
+    var adSize = GADAdSizeMediumRectangle
         
     var body: some View {
         VStack {
@@ -49,7 +45,7 @@ struct MapView: View {
                 if let road = selectedRoad {
                     ScrollView {
                         VStack {
-                            BannerView().frame(width: scrollViewContentSize.width, height: size.height).border(.blue)
+                            BannerView(adSize: adSize).frame(width: adSize.size.width, height: adSize.size.height).border(.blue)
                             RoadView(road: road, lastUpdated: $lastUpdated)
                                 .background(
                                     GeometryReader { geo -> Color in

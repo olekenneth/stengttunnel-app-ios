@@ -50,10 +50,8 @@ struct RoadList: View {
     
     var width: CGFloat = UIScreen.main.bounds.width
     
-    var size: CGSize {
-        return GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(width).size
-    }
-    
+    var adSize = GADAdSizeMediumRectangle
+        
     var body: some View {
         TabView {
             NavigationStack {
@@ -83,8 +81,8 @@ struct RoadList: View {
                                         .blur(radius: 3)
                                 }
                                 if !storeManager.subscriptionActive {
-                                    BannerView().frame(height: size.height)
-                                    PlusTeaser(showSettings: $showSettings).frame(height: size.height)
+                                    PlusTeaser(showSettings: $showSettings)
+                                    BannerView(adSize: adSize).frame(width: adSize.size.width, height: adSize.size.height)
                                 }
                             }
                         }
