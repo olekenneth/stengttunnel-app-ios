@@ -7,6 +7,7 @@
 
 import SwiftUI
 import MapKit
+import GoogleMobileAds
 
 struct MapView: View {
     var roads: [Road]
@@ -29,6 +30,12 @@ struct MapView: View {
             }
         }
     }
+    
+    var width: CGFloat = UIScreen.main.bounds.width
+    
+    var size: CGSize {
+        return GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(width).size
+    }
         
     var body: some View {
         VStack {
@@ -41,16 +48,19 @@ struct MapView: View {
             .safeAreaInset(edge: .bottom) {
                 if let road = selectedRoad {
                     ScrollView {
-                        RoadView(road: road, lastUpdated: $lastUpdated)
-                            .background(
-                                GeometryReader { geo -> Color in
-                                    DispatchQueue.main.async {
-                                        print(geo.size)
-                                        scrollViewContentSize = geo.size
+                        VStack {
+                            BannerView().frame(width: scrollViewContentSize.width, height: size.height).border(.blue)
+                            RoadView(road: road, lastUpdated: $lastUpdated)
+                                .background(
+                                    GeometryReader { geo -> Color in
+                                        DispatchQueue.main.async {
+                                            print(geo.size)
+                                            scrollViewContentSize = geo.size
+                                        }
+                                        return Color.clear
                                     }
-                                    return Color.clear
-                                }
-                            )
+                                )
+                        }
                     }
                     .frame(
                         maxHeight: min(scrollViewContentSize.height, UIScreen.main.bounds.height / 2)
