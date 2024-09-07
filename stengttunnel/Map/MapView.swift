@@ -11,15 +11,26 @@ import GoogleMobileAds
 
 struct MapView: View {
     var roads: [Road]
-    var locationManager = LocationManager.shared
+    let locationManager = LocationManager.shared
+    let storeManager = StoreManager.shared
+    
     @State private var selectedMarker: String?
     @State private var selectedRoad: Road?
     @State private var lastUpdated = Date.now
     
     @State private var visibleRegion: MKMapRect?
     @State private var markers: [Road] = []
+    @State private var scrollViewContentSize: CGSize = CGSize(width: .zero, height: UIScreen.main.bounds.height / 2)
 
-    @State private var scrollViewContentSize: CGSize = .zero
+    let screenSize = UIScreen.main.bounds.height / 2
+    let adSize = GADAdSizeBanner
+
+    func getMaxSize() -> CGFloat {
+        if !storeManager.subscriptionActive {
+            return screenSize - adSize.size.height
+        }
+        return screenSize
+    }
     
     func updateRoadInView() {
         markers.removeAll()
@@ -31,7 +42,6 @@ struct MapView: View {
         }
     }
     
-    var adSize = GADAdSizeMediumRectangle
         
     var body: some View {
         VStack {
@@ -42,29 +52,30 @@ struct MapView: View {
                 UserAnnotation()
             }
             .safeAreaInset(edge: .bottom) {
-                if let road = selectedRoad {
-                    ScrollView {
-                        VStack {
-                            BannerView(adSize: adSize).frame(width: adSize.size.width, height: adSize.size.height).border(.blue)
+                VStack {
+                    if !storeManager.subscriptionActive {
+                        BannerView(adSize: adSize).frame(width: adSize.size.width, height: adSize.size.height)
+                    }
+                    if let road = selectedRoad {
+                        ScrollView {
                             RoadView(road: road, lastUpdated: $lastUpdated)
                                 .background(
                                     GeometryReader { geo -> Color in
                                         DispatchQueue.main.async {
-                                            print(geo.size)
                                             scrollViewContentSize = geo.size
                                         }
                                         return Color.clear
                                     }
                                 )
                         }
+                        .frame(
+                            maxHeight: min(scrollViewContentSize.height, getMaxSize())
+                        )
+                        .background(Color(.systemBackground))
+                        .cornerRadius(10)
+                        .padding(5)
+                        .shadow(radius: 5)
                     }
-                    .frame(
-                        maxHeight: min(scrollViewContentSize.height, UIScreen.main.bounds.height / 2)
-                    )
-                    .background(Color(.systemBackground))
-                    .cornerRadius(10)
-                    .padding(5)
-                    .shadow(radius: 5)
                 }
 
             }

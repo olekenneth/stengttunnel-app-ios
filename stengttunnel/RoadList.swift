@@ -28,7 +28,7 @@ enum SortOptions: Equatable, CaseIterable, Identifiable {
 }
 
 struct RoadList: View {
-    var storeManager = StoreManager.shared
+    let storeManager = StoreManager.shared
     
     @StateObject private var store = FavoriteStore()
     @State private var roads = [Road]()
