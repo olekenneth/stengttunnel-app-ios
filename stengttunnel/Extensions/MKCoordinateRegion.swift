@@ -10,7 +10,6 @@ import MapKit
 
 extension MKCoordinateRegion {
     var mapRect: MKMapRect {
-        let centerMapPoint = MKMapPoint(self.center)
         // Calculate longitudinal and latitudinal distances in map points
         let latitudeDelta = span.latitudeDelta
         let longitudeDelta = span.longitudeDelta
