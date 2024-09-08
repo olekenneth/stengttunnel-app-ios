@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-
-
 struct StatusMessageView: View {
     @State var color: StatusType
     @State var statusMessage: String
