@@ -11,6 +11,7 @@ import CarPlay
 struct ListItem {
     let favorite: Favorite
     let item: CPListItem
+    let enabled: Bool
 }
 
 class CarPlaySceneDelegate: UIResponder, CPTemplateApplicationSceneDelegate, UISceneDelegate {
@@ -30,16 +31,25 @@ class CarPlaySceneDelegate: UIResponder, CPTemplateApplicationSceneDelegate, UIS
         timer.invalidate()
     }
     
+    func updateRoads() {
+        self.listItems.filter({ $0.enabled }).forEach { listItem in
+            self.updateListItem(item: listItem.item, favorite: listItem.favorite) {
+                // All good
+            }
+        }
+    }
+    
     func drawScreen() {
         timer.invalidate()
         
-        timer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true, block: { _ in
+        var timerInterval = 60.0
+        #if DEBUG
+        timerInterval = 10.0
+        #endif
+        
+        timer = Timer.scheduledTimer(withTimeInterval: timerInterval, repeats: true, block: { _ in
             print("Updating list")
-            self.listItems.forEach { listItem in
-                self.updateListItem(item: listItem.item, favorite: listItem.favorite) {
-                    // All good
-                }
-            }
+            self.updateRoads()
         })
 
         
@@ -48,22 +58,23 @@ class CarPlaySceneDelegate: UIResponder, CPTemplateApplicationSceneDelegate, UIS
         ])
             
         var sections = [CPListSection]()
-        let items = self.listItems.map({ $0.item })
+        let enabledItems = self.listItems.filter({ $0.enabled }).map { $0.item }
+        let disabledItems = self.listItems.filter({ $0.enabled == false }).map { $0.item }
         
-        if self.storeManager.subscriptionActive {
+        if disabledItems.isEmpty {
             sections = [
-                CPListSection(items:items)
+                CPListSection(items:enabledItems)
             ]
         } else {
             sections = [
-                CPListSection(items: Array(items.prefix(2))),
-                
-                CPListSection(items: Array(items.suffix(from: 2)), header: String(localized: "Buy Stengt tunnel+"), sectionIndexTitle: "")
+                CPListSection(items: enabledItems),
+                CPListSection(items: disabledItems, header: String(localized: "Buy Stengt tunnel+"), sectionIndexTitle: "")
             ]
         }
         favoriteList.updateSections(sections)
-        
         favoriteList.tabSystemItem = .favorites
+        
+        updateRoads()
 
         interfaceController?.setRootTemplate(favoriteList, animated: true, completion: { _, _ in
             // Do nothing
@@ -76,9 +87,11 @@ class CarPlaySceneDelegate: UIResponder, CPTemplateApplicationSceneDelegate, UIS
         loadStore {
             self.listItems = []
             
-            self.store.favorites.forEach({ favorite in
-                self.listItems.append(ListItem(favorite: favorite, item: self.fetchRoad(favorite)))
-            })
+            for (index, favorite) in self.store.favorites.enumerated() {
+                let active = self.storeManager.subscriptionActive || index < 2
+                let item = self.getListItemFromFavorite(favorite: favorite, enabled: active)
+                self.listItems.append(ListItem(favorite: favorite, item: item, enabled: active))
+            }
             
             self.drawScreen()
         }
@@ -100,12 +113,18 @@ class CarPlaySceneDelegate: UIResponder, CPTemplateApplicationSceneDelegate, UIS
         }
     }
     
-    func getListItemFromFavorite(favorite: Favorite, blurred: Bool = true) -> CPListItem {
-        let item = CPListItem(text: favorite.roadName, detailText: String(localized: "is ..."), image: TrafficLightView(color: .yellow).render(blurred: blurred))
-        item.handler = { item, completion in
-            print("Disabled click on \(favorite.roadName)")
-            
-            completion()
+    func getListItemFromFavorite(favorite: Favorite, enabled: Bool = false) -> CPListItem {
+        let item = CPListItem(text: favorite.roadName, detailText: String(localized: "is ..."), image: TrafficLightView(color: .yellow).render(blurred: !enabled))
+        if enabled {
+            item.handler = { item, completion in
+                print("Clicked \(favorite.roadName)")
+                self.updateListItem(item: item as! CPListItem, favorite: favorite) {
+                    do {usleep(500000)}
+                    completion()
+                }
+            }
+        } else {
+            item.isEnabled = false
         }
         
         return item
@@ -121,23 +140,6 @@ class CarPlaySceneDelegate: UIResponder, CPTemplateApplicationSceneDelegate, UIS
 
             callback()
         }
-    }
-    
-    func fetchRoad(_ favorite: Favorite) -> CPListItem {
-        let item = getListItemFromFavorite(favorite: favorite, blurred: false)
-        item.handler = { item, completion in
-            print("Clicked \(favorite.roadName)")
-            self.updateListItem(item: item as! CPListItem, favorite: favorite) {
-                do {usleep(500000)}
-                completion()
-            }
-        }
-        
-        updateListItem(item: item, favorite: favorite) {
-            // Do nothing
-        }
-        
-        return item
     }
     
     func templateApplicationScene(_ templateApplicationScene: CPTemplateApplicationScene,
