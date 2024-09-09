@@ -46,7 +46,6 @@ class FavoriteStore: ObservableObject {
     
     func insert(road: Favorite) {
         self.favorites.insert(road, at: 0)
-        print(self.favorites)
     }
     
     func toggle(road: Favorite) {

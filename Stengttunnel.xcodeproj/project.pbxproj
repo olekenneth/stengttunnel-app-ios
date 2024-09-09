@@ -45,6 +45,7 @@
 		B0C85D332A7A6D07004EC4B8 /* StatusMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C85D322A7A6D07004EC4B8 /* StatusMessageView.swift */; };
 		B0C85D352A7A6F6F004EC4B8 /* RoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C85D342A7A6F6F004EC4B8 /* RoadView.swift */; };
 		B0DC68992C68A7B600213C08 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DC68982C68A7B600213C08 /* LocationManager.swift */; };
+		B0F2540E2C8B0AB0004E77E7 /* CarPlaySceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F2540D2C8B0AB0004E77E7 /* CarPlaySceneDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +116,8 @@
 		B0C85D322A7A6D07004EC4B8 /* StatusMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMessageView.swift; sourceTree = "<group>"; };
 		B0C85D342A7A6F6F004EC4B8 /* RoadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadView.swift; sourceTree = "<group>"; };
 		B0DC68982C68A7B600213C08 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		B0F2540A2C8AF872004E77E7 /* Stengt tunnel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Stengt tunnel.entitlements"; sourceTree = "<group>"; };
+		B0F2540D2C8B0AB0004E77E7 /* CarPlaySceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarPlaySceneDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +201,7 @@
 		B0C85CFA2A7A4FF1004EC4B8 = {
 			isa = PBXGroup;
 			children = (
+				B0F2540A2C8AF872004E77E7 /* Stengt tunnel.entitlements */,
 				B0C85D052A7A4FF1004EC4B8 /* stengttunnel */,
 				B0649EA72C825424001E648E /* Stengt tunnel watch Watch App */,
 				B010DE002C486892000736B3 /* Frameworks */,
@@ -219,6 +223,7 @@
 			children = (
 				B010DE1E2C49AA28000736B3 /* Stengt-tunnel-Info.plist */,
 				B0C85D062A7A4FF1004EC4B8 /* App.swift */,
+				B0F254092C8AE4D2004E77E7 /* Carplay */,
 				B0B6A62E2C6538590006FD33 /* RoadList.swift */,
 				B04311C52C6CCC16007FA564 /* Map */,
 				B02B8E4D2A7ED45C007E783E /* FavoriteStore.swift */,
@@ -247,6 +252,14 @@
 				B0C85D0D2A7A4FF2004EC4B8 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B0F254092C8AE4D2004E77E7 /* Carplay */ = {
+			isa = PBXGroup;
+			children = (
+				B0F2540D2C8B0AB0004E77E7 /* CarPlaySceneDelegate.swift */,
+			);
+			path = Carplay;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -391,6 +404,7 @@
 				B08428C32C61051400EF23ED /* SubscriptionView.swift in Sources */,
 				B0C85D072A7A4FF1004EC4B8 /* App.swift in Sources */,
 				B08FBAA32A97534E0003D203 /* Dataloader.swift in Sources */,
+				B0F2540E2C8B0AB0004E77E7 /* CarPlaySceneDelegate.swift in Sources */,
 				B093F13E2C6A2DBD00128194 /* SearchResultItem.swift in Sources */,
 				B02B8E4E2A7ED45C007E783E /* FavoriteStore.swift in Sources */,
 				B0B6A62F2C6538590006FD33 /* RoadList.swift in Sources */,
@@ -603,6 +617,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Stengt tunnel.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"stengttunnel/Preview Content\"";
@@ -611,7 +626,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Stengt-tunnel-Info.plist";
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "slik at Google kan vise personlig tilpasset reklame";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = NO;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -638,6 +653,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Stengt tunnel.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"stengttunnel/Preview Content\"";
@@ -646,7 +662,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Stengt-tunnel-Info.plist";
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "slik at Google kan vise personlig tilpasset reklame";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = NO;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
