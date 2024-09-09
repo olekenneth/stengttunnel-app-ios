@@ -31,5 +31,4 @@ struct Stengt_tunnelApp: App {
             RoadList()
         }
     }
-    
 }

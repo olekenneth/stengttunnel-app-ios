@@ -10,6 +10,20 @@ import SwiftUI
 struct TrafficLightView: View {
     @State var color: StatusType
 
+    @MainActor func render(blurred: Bool = false) -> UIImage {
+        let renderer = ImageRenderer(content: self.body.blur(radius: blurred ? 3.0 : 0.0).frame(width: 115, height: 115))
+
+        // make sure and use the correct display scale for this device
+        renderer.scale = 3.0
+
+        if let uiImage = renderer.uiImage {
+            return uiImage
+            //renderedImage = Image(uiImage: uiImage)
+        }
+        return UIImage()
+        //return renderedImage
+    }
+
     var body: some View {
         VStack(alignment: .center, spacing: 2) {
             Rectangle()
