@@ -7,41 +7,6 @@
 
 import SwiftUI
 
-struct Road: Identifiable, Codable, Equatable {
-    static func == (lhs: Road, rhs: Road) -> Bool {
-        lhs.roadName == rhs.roadName
-    }
-    
-    var id: String { urlFriendly }
-    let roadName: String
-    let urlFriendly: String
-    let messages: [Message]
-    let gps: GPS
-    var distance: Double? = 0.0
-}
-
-struct GPS: Codable {
-    var lat: Double
-    var lon: Double
-}
-
-enum StatusType: String, Codable {
-    case green = "green"
-    case yellow = "yellow"
-    case red = "red"
-}
-
-struct Status: Identifiable, Codable {
-    var id: UUID { UUID() }
-    var statusMessage: String
-    var messages: [Message]?
-    var status: StatusType
-    var localizedStatusMessage: LocalizedStringKey {
-        return LocalizedStringKey(statusMessage)
-    }
-    // var gps: GPS
-}
-
 public struct RoadView: View {
     let road: Road
     @State var status: Status?
@@ -66,6 +31,7 @@ public struct RoadView: View {
                 ShareLink(item: URL(string: "https://stengttunnel.no/\(road.urlFriendly)")!, preview: SharePreview(statusMessage, image: Image("App"))) {
                     StatusMessageView(color: status!.status, statusMessage: statusMessage)
                 }
+                #if os(iOS)
                 if status?.messages != nil && !status!.messages!.isEmpty {
                     Rectangle()
                         .foregroundColor(Color("lightGray"))
@@ -73,6 +39,7 @@ public struct RoadView: View {
                     MessageTableView(data: status!.messages!)
                         .padding([.top, .leading, .bottom])
                 }
+                #endif
             } else {
                 StatusMessageView(color: .yellow, statusMessage: "\(road.roadName) "  + NSLocalizedString("is ...", comment: ""))
             }

@@ -14,6 +14,11 @@
       "filename" : "vv_logo 2.png",
       "idiom" : "universal",
       "scale" : "3x"
+    },
+    {
+      "filename" : "vv_logo 3.png",
+      "idiom" : "watch",
+      "scale" : "2x"
     }
   ],
   "info" : {
