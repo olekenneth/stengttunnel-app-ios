@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import WatchConnectivity
 
 @main
-struct Stengt_tunnel_watch_Watch_AppApp: App {
+struct Stengt_tunnel_Watch_App: App {
+
     var body: some Scene {
         WindowGroup {
             ContentView()

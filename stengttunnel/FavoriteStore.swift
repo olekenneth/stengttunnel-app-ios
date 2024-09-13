@@ -7,19 +7,10 @@
 import SwiftUI
 import WatchConnectivity
 
-struct Favorite: Identifiable, Codable, Equatable {
-    var id = UUID()
-    var roadName: String
-    var urlFriendly: String
-    
-    static func ==(lhs: Favorite, rhs: Favorite) -> Bool {
-        return lhs.urlFriendly == rhs.urlFriendly
-    }
-}
-
 @MainActor
-class FavoriteStore: ObservableObject {
+class FavoriteStore: NSObject, ObservableObject {
     @Published var favorites: [Favorite] = []
+    private var watchSession: WCSession?
     
     private static func fileURL() throws -> URL {
         try FileManager.default.url(for: .documentDirectory,
@@ -38,19 +29,15 @@ class FavoriteStore: ObservableObject {
             let yourFavorites = try JSONDecoder().decode([Favorite].self, from: data)
             return yourFavorites
         }
+        
         self.favorites = try await task.value
         
-        if WCSession.isSupported() { //makes sure it's not an iPad or iPod
-            let watchSession = WCSession.default
-            watchSession.delegate = self
-            watchSession.activate()
-            if watchSession.isPaired && watchSession.isWatchAppInstalled {
-                do {
-                    try watchSession.updateApplicationContext(["favorites": self.favorites])
-                } catch let error as NSError {
-                    print(error.description)
-                }
-            }
+        print("Loaded favorites", self.favorites)
+        if WCSession.isSupported() { // makes sure it's not an iPad or iPod
+            print("WCSession is supported")
+            watchSession = WCSession.default
+            watchSession?.delegate = self
+            watchSession?.activate()
         }
 
     }
@@ -71,6 +58,24 @@ class FavoriteStore: ObservableObject {
         } else {
             insert(road: road)
         }
+        sendToWatch()
+    }
+    
+    func sendToWatch() {
+        if let session = watchSession {
+            if session.isPaired && session.isWatchAppInstalled {
+                DispatchQueue.main.async {
+                    print(self.favorites)
+                    do {
+                        let favorites = self.favorites.map({ $0.urlFriendly }) as [String]
+                        
+                        try session.updateApplicationContext(["favorites": favorites])
+                    } catch let error as NSError {
+                        print("WKError", error.description)
+                    }
+                }
+            }
+        }
     }
         
     func save(favorites: [Favorite]) {
@@ -83,70 +88,14 @@ class FavoriteStore: ObservableObject {
 }
 
 extension FavoriteStore: WCSessionDelegate {
-    
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: (any Error)?) {
-        
+            print("Trying to update watch", self.favorites)
+            sendToWatch()
     }
     
     func sessionDidBecomeInactive(_ session: WCSession) {
-        
     }
     
     func sessionDidDeactivate(_ session: WCSession) {
-        
-    }
-    
-    func isEqual(_ object: Any?) -> Bool {
-        self.isEqual(object)
-    }
-    
-    var hash: Int {
-        self.hash
-    }
-    
-    var superclass: AnyClass? {
-        self.superclass
-    }
-    
-    func `self`() -> Self {
-        self.self
-    }
-    
-    func perform(_ aSelector: Selector!) -> Unmanaged<AnyObject>! {
-        self.perform(aSelector)
-    }
-    
-    func perform(_ aSelector: Selector!, with object: Any!) -> Unmanaged<AnyObject>! {
-        self.perform(aSelector, with: object)
-    }
-    
-    func perform(_ aSelector: Selector!, with object1: Any!, with object2: Any!) -> Unmanaged<AnyObject>! {
-        self.perform(aSelector, with: object1, with: object2)
-    }
-    
-    func isProxy() -> Bool {
-        self.isProxy()
-    }
-    
-    func isKind(of aClass: AnyClass) -> Bool {
-        self.isKind(of: aClass)
-    }
-    
-    func isMember(of aClass: AnyClass) -> Bool {
-        self.isMember(of: aClass)
-    }
-    
-    func conforms(to aProtocol: Protocol) -> Bool {
-        self.conforms(to: aProtocol)
-    }
-    
-    func responds(to aSelector: Selector!) -> Bool {
-        self.responds(to: aSelector)
-    }
-    
-    var description: String {
-        return self.favorites.map { fav in
-            return fav.urlFriendly
-        }.joined(separator: ", ")
     }
 }

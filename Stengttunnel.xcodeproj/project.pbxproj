@@ -17,13 +17,12 @@
 		B02C30A22C60DF77001098B7 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = B02C30A12C60DF77001098B7 /* GoogleMobileAds */; };
 		B04311C72C6CCC33007FA564 /* MarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04311C62C6CCC33007FA564 /* MarkerView.swift */; };
 		B044C9722C615D2B007846BF /* TPInAppReceipt in Frameworks */ = {isa = PBXBuildFile; productRef = B044C9712C615D2B007846BF /* TPInAppReceipt */; };
-		B0649EA92C825424001E648E /* Stengt_tunnel_watchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0649EA82C825424001E648E /* Stengt_tunnel_watchApp.swift */; };
+		B0649EA92C825424001E648E /* Stengt_tunnel_Watch_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0649EA82C825424001E648E /* Stengt_tunnel_Watch_App.swift */; };
 		B0649EAB2C825424001E648E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0649EAA2C825424001E648E /* ContentView.swift */; };
 		B0649EAD2C825425001E648E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0649EAC2C825425001E648E /* Assets.xcassets */; };
 		B0649EB02C825425001E648E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0649EAF2C825425001E648E /* Preview Assets.xcassets */; };
 		B0649EB32C825425001E648E /* Stengt tunnel.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = B0649EA62C825424001E648E /* Stengt tunnel.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B0649EB82C825459001E648E /* StatusMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C85D322A7A6D07004EC4B8 /* StatusMessageView.swift */; };
-		B0649EBA2C825459001E648E /* FavoriteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02B8E4D2A7ED45C007E783E /* FavoriteStore.swift */; };
 		B0649EBB2C825496001E648E /* TrafficLightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C85D082A7A4FF1004EC4B8 /* TrafficLightView.swift */; };
 		B0649EBC2C82551A001E648E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0C85D0A2A7A4FF2004EC4B8 /* Assets.xcassets */; };
 		B07C26C82A7EE38F006139AA /* SearchableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07C26C72A7EE38F006139AA /* SearchableView.swift */; };
@@ -46,15 +45,16 @@
 		B0DADC092C830494007D689D /* Dataloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08FBAA22A97534E0003D203 /* Dataloader.swift */; };
 		B0DC68992C68A7B600213C08 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DC68982C68A7B600213C08 /* LocationManager.swift */; };
 		B0F2540E2C8B0AB0004E77E7 /* CarPlaySceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F2540D2C8B0AB0004E77E7 /* CarPlaySceneDelegate.swift */; };
+		B0FF01ED2C8F3183004AC6AC /* WatchFavoriteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FF01EC2C8F3183004AC6AC /* WatchFavoriteStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B0649EB12C825425001E648E /* PBXContainerItemProxy */ = {
+		B0F3D67F2C94835F00B60268 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B0C85CFB2A7A4FF1004EC4B8 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = B0649EA52C825424001E648E;
-			remoteInfo = "Stengt tunnel watch Watch App";
+			remoteInfo = "Stengt tunnel Watch App";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -93,7 +93,7 @@
 		B02B8E4D2A7ED45C007E783E /* FavoriteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteStore.swift; sourceTree = "<group>"; };
 		B04311C62C6CCC33007FA564 /* MarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkerView.swift; sourceTree = "<group>"; };
 		B0649EA62C825424001E648E /* Stengt tunnel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stengt tunnel.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B0649EA82C825424001E648E /* Stengt_tunnel_watchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stengt_tunnel_watchApp.swift; sourceTree = "<group>"; };
+		B0649EA82C825424001E648E /* Stengt_tunnel_Watch_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stengt_tunnel_Watch_App.swift; sourceTree = "<group>"; };
 		B0649EAA2C825424001E648E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B0649EAC2C825425001E648E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B0649EAF2C825425001E648E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -118,6 +118,7 @@
 		B0DC68982C68A7B600213C08 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		B0F2540A2C8AF872004E77E7 /* Stengt tunnel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Stengt tunnel.entitlements"; sourceTree = "<group>"; };
 		B0F2540D2C8B0AB0004E77E7 /* CarPlaySceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarPlaySceneDelegate.swift; sourceTree = "<group>"; };
+		B0FF01EC2C8F3183004AC6AC /* WatchFavoriteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchFavoriteStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,8 +164,9 @@
 		B0649EA72C825424001E648E /* Stengt tunnel watch Watch App */ = {
 			isa = PBXGroup;
 			children = (
-				B0649EA82C825424001E648E /* Stengt_tunnel_watchApp.swift */,
+				B0649EA82C825424001E648E /* Stengt_tunnel_Watch_App.swift */,
 				B0649EAA2C825424001E648E /* ContentView.swift */,
+				B0FF01EC2C8F3183004AC6AC /* WatchFavoriteStore.swift */,
 				B0649EAC2C825425001E648E /* Assets.xcassets */,
 				B0649EAE2C825425001E648E /* Preview Content */,
 			);
@@ -295,7 +297,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				B0649EB22C825425001E648E /* PBXTargetDependency */,
+				B0F3D6802C94835F00B60268 /* PBXTargetDependency */,
 			);
 			name = "Stengt tunnel";
 			packageProductDependencies = (
@@ -380,10 +382,10 @@
 				B01A49542C8256A000172146 /* MessageTableView.swift in Sources */,
 				B01A49532C82567800172146 /* RoadView.swift in Sources */,
 				B0649EBB2C825496001E648E /* TrafficLightView.swift in Sources */,
+				B0FF01ED2C8F3183004AC6AC /* WatchFavoriteStore.swift in Sources */,
 				B0DADC092C830494007D689D /* Dataloader.swift in Sources */,
 				B0649EB82C825459001E648E /* StatusMessageView.swift in Sources */,
-				B0649EBA2C825459001E648E /* FavoriteStore.swift in Sources */,
-				B0649EA92C825424001E648E /* Stengt_tunnel_watchApp.swift in Sources */,
+				B0649EA92C825424001E648E /* Stengt_tunnel_Watch_App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,10 +420,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B0649EB22C825425001E648E /* PBXTargetDependency */ = {
+		B0F3D6802C94835F00B60268 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B0649EA52C825424001E648E /* Stengt tunnel Watch App */;
-			targetProxy = B0649EB12C825425001E648E /* PBXContainerItemProxy */;
+			targetProxy = B0F3D67F2C94835F00B60268 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

@@ -8,6 +8,16 @@
 import Foundation
 import SwiftUI
 
+struct Favorite: Identifiable, Codable, Equatable {
+    var id = UUID().uuidString
+    var roadName: String
+    var urlFriendly: String
+    
+    static func ==(lhs: Favorite, rhs: Favorite) -> Bool {
+        return lhs.urlFriendly == rhs.urlFriendly
+    }
+}
+
 enum SourceType: String, Codable {
     case svv = "Statens Vegvesen"
     case user = "Brukerinnmeldt"
