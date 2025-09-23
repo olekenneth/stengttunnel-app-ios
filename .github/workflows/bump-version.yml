@@ -1,158 +1,156 @@
 name: Bump iOS Version
 
 on:
-workflow_dispatch:
-inputs:
-version_type:
-description: ‘Version bump type’
-required: true
-default: ‘patch’
-type: choice
-options:
-- patch
-- minor
-- major
-- build-only
-custom_version:
-description: ‘Custom version (optional, overrides version_type)’
-required: false
-type: string
-
+  workflow_dispatch:
+    inputs:
+      version_type:
+        description: ‘Version bump type’
+        required: true
+        default: ‘patch’
+        type: choice
+        options:
+        - patch
+        - minor
+        - major
+        - build-only
+      custom_version:
+        description: ‘Custom version (optional, overrides version_type)’
+        required: false
+        type: string
+        
 jobs:
-bump-version:
-runs-on: macos-latest
+  bump-version:
+    runs-on: macos-latest
 
-```
-steps:
-- name: Checkout code
-  uses: actions/checkout@v4
-  with:
-    fetch-depth: 0
-
-- name: Setup Ruby
-  uses: ruby/setup-ruby@v1
-  with:
-    ruby-version: '3.0'
-    bundler-cache: true
-
-- name: Install xcodeproj gem
-  run: gem install xcodeproj
-
-- name: Get current version
-  id: current_version
-  run: |
-    # Finn Info.plist (anta at den er i prosjektmappen)
-    PLIST_PATH=$(find . -name "Info.plist" -path "*/ios/*" -o -path "*/*.xcodeproj/*" | head -1)
-    if [ -z "$PLIST_PATH" ]; then
-      PLIST_PATH=$(find . -name "Info.plist" | head -1)
-    fi
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
     
-    if [ -z "$PLIST_PATH" ]; then
-      echo "Kunne ikke finne Info.plist"
-      exit 1
-    fi
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.0'
+        bundler-cache: true
     
-    CURRENT_VERSION=$(/usr/libexec/PlistBuddy -c "Print CFBundleShortVersionString" "$PLIST_PATH" 2>/dev/null || echo "1.0.0")
-    CURRENT_BUILD=$(/usr/libexec/PlistBuddy -c "Print CFBundleVersion" "$PLIST_PATH" 2>/dev/null || echo "1")
+    - name: Install xcodeproj gem
+      run: gem install xcodeproj
     
-    echo "plist_path=$PLIST_PATH" >> $GITHUB_OUTPUT
-    echo "current_version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
-    echo "current_build=$CURRENT_BUILD" >> $GITHUB_OUTPUT
-    echo "Current version: $CURRENT_VERSION ($CURRENT_BUILD)"
-
-- name: Calculate new version
-  id: new_version
-  run: |
-    CURRENT_VERSION="${{ steps.current_version.outputs.current_version }}"
-    CURRENT_BUILD="${{ steps.current_version.outputs.current_build }}"
+    - name: Get current version
+      id: current_version
+      run: |
+        # Finn Info.plist (anta at den er i prosjektmappen)
+        PLIST_PATH=$(find . -name "Info.plist" -path "*/ios/*" -o -path "*/*.xcodeproj/*" | head -1)
+        if [ -z "$PLIST_PATH" ]; then
+          PLIST_PATH=$(find . -name "Info.plist" | head -1)
+        fi
+        
+        if [ -z "$PLIST_PATH" ]; then
+          echo "Kunne ikke finne Info.plist"
+          exit 1
+        fi
+        
+        CURRENT_VERSION=$(/usr/libexec/PlistBuddy -c "Print CFBundleShortVersionString" "$PLIST_PATH" 2>/dev/null || echo "1.0.0")
+        CURRENT_BUILD=$(/usr/libexec/PlistBuddy -c "Print CFBundleVersion" "$PLIST_PATH" 2>/dev/null || echo "1")
+        
+        echo "plist_path=$PLIST_PATH" >> $GITHUB_OUTPUT
+        echo "current_version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
+        echo "current_build=$CURRENT_BUILD" >> $GITHUB_OUTPUT
+        echo "Current version: $CURRENT_VERSION ($CURRENT_BUILD)"
     
-    if [ -n "${{ github.event.inputs.custom_version }}" ]; then
-      NEW_VERSION="${{ github.event.inputs.custom_version }}"
-      NEW_BUILD=$((CURRENT_BUILD + 1))
-    else
-      IFS='.' read -ra VERSION_PARTS <<< "$CURRENT_VERSION"
-      MAJOR=${VERSION_PARTS[0]:-0}
-      MINOR=${VERSION_PARTS[1]:-0}
-      PATCH=${VERSION_PARTS[2]:-0}
-      
-      case "${{ github.event.inputs.version_type }}" in
-        "major")
-          MAJOR=$((MAJOR + 1))
-          MINOR=0
-          PATCH=0
-          NEW_BUILD=1
-          ;;
-        "minor")
-          MINOR=$((MINOR + 1))
-          PATCH=0
-          NEW_BUILD=1
-          ;;
-        "patch")
-          PATCH=$((PATCH + 1))
-          NEW_BUILD=1
-          ;;
-        "build-only")
+    - name: Calculate new version
+      id: new_version
+      run: |
+        CURRENT_VERSION="${{ steps.current_version.outputs.current_version }}"
+        CURRENT_BUILD="${{ steps.current_version.outputs.current_build }}"
+        
+        if [ -n "${{ github.event.inputs.custom_version }}" ]; then
+          NEW_VERSION="${{ github.event.inputs.custom_version }}"
           NEW_BUILD=$((CURRENT_BUILD + 1))
-          ;;
-      esac
-      
-      if [ "${{ github.event.inputs.version_type }}" != "build-only" ]; then
-        NEW_VERSION="$MAJOR.$MINOR.$PATCH"
-      else
-        NEW_VERSION="$CURRENT_VERSION"
-      fi
-    fi
+        else
+          IFS='.' read -ra VERSION_PARTS <<< "$CURRENT_VERSION"
+          MAJOR=${VERSION_PARTS[0]:-0}
+          MINOR=${VERSION_PARTS[1]:-0}
+          PATCH=${VERSION_PARTS[2]:-0}
+          
+          case "${{ github.event.inputs.version_type }}" in
+            "major")
+              MAJOR=$((MAJOR + 1))
+              MINOR=0
+              PATCH=0
+              NEW_BUILD=1
+              ;;
+            "minor")
+              MINOR=$((MINOR + 1))
+              PATCH=0
+              NEW_BUILD=1
+              ;;
+            "patch")
+              PATCH=$((PATCH + 1))
+              NEW_BUILD=1
+              ;;
+            "build-only")
+              NEW_BUILD=$((CURRENT_BUILD + 1))
+              ;;
+          esac
+          
+          if [ "${{ github.event.inputs.version_type }}" != "build-only" ]; then
+            NEW_VERSION="$MAJOR.$MINOR.$PATCH"
+          else
+            NEW_VERSION="$CURRENT_VERSION"
+          fi
+        fi
+        
+        echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
+        echo "new_build=$NEW_BUILD" >> $GITHUB_OUTPUT
+        echo "New version: $NEW_VERSION ($NEW_BUILD)"
     
-    echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
-    echo "new_build=$NEW_BUILD" >> $GITHUB_OUTPUT
-    echo "New version: $NEW_VERSION ($NEW_BUILD)"
-
-- name: Update version in Info.plist
-  run: |
-    PLIST_PATH="${{ steps.current_version.outputs.plist_path }}"
-    NEW_VERSION="${{ steps.new_version.outputs.new_version }}"
-    NEW_BUILD="${{ steps.new_version.outputs.new_build }}"
+    - name: Update version in Info.plist
+      run: |
+        PLIST_PATH="${{ steps.current_version.outputs.plist_path }}"
+        NEW_VERSION="${{ steps.new_version.outputs.new_version }}"
+        NEW_BUILD="${{ steps.new_version.outputs.new_build }}"
+        
+        /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString $NEW_VERSION" "$PLIST_PATH"
+        /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $NEW_BUILD" "$PLIST_PATH"
+        
+        echo "✅ Oppdaterte $PLIST_PATH"
+        echo "   Version: $NEW_VERSION"
+        echo "   Build: $NEW_BUILD"
     
-    /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString $NEW_VERSION" "$PLIST_PATH"
-    /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $NEW_BUILD" "$PLIST_PATH"
+    - name: Update version in project file (hvis agvtool er tilgjengelig)
+      run: |
+        if command -v agvtool &> /dev/null; then
+          echo "Bruker agvtool for å oppdatere versjon..."
+          agvtool new-version -all "${{ steps.new_version.outputs.new_version }}" || true
+          agvtool new-build -all "${{ steps.new_version.outputs.new_build }}" || true
+        else
+          echo "agvtool ikke tilgjengelig, hopper over"
+        fi
     
-    echo "✅ Oppdaterte $PLIST_PATH"
-    echo "   Version: $NEW_VERSION"
-    echo "   Build: $NEW_BUILD"
-
-- name: Update version in project file (hvis agvtool er tilgjengelig)
-  run: |
-    if command -v agvtool &> /dev/null; then
-      echo "Bruker agvtool for å oppdatere versjon..."
-      agvtool new-version -all "${{ steps.new_version.outputs.new_version }}" || true
-      agvtool new-build -all "${{ steps.new_version.outputs.new_build }}" || true
-    else
-      echo "agvtool ikke tilgjengelig, hopper over"
-    fi
-
-- name: Commit changes
-  run: |
-    git config --local user.email "action@github.com"
-    git config --local user.name "GitHub Action"
+    - name: Commit changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        
+        NEW_VERSION="${{ steps.new_version.outputs.new_version }}"
+        NEW_BUILD="${{ steps.new_version.outputs.new_build }}"
+        
+        git add .
+        git commit -m "🔖 Bump version to $NEW_VERSION ($NEW_BUILD)" || exit 0
+        git push origin main
     
-    NEW_VERSION="${{ steps.new_version.outputs.new_version }}"
-    NEW_BUILD="${{ steps.new_version.outputs.new_build }}"
+    - name: Create Git Tag
+      run: |
+        NEW_VERSION="${{ steps.new_version.outputs.new_version }}"
+        git tag -a "v$NEW_VERSION" -m "Version $NEW_VERSION"
+        git push origin "v$NEW_VERSION"
     
-    git add .
-    git commit -m "🔖 Bump version to $NEW_VERSION ($NEW_BUILD)" || exit 0
-    git push origin main
-
-- name: Create Git Tag
-  run: |
-    NEW_VERSION="${{ steps.new_version.outputs.new_version }}"
-    git tag -a "v$NEW_VERSION" -m "Version $NEW_VERSION"
-    git push origin "v$NEW_VERSION"
-
-- name: Summary
-  run: |
-    echo "## 🎉 Version Bump Completed!" >> $GITHUB_STEP_SUMMARY
-    echo "" >> $GITHUB_STEP_SUMMARY
-    echo "- **Previous:** ${{ steps.current_version.outputs.current_version }} (${{ steps.current_version.outputs.current_build }})" >> $GITHUB_STEP_SUMMARY
-    echo "- **New:** ${{ steps.new_version.outputs.new_version }} (${{ steps.new_version.outputs.new_build }})" >> $GITHUB_STEP_SUMMARY
-    echo "- **Tag created:** v${{ steps.new_version.outputs.new_version }}" >> $GITHUB_STEP_SUMMARY
-```
+    - name: Summary
+      run: |
+        echo "## 🎉 Version Bump Completed!" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "- **Previous:** ${{ steps.current_version.outputs.current_version }} (${{ steps.current_version.outputs.current_build }})" >> $GITHUB_STEP_SUMMARY
+        echo "- **New:** ${{ steps.new_version.outputs.new_version }} (${{ steps.new_version.outputs.new_build }})" >> $GITHUB_STEP_SUMMARY
+        echo "- **Tag created:** v${{ steps.new_version.outputs.new_version }}" >> $GITHUB_STEP_SUMMARY
